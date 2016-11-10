@@ -4,7 +4,7 @@
 body
 {
     color: black;
-    background-color: #F0F0FF;
+    background-color: #F9F9FF;
     min-width: 800px;
     max-width: 1000px;
     /* position: absolute; */
@@ -38,7 +38,7 @@ header
 {
     display: block;
     position: relative;
-    background-color: #E0E0FF;
+    background-color: #F0F0FF;
     width: 100%;
     margin-top: 40px;
     /* border: 1px black solid; */
@@ -93,7 +93,7 @@ nav
     vertical-align: top;
     /* text-align: justify; */
     z-index: 1;
-    background-color: #F0F0FF;
+    background-color: #F9F9FF;
     /* background-color: #A0D0FF; */
     border-bottom: 3px #0000FF double;
     height: 20px;
