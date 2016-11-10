@@ -1,0 +1,294 @@
+/* Propriétés générales */
+
+
+body
+{
+    color: black;
+    background-color: #F0F0FF;
+    min-width: 800px;
+    max-width: 1000px;
+    /* position: absolute; */
+    /* top: 0px; */
+    /* z-index: 0; */
+    /* width: 800px; */
+    margin: auto;
+    /* overflow: hidden; */
+}
+#bloc_page
+{
+    /* min-width: 800px; */
+    /* max-width: 1000px; */
+    /* /\* position: absolute; *\/ */
+    /* /\* top: 0px; *\/ */
+    /* /\* z-index: 0; *\/ */
+    /* /\* width: 800px; *\/ */
+    /* margin: auto; */
+    /* overflow: hidden; */
+}
+
+/* Aides pour le design */
+*
+{
+    font-family:  serif;
+    /* border: 1px black solid; */
+}
+
+/* Header */
+header
+{
+    display: block;
+    position: relative;
+    background-color: #E0E0FF;
+    width: 100%;
+    margin-top: 40px;
+    /* border: 1px black solid; */
+}
+
+#photo
+{
+    padding: 5px;
+    display: inline-block;
+}
+
+#photo img
+{
+    max-width: 100%;
+    max-height: 180px;
+}
+
+#nom
+{
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+}
+header h2
+{
+    font-size: 1em;
+}
+#coordonnees
+{
+    display: inline-block;
+    width: 35%;
+    padding-left: 150px;
+    vertical-align: top;
+}
+
+header a[href*=mailto]
+{
+    color: #000055;
+    font-family: Courier, monospace, sans-serif, serif;
+    font-size: 9pt;
+    text-decoration: none;
+    
+}
+
+/* Nav */
+nav
+{
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    vertical-align: top;
+    /* text-align: justify; */
+    z-index: 1;
+    background-color: #F0F0FF;
+    /* background-color: #A0D0FF; */
+    border-bottom: 3px #0000FF double;
+    height: 20px;
+    width: 100%;
+    padding-bottom: 1px;
+/* margin: auto; */
+}
+
+nav #menu
+{
+    min-width: 800px;
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+}
+
+nav #menu_right
+{
+    display: inline-block;
+    position: absolute;
+    text-align: right;
+    top: 0px;
+    right: 0px;
+    padding-top: 2px;
+    /* text-align: right; */
+    /* margin-left: auto; */
+    /* margin-right: 0px; */
+    /* max-height: 20px; */
+    /* overflow: hide; */
+    /* padding-top: 0px; */
+    /* padding-bottom: 0px; */
+}
+
+nav #menu_left
+{
+    display: inline-block;
+    position: absolute;
+    /* margin-left:0px; */
+    /* margin-right:auto; */
+    top: 0px;
+    left: 0px;
+    text-align: left;
+    /* padding-top: 0px; */
+    /* padding-bottom: 0px; */
+}
+
+nav ul
+{
+    list-style-type:none;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+nav li
+{
+    display: inline-block;
+}
+#menu_left li
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+}
+
+#menu_right a
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1em;
+    color: #181818;
+    text-decoration: none;
+}
+#menu_right a:hover
+{
+    background-color: #000076;
+    color: white; 
+}
+
+/* Section */
+h1
+{
+    padding-top: 40px;
+    margin-top: -30px;
+    font-family: sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+h2[id]
+{
+    font-family: sans-serif;
+    font-size: 24px;
+    padding-top: 40px;
+    margin-top: -40px;
+    margin-bottom: -5px;
+}
+
+h3
+{
+    font-family: sans-serif;
+    font-size: 20px;
+    padding-left: 10px;
+                     
+}
+
+h2[id="first"]
+{
+    margin-top: 0px;
+}
+
+h2[id="apropos"] 
+{
+    margin-top: -20px;
+}
+
+section
+{
+    display: inline-block;
+    height: 75%;
+    width: 100%;
+    overflow: auto;
+    vertical-align: top;
+}
+section h2
+{
+    color: black;
+    
+}
+
+.text
+{
+    text-align:justify;
+}
+
+.mono
+{
+    font-family: Courier, monospace, sans-serif, serif;
+    font-size: 10pt;
+    text-decoration: none;
+}
+
+.sc
+{
+    /* font-variant: small-caps; */
+}
+
+section a
+{
+    /* border-width: 1px; */
+    /* border-style: dotted; */
+    color: #000055;
+    text-decoration: none;
+}
+
+section li
+{
+    margin-bottom: 5px;
+}
+
+section a:hover
+{
+    background-color: #000055;
+    color: white;
+}
+
+/* section a:visited */
+/* { */
+/*     color: #555; */
+/* } */
+
+.figure-number
+{
+    display: none;
+}
+
+/* Footer */
+footer
+{
+    font-size: 0.8em;
+}
+
+.validation{
+    display: none;
+}
+
+/* footer #valid */
+/* { */
+/*     display: inline-block; */
+/* } */
+
+/* #timestamp */
+/* { */
+/*     display: inline-block; */
+/*     position: relative; */
+/*     bottom: 10px; */
+/*     left: 55%; */
+/*     text-align: right; */
+/* } */

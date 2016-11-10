@@ -1,0 +1,7 @@
+#!/bin/bash
+
+fic=$1
+
+cut -d';' -f1 $fic | sort | uniq -c \
+    | sort -nr | head -n1 \
+    | sed -r 's/^[[:blank:]]*([0-9]+)[[:blank:]]*(.*)$/Département \2 avec \1 communes/'

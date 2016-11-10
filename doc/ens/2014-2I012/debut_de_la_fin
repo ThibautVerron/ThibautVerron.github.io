@@ -1,0 +1,33 @@
+#!/bin/bash
+
+param_value() { cut -d'=' -f2 <<< $1 ;}
+
+debut=""
+fin=""
+nb=""
+
+while [[ $# > 1 ]]; do
+    arg=$1
+    case $arg in
+        --debut=* )
+            echo "Reading beginning of string" >&2
+            debut=$(param_value $arg)
+            ;;
+        --fin=* )
+            echo "Reading end of string" >&2
+            fin=$(param_value $arg)
+            ;;
+        -nb )
+            echo "Switching to line count mode" >&2
+            nb="| wc -l"
+            ;;
+    esac
+    shift
+done
+
+fic=$1
+
+cmd="cut -d';' -f3 $fic  | egrep '^${debut}' | egrep '${fin}$' $nb"
+
+eval $cmd
+

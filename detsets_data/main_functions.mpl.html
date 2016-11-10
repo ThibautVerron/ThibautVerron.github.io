@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.43 in css mode. -->
+<html>
+  <head>
+    <title>main_functions.mpl</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #212121;
+        background-color: #FAFAFA;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #B71C1C;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #607d8b;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #607d8b;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #558b2f;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #0097A7;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00796b;
+      }
+      .maplev-protected {
+        /* maplev-protected-face */
+        color: #32cd32;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #689f38;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment-delimiter"># </span><span class="comment">read "main_functions.mpl";
+</span>
+<span class="keyword">read</span> <span class="string">"functions.mpl"</span>;
+
+<span class="function-name">DiscriminatingPolynomial</span> := <span class="keyword">proc</span>(M,r0,H,vars,params,eqs := [], neqs := [], elim:=<span class="string">""</span>)
+    <span class="keyword">description</span> <span class="string">"Compute a polynomial P as in section 3"</span>;
+<span class="keyword">local</span> res:
+    t0 := <span class="builtin">time</span>():
+    res1 := RankExactly(M,r0,vars,params,eqs,neqs):
+    t1 := <span class="builtin">time</span>():
+    res2 := DeterminantCritVals(M,r0,vars,params,eqs,neqs,<span class="constant">true</span>):
+    t2 := <span class="builtin">time</span>():
+    res3 := DeterminantBoundary(M,r0,H,vars,params,eqs,neqs,<span class="constant">true</span>):
+    t3 := <span class="builtin">time</span>():
+    <span class="maplev-protected">printf</span>(<span class="string">"RankExactly\t%as\n"</span>,t1-t0):
+    <span class="maplev-protected">printf</span>(<span class="string">"DeterminantCritVals\t%as\n"</span>,t2-t1):
+    <span class="maplev-protected">printf</span>(<span class="string">"DeterminantBoundary\t%as\n"</span>,t3-t2):
+    <span class="keyword">return</span> res1*res2*res3, res1, res2, res3;
+<span class="keyword">end</span>:
+
+<span class="function-name">IncidenceVariety</span> := <span class="keyword">proc</span>(M,r)
+<span class="keyword">description</span> <span class="string">"Compute a system of generators for the incidence variety "</span>
+    <span class="string">"of rank r of M"</span>;
+<span class="keyword">local</span> MatrixU, MatrixY,k,i,j,Prod1,Sys1,Prod2,Sys2,Sys:
+    k := RowDimension(M):
+    MatrixU := <span class="maplev-protected">Matrix</span>(k-r,k):
+    <span class="comment-delimiter"># </span><span class="comment">print(MatrixU);
+</span>    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> k-r <span class="keyword">do</span>
+        <span class="keyword">for</span> j <span class="keyword">from</span> 1 <span class="keyword">to</span> k <span class="keyword">do</span>
+            MatrixU[i,j] := randval():
+            <span class="comment-delimiter"># </span><span class="comment">print(i,j,MatrixU);
+</span>        <span class="keyword">od</span>:
+    <span class="keyword">od</span>:
+    <span class="comment-delimiter"># </span><span class="comment">MatrixU1 := Matrix(k-r,k-r,shape=identity):
+</span>    <span class="comment-delimiter"># </span><span class="comment">MatrixU2 := Matrix(k-r,r,shape=zero):
+</span>    <span class="comment-delimiter"># </span><span class="comment">MatrixU := Matrix([MatrixU1,MatrixU2]):
+</span>
+    <span class="builtin">print</span>(MatrixU);
+
+    MatrixY := <span class="maplev-protected">Matrix</span>(k,k-r):
+    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> k <span class="keyword">do</span>
+        <span class="keyword">for</span> j <span class="keyword">from</span> 1 <span class="keyword">to</span> k-r <span class="keyword">do</span>
+            MatrixY[i,j] := Y[i,j]:
+        <span class="keyword">od</span>:
+    <span class="keyword">od</span>:
+    Prod1 := M . MatrixY:
+    <span class="comment-delimiter"># </span><span class="comment">print(Dimensions(Prod1));
+</span>    Sys1 := [<span class="builtin">seq</span>(<span class="builtin">seq</span>(Prod1[i][j],j=1..k-r),i=1..k)]:
+    Prod2 := MatrixU . MatrixY - <span class="maplev-protected">Matrix</span>(k-r,k-r,shape=identity):
+    <span class="comment-delimiter"># </span><span class="comment">print(Dimensions(Prod2));
+</span>    Sys2 := [<span class="builtin">seq</span>(<span class="builtin">seq</span>(Prod2[i][j],j=1..k-r),i=1..k-r)]:
+    Sys := [<span class="builtin">op</span>(Sys1),<span class="builtin">op</span>(Sys2)]:
+    <span class="keyword">return</span> Sys, <span class="builtin">indets</span>(MatrixY):
+<span class="keyword">end</span>:
+
+<span class="function-name">RankExactly</span> := <span class="keyword">proc</span>(M,r0,vars,params,eqs := [], neqs := [], {elim := <span class="string">""</span>})
+    <span class="keyword">description</span> <span class="string">"Algorithm RankExactly (section 3.4)"</span>;
+<span class="keyword">local</span> res,k,n,FVr,dim,JVr,FV,F0,varsY,Mins,i,Sysi,G, codim:
+    k := RowDimension(M):
+    n := <span class="builtin">nops</span>(vars):
+    res := 1:
+
+    FVr := [Minors(r0+1,M)]:
+    codim := (k-r0)^2:
+    JVr := Jacobian(FVr,[<span class="builtin">op</span>(vars)]):
+    FV := [<span class="builtin">op</span>(FVr), Minors(codim,JVr),<span class="builtin">op</span>(eqs),u*<span class="builtin">mul</span>(f, f <span class="keyword">in</span> neqs)-1]:
+    F0, varsY := IncidenceVariety(M,r0):
+
+    Mins := [Minors(r0,M)]:
+    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(Mins) <span class="keyword">do</span>
+        <span class="comment-delimiter">#</span><span class="comment">i := 1:
+</span>        Sysi := [<span class="builtin">op</span>(FV),<span class="builtin">op</span>(F0),<span class="builtin">op</span>(Mins[1..i-1]),uu*Mins[i]-1]:
+        G := Elimination(Sysi,[uu,u,<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)],params):
+        <span class="keyword">if</span> res1 &lt;&gt; <span class="constant">FAIL</span> <span class="keyword">then</span>
+            res := res*G[1]:
+        <span class="keyword">fi</span>:
+    <span class="keyword">od</span>:
+    <span class="maplev-protected">printf</span>(<span class="string">"RankExactly: %a\n"</span>, <span class="maplev-protected">factor</span>(res));
+    <span class="keyword">return</span> res:
+<span class="keyword">end</span>:
+
+<span class="function-name">DeterminantCritVals</span> := <span class="keyword">proc</span>(M,r0,vars,params,eqs := [], neqs := [], skipRankExactly := <span class="constant">false</span>, {elim:=<span class="string">""</span>})
+    <span class="keyword">description</span> <span class="string">"Algorithm DeterminantCritVals (section 3.5)"</span>;
+<span class="keyword">local</span> res,F0,varsY,N,J,F1,G:
+    <span class="keyword">if</span> <span class="keyword">not</span> skipRankExactly <span class="keyword">then</span>
+        res := RankExactly(M,r0,vars,params):
+    <span class="keyword">else</span>
+        res := 1:
+    <span class="keyword">fi</span>:
+    <span class="comment-delimiter">#</span><span class="comment">res := 1;
+</span>    F0, varsY := IncidenceVariety(M,r0-1):
+    N := <span class="builtin">nops</span>(F0):
+    J := Jacobian(F0,[<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)]):
+    F1 := [<span class="builtin">op</span>(F0),Minors(N,J),<span class="builtin">op</span>(eqs),u*<span class="builtin">mul</span>(f, f <span class="keyword">in</span> neqs)-1]:
+    G := Elimination(F1,[u,<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)],params):
+    res := res*G[1]:
+    <span class="maplev-protected">printf</span>(<span class="string">"CritVals: %a\n"</span>, <span class="maplev-protected">factor</span>(res));
+    <span class="keyword">return</span> res:
+<span class="keyword">end</span>:
+
+<span class="function-name">DeterminantBoundary</span> := <span class="keyword">proc</span>(M,r0,H,vars,params,
+                            eqs := [], neqs := [], skipRankExactly := <span class="constant">false</span>,
+                            {elim := <span class="string">""</span>})
+    <span class="keyword">description</span> <span class="string">"Algorithm DeterminantBoundary (section 3.6)"</span>;
+<span class="keyword">local</span> res, F0, varsY, h, F1, G:
+    <span class="keyword">if</span> <span class="keyword">not</span> skipRankExactly <span class="keyword">then</span>
+        res := RankExactly(M,r0,vars,params):
+    <span class="keyword">else</span>
+        res := 1:
+    <span class="keyword">fi</span>:
+    F0, varsY := IncidenceVariety(M,r0-1):
+    <span class="keyword">for</span> h <span class="keyword">in</span> H <span class="keyword">do</span>
+        F1 := [<span class="builtin">op</span>(F0),h,<span class="builtin">op</span>(eqs),u*<span class="builtin">mul</span>(f, f <span class="keyword">in</span> neqs)-1]:
+        G := Elimination(F1,[u,<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)],params,algo=<span class="string">""</span>):
+        res := res * G[1]:
+    <span class="keyword">od</span>:
+    <span class="maplev-protected">printf</span>(<span class="string">"Boundary: %a\n"</span>, <span class="maplev-protected">factor</span>(res));
+    <span class="keyword">return</span> res:
+<span class="keyword">end</span>:
+</pre>
+  </body>
+</html>

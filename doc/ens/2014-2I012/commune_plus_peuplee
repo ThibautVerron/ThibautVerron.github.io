@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+fic=$1
+
+max_colonne 4 < $fic | cut -d';' -f3

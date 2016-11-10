@@ -1,0 +1,24 @@
+\documentclass[10pt,a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}  %% les accents dans le fichier.tex
+%\usepackage{mathptmx}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}       %% Pour la césure des mots accentués
+
+\usepackage{amsmath,amssymb}
+
+
+\begin{document}
+
+Let $K$ be a field and $(f_1, \ldots, f_n)\subset K[X_1, \ldots, X_n]$ be a sequence of quasi-homogeneous polynomials of respective weighted degrees $(d_1, \ldots, d_n)$.  By this, we mean that there exists $(w_{1},\dots,w_{n}) \in \mathbb{Z}_{>0}^{n}$ s.t. for any $1 \leq j \leq n$, the polynomial $f_{i}(X_{1}^{w_{1}},\dots,X_{n}^{w_{n}})$ is homogeneous and has degree $d_{i}$.
+
+In this talk, we show how we can adapt the existing strategies for homogeneous systems to quasi-homogeneous systems. We also show that for generic quasi-homogeneous systems, the complexity of a Gröbner basis computation for a quasi-homogeneous system is polynomial in the weighted Bézout bound $\prod_{i=1}^n\frac{d_i}{w_i}$.
+
+Joint work with Jean-Charles Faugère and Mohab Safey El Din
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% ispell-dictionary: "english"
+%%% End: 

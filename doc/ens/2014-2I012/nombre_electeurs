@@ -1,0 +1,5 @@
+#!/bin/bash
+
+fic=$1
+
+echo $(total_colonne 4 < $fic) "inscrits"

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.43 in css mode. -->
+<html>
+  <head>
+    <title>water_functions.mpl</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #212121;
+        background-color: #FAFAFA;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #B71C1C;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #607d8b;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #607d8b;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00796b;
+      }
+      .maplev-protected {
+        /* maplev-protected-face */
+        color: #32cd32;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #689f38;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment-delimiter"># </span><span class="comment">File "water_functions.mpl":
+</span>
+<span class="comment-delimiter"># </span><span class="comment">Function definitions
+</span>
+<span class="keyword">read</span> <span class="string">"functions.mpl"</span>;
+
+<hr />
+<span class="comment-delimiter"># </span><span class="comment">Definitions for water
+</span>
+<span class="keyword">read</span> <span class="string">"water_def.mpl"</span>;
+
+<hr />
+<span class="comment-delimiter"># </span><span class="comment">Computations
+</span>
+t0 := <span class="builtin">time</span>():
+res_general,res1,res2,res3 := DiscriminatingPolynomial(MatrixD,3,H,vars,params,[],[]<span class="comment-delimiter"># </span><span class="comment">, algo = gb_direct
+</span>                                                       , algo=gb_interp
+                                                      ):
+t1 := <span class="builtin">time</span>():
+
+<hr />
+<span class="comment-delimiter"># </span><span class="comment">Results
+</span>
+<span class="comment-delimiter"># </span><span class="comment">RankExactly
+</span>ff1 := <span class="builtin">map</span>(x -&gt; x[1],<span class="maplev-protected">factors</span>(res1)[2]):
+<span class="builtin">nops</span>(ff1);
+<span class="comment-delimiter"># </span><span class="comment">6
+</span><span class="builtin">map</span>(<span class="builtin">degree</span>,ff1);
+<span class="comment-delimiter"># </span><span class="comment">[1,1,1,2,1,1]
+</span>
+<span class="comment-delimiter"># </span><span class="comment">Critical values
+</span>ff2 := <span class="builtin">map</span>(x -&gt; x[1],<span class="maplev-protected">factors</span>(res2)[2]):
+<span class="builtin">nops</span>(ff2);
+<span class="comment-delimiter"># </span><span class="comment">5
+</span><span class="builtin">map</span>(<span class="builtin">degree</span>,ff2);
+<span class="comment-delimiter"># </span><span class="comment">[1, 1, 1, 1, 1]
+</span>
+<span class="comment-delimiter"># </span><span class="comment">Boundary
+</span>ff3 := <span class="builtin">map</span>(x -&gt; x[1],<span class="maplev-protected">factors</span>(res3)[2]):
+<span class="builtin">nops</span>(ff3);
+<span class="comment-delimiter"># </span><span class="comment">7
+</span><span class="builtin">map</span>(<span class="builtin">degree</span>,ff3);
+<span class="comment-delimiter"># </span><span class="comment">[1, 1, 1, 1, 2, 2, 3]
+</span>
+allfacts := [<span class="builtin">op</span>({<span class="builtin">op</span>(ff1),<span class="builtin">op</span>(ff2),<span class="builtin">op</span>(ff3)})]:
+<span class="builtin">nops</span>(allfacts);
+<span class="comment-delimiter"># </span><span class="comment">13
+</span><span class="builtin">map</span>(<span class="builtin">degree</span>,allfacts);
+<span class="comment-delimiter"># </span><span class="comment">[1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3]
+</span>
+filename := <span class="string">"water_results.mpl"</span>;
+fid := fopen(filename,WRITE):
+fprintf(fid,<span class="string">"## RankExactly:\n##---------\n"</span>):
+fprintf(fid,<span class="string">"res1 := [\n"</span>):
+<span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(ff1)-1 <span class="keyword">do</span>
+    f := ff1[i]:
+    fprintf(fid,<span class="string">"    %a,\n"</span>, f):
+<span class="keyword">od</span>:
+fprintf(fid,<span class="string">"    %a\n]:\n\n"</span>,ff1[-1]):
+fprintf(fid,<span class="string">"## CritVals:\n##---------\n"</span>):
+fprintf(fid,<span class="string">"res2 := [\n"</span>):
+<span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(ff2)-1 <span class="keyword">do</span>
+    f := ff2[i]:
+    fprintf(fid,<span class="string">"    %a,\n"</span>, f):
+<span class="keyword">od</span>:
+fprintf(fid,<span class="string">"    %a\n]:\n\n"</span>,ff2[-1]):
+fprintf(fid,<span class="string">"## Boundary\n##---------\n"</span>):
+fprintf(fid,<span class="string">"res3 := [\n"</span>):
+<span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(ff3)-1 <span class="keyword">do</span>
+    f := ff3[i]:
+    fprintf(fid,<span class="string">"    %a,\n"</span>, f):
+<span class="keyword">od</span>:
+fprintf(fid,<span class="string">"    %a\n]:\n\n"</span>,ff3[-1]):
+fprintf(fid,<span class="string">"## All (without duplicates)\n##---------\n"</span>):
+fprintf(fid,<span class="string">"allfacts := [\n"</span>):
+<span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(allfacts)-1 <span class="keyword">do</span>
+    f := allfacts[i]:
+    fprintf(fid,<span class="string">"    %a,\n"</span>, f):
+<span class="keyword">od</span>:
+fprintf(fid,<span class="string">"    %a\n]:\n\n"</span>,allfacts[-1]):
+fclose(fid):
+</pre>
+  </body>
+</html>

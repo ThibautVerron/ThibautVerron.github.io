@@ -1,0 +1,113 @@
+#!/bin/bash
+
+#set -e
+
+#######
+# Paramètres
+#######
+
+fichier=${1:=photos.tgz} # Archive des photos
+nbcols=4  		 # Nombre de photos par ligne dans les pages web
+
+#######
+# Variables internes et fonctions auxiliaires
+#######
+
+# Tableau associant à un numéro de groupe le nom du dossier correspondant
+declare -a dossiers    
+
+# Fonction pour passer la première lettre d'un mot en majuscule
+makeupper(){
+    sed -nr "s/([[:alpha:]]*)/\u\1/p" <<< $1
+}
+
+# Si on se fie strictement à l'énoncé, les noms et prénoms dans les
+# noms de fichier sont tout en minuscule, alors qu'il faut des
+# majuscules dans la page .html. Au final, avec les exemples donnés,
+# l'utilisation de la fonction makeupper s'avère cependant superflu.
+
+#######
+# Préparation du répertoire de travail
+#######
+
+rm -rf --interactive=once *.jpg Groupe_* *.html  # L'utilisateur confirme la suppression.
+
+tar -xzf $fichier
+
+for photo in *.jpg; do
+    # Extraction du numéro du groupe
+    groupe=$(sed -nr "s/^.*_.*_([0-9]*)\.jpg/\1/p" <<< $photo)
+
+    # On crée le dossier s'il n'existe pas
+    dossiergroupe="Groupe_$groupe"
+    dossiers[$groupe]="$dossiergroupe"
+    [ -d $dossiergroupe ] || mkdir $dossiergroupe 
+
+    mv $photo $dossiergroupe
+done
+
+#######
+# Création des pages web de chaque groupe
+#######
+
+for groupe in ${!dossiers[@]}; do
+    echo "Traitement du groupe $groupe" >&2
+    
+    cd ${dossiers[$groupe]}
+    cat > index.html <<EOF
+<html><head><title>Trombinoscope du groupe $groupe</title></head>
+<body>
+<h1 align=’center’>Trombinoscope du groupe $groupe</h1>
+<table cols=$nbcols align=’center’>
+EOF
+
+    i=0 # Compteur pour l'alignement des photos
+
+    for photo in *.jpg; do
+        echo "-> Traitement de la photo $photo" >&2
+        
+        [ $((i%nbcols)) -eq 0 ] && echo "<tr>" >> index.html
+        
+        i=$((i+1))
+        nom=$(sed -nr "s/(.*)_.*_.*\.jpg/\1/p" <<< $photo)
+        prenom=$(sed -nr "s/.*_(.*)_.*\.jpg/\1/p" <<< $photo)
+        newphoto="$nom.$prenom.jpg"
+        
+        convert -rotate -90 -resize 90x120 $photo $newphoto && rm $photo
+        
+        cat >> index.html << EOF
+<td><img src="$newphoto" width=90 height=120/><br/>
+$(makeupper $prenom) $(makeupper $nom)
+</td>
+EOF
+        
+        [ $((i%nbcols)) -eq 0 ] && echo "</tr>" >> index.html
+        
+    done
+
+    cd ..
+done
+
+#######
+# Création de la page web générale
+#######
+
+echo "Création de l'index général"
+
+cat > index.html <<EOF
+<html>
+  <head><title>Trombinoscopes</title></head>
+  <body>
+    <h1 align='center'>Liste des trombinoscopes</h1>
+    <ul>
+EOF
+
+for groupe in ${!dossiers[@]}; do
+    echo "<li><a href=\"${dossiers[$groupe]}/index.html\">Trombinoscope du groupe $groupe</a></li>" >> index.html
+done;
+
+cat >> index.html <<EOF
+    </ul>
+  </body>
+</html>
+EOF

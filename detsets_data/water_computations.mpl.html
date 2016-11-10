@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.43 in css mode. -->
+<html>
+  <head>
+    <title>water_computations.mpl</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #212121;
+        background-color: #FAFAFA;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #B71C1C;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #607d8b;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #607d8b;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00796b;
+      }
+      .maplev-protected {
+        /* maplev-protected-face */
+        color: #32cd32;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #689f38;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment-delimiter"># </span><span class="comment">File "water_computations.mpl";
+</span>
+<span class="keyword">read</span> <span class="string">"functions.mpl"</span>;
+
+<hr />
+<span class="comment-delimiter"># </span><span class="comment">System
+</span>
+<span class="keyword">read</span> <span class="string">"water_def.mpl"</span>:
+DetD:=Determinant(MatrixD):
+gradD_yz := [<span class="builtin">diff</span>(DetD, y1), <span class="builtin">diff</span>(DetD, z1), <span class="builtin">diff</span>(DetD, y2), <span class="builtin">diff</span>(DetD, z2)]:
+
+r0 := 3:
+
+Sys := [DetD,<span class="builtin">op</span>(gradD_yz)]:
+
+<hr />
+<span class="comment-delimiter"># </span><span class="comment">Incidence varieties
+</span>
+F2,varsY2 := IncidenceVariety(MatrixD,2):
+F3,varsY3 := IncidenceVariety(MatrixD,3):
+
+<hr />
+<span class="comment-delimiter"># </span><span class="comment">Singular points and critical values
+</span><span class="comment-delimiter"># </span><span class="comment">Rank(M) &lt;= 2
+</span>
+Jac := Jacobian(F2,[z1,z2,y1,y2,<span class="builtin">op</span>(varsY2)]):
+Sys_rk2 := [<span class="builtin">op</span>(F2),Minors(2*k+(k-r0+1)^2,Jac),u*g2-1]:
+
+GB_rk2 := fgb_gbasis_elim(Sys_rk2,0,[u,<span class="builtin">op</span>(varsY2),z1,z2,y1,y2],[G2,g2]):
+<span class="builtin">lprint</span>(<span class="maplev-protected">factor</span>(GB_rk2));
+
+<span class="comment">(* Results:
+[(G2-1)^2*(-2*g2+1+G2)^2*(-g2-1+2*G2)^2*(2*G2-g2)^2]
+*)</span>
+
+<hr />
+<span class="comment-delimiter"># </span><span class="comment">Intersection with the boundary
+</span>
+<span class="comment-delimiter"># </span><span class="comment">Side 1
+</span>Sys_bnd1 := [<span class="builtin">op</span>(F2),H[1]]:
+GB_bnd1 := fgb_gbasis_elim(Sys_bnd1,0,[<span class="builtin">op</span>(varsY2),z1,z2,y1,y2],[G2,g2]):
+<span class="builtin">lprint</span>(<span class="maplev-protected">factor</span>(GB_bnd1));
+
+<span class="comment">(* Results:
+[g2*(G2-1)^2*(-2*g2-1+3*G2)*(3*G2^2-5*G2*g2+g2^2+2*G2-2*g2+1)]
+*)</span>
+
+<span class="comment-delimiter"># </span><span class="comment">Side 2
+</span>
+Sys_bnd2 := [<span class="builtin">op</span>(F2),H[2]]:
+GB_bnd2 := fgb_gbasis_elim(Sys_bnd2,0,[<span class="builtin">op</span>(varsY2),z1,z2,y1,y2],[G2,g2]):
+<span class="builtin">lprint</span>(<span class="maplev-protected">factor</span>(GB_bnd2));
+<span class="comment">(* Results:
+[(G2-1)^2*(2*G2^2-5*G2*g2+2*g2^2-2*G2+3*g2)*(2*G2^3-3*G2^2*g2-3*G2*g2^2+2*g2^3+2*G2^2+9*G2*g2-11*g2^2-4*G2+6*g2)*(-g2+2*G2)^2]
+*)</span>
+
+<hr />
+
+<span class="comment-delimiter"># </span><span class="comment">Rank(M) = 3
+</span>
+allGB_rk3 := []:
+MM := [Minors(k-1,MatrixD)]:
+
+Sys_rk3 := [DetD,<span class="builtin">op</span>(gradD_yz),<span class="builtin">op</span>(F3),u1*g2-1]:
+<span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> k^2 <span class="keyword">do</span>
+    Sys_rk3_i := [<span class="builtin">op</span>(Sys_rk3),<span class="builtin">op</span>(MM[1..i-1]),u2*MM[i]-1]:
+    GB := fgb_gbasis_elim(Sys_rk3_i,0,[u1,u2,<span class="builtin">op</span>(varsY3),z1,z2,y1,y2],[G2,g2],{<span class="string">"verb"</span>=3}):
+    allGB_rk3 := [<span class="builtin">op</span>(allGB_rk3),[i,GB]]:
+<span class="keyword">od</span>:
+
+<span class="keyword">for</span> g <span class="keyword">in</span> allGB_rk3 <span class="keyword">do</span>
+    <span class="keyword">if</span> g[2] &lt;&gt; [1] <span class="keyword">then</span>
+        <span class="maplev-protected">printf</span>(<span class="string">"i%a Basis:%a\n"</span>,g[1],<span class="maplev-protected">factor</span>(g[2])):
+    <span class="keyword">fi</span>:
+<span class="keyword">od</span>:
+<span class="comment">(* Results
+i=1 Basis:[(-g2+2*G2)*(g2-2+G2)*(2*G2^2-5*G2*g2+2*g2^2+1)]
+*)</span>
+
+<hr />
+</pre>
+  </body>
+</html>

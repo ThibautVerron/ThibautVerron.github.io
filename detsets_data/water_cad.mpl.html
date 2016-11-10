@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.43 in css mode. -->
+<html>
+  <head>
+    <title>water_cad.mpl</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #212121;
+        background-color: #FAFAFA;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #B71C1C;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #607d8b;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #607d8b;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #0097A7;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00796b;
+      }
+      .maplev-protected {
+        /* maplev-protected-face */
+        color: #32cd32;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #689f38;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #EF6C00;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment-delimiter"># </span><span class="comment">restart; read "water_cad.mpl";
+</span>
+<span class="keyword">read</span> <span class="string">"water_def.mpl"</span>;
+
+SDetD := [DetD,<span class="builtin">diff</span>(DetD,y1),<span class="builtin">diff</span>(DetD,y2),
+          <span class="builtin">diff</span>(DetD,z1),<span class="builtin">diff</span>(DetD,z2)]:
+
+Pols := [g2,
+         G2,
+         g2-2*G2,
+         G2-1,
+         3*G2-1-2*g2,
+         3*G2^2-5*G2*g2+g2^2+2*G2-2*g2+1,
+         2*G2^2-5*G2*g2+2*g2^2-2*G2+3*g2,
+         (2*G2^3-3*G2^2*g2-3*G2*g2^2+2*g2^3
+          +2*G2^2+9*G2*g2-11*g2^2-4*G2+6*g2),
+         -2*g2+G2+1,
+         2*G2-1-g2,
+         G2-2+g2,
+         2*G2^2-5*G2*g2+2*g2^2+1];
+
+xi := <span class="maplev-protected">product</span>(Pols[i], i = 1 .. <span class="builtin">nops</span>(Pols));
+
+<span class="maplev-protected">with</span>(RegularChains); <span class="maplev-protected">with</span>(ChainTools); <span class="maplev-protected">with</span>(SemiAlgebraicSetTools);
+R := PolynomialRing([G2,g2]);
+cadfull := CylindricalAlgebraicDecompose(Pols,R,output=cadcell):
+sols := [];
+<span class="keyword">for</span> j <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(cadfull) <span class="keyword">do</span>
+    sols := [<span class="builtin">op</span>(sols),
+             <span class="builtin">subs</span>(<span class="builtin">op</span>(2,<span class="builtin">op</span>(1,<span class="builtin">subs</span>(<span class="builtin">op</span>(2,<span class="builtin">op</span>(1,cadfull[j])),SamplePoint))),
+                  box_bwe)[1]
+            ]:
+<span class="keyword">od</span>:
+
+<span class="builtin">print</span>(<span class="builtin">nops</span>(sols));
+<span class="builtin">print</span>(sols[1]);
+
+<span class="function-name">avg2</span> := <span class="keyword">proc</span>(l):
+    <span class="keyword">return</span> (l[1]+l[2])/2;
+<span class="keyword">end</span>:
+
+<hr />
+
+insideBB := x -&gt; (<span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y1^2+(z1+1)^2-1, x)) &lt;= 0 <span class="keyword">and</span>
+                  <span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y2^2+(z2+1)^2-1, x)) &lt;= 0):
+
+PolsRed := <span class="builtin">remove</span>(x -&gt; x = g2 <span class="keyword">or</span> x = G2 <span class="keyword">or</span> x = 2*G2-g2, Pols):
+
+sAvg := <span class="builtin">map</span>(x -&gt; [g2 = avg2(<span class="builtin">eval</span>(g2,x)),
+                        G2 = avg2(<span class="builtin">eval</span>(G2,x))],
+                  sols):
+
+sAvgValid := <span class="builtin">select</span>(x -&gt;(<span class="builtin">eval</span>(xi,x) &lt;&gt; 0
+                                  <span class="keyword">and</span> 0 &lt; <span class="builtin">eval</span>(g2,x)
+                                  <span class="keyword">and</span> 0 &lt; <span class="builtin">eval</span>(G2,x)
+                                  <span class="keyword">and</span> <span class="builtin">eval</span>(g2,x) &lt; 2*<span class="builtin">eval</span>(G2,x)),
+                             sAvg):
+<span class="builtin">print</span>(<span class="builtin">nops</span>(<span class="variable-name">%</span>)):
+<span class="comment-delimiter"># </span><span class="comment">570
+
+<hr /></span>
+
+
+Sols := [<span class="builtin">seq</span>(<span class="builtin">select</span>(x -&gt; x &lt;&gt; {y1 = 0, y2 = 0,
+                               z1 = -1, z2 = -1},
+                    [solve(Groebner[Basis](<span class="builtin">eval</span>(SDetD,
+                                                sAvgValid[i]),
+                                           plex(y1, y2, z1, z2)))]),
+             i = 1..<span class="builtin">nops</span>(sAvgValid))]:
+<span class="builtin">print</span>(<span class="builtin">map</span>(<span class="builtin">nops</span>, Sols));
+<span class="comment-delimiter"># </span><span class="comment">[2..2]
+</span>
+SolsInBB := [<span class="builtin">seq</span>(<span class="builtin">select</span>(x -&gt; (<span class="builtin">evalb</span>(0 &lt;= <span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y1^2, x)))
+                              <span class="keyword">and</span> <span class="builtin">evalb</span>(0 &lt;= <span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y2^2, x)))
+                              <span class="keyword">and</span> insideBB(x)), Sols[i]),
+                 i = 1 .. <span class="builtin">nops</span>(Sols))]:
+
+<span class="builtin">print</span>(<span class="builtin">nops</span>(<span class="builtin">select</span>(x -&gt; x &lt;&gt; [], SolsInBB)));
+<span class="comment-delimiter"># </span><span class="comment">187
+</span>
+SolsBBSym := [<span class="builtin">seq</span>(<span class="builtin">select</span>(x -&gt; (<span class="builtin">evalb</span>(<span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y1, x)) = 0)
+                               <span class="keyword">and</span> <span class="builtin">evalb</span>(<span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y2, x)) = 0)
+                               <span class="keyword">and</span> insideBB(x)), Sols[i]),
+                  i = 1 .. <span class="builtin">nops</span>(Sols))]:
+
+<span class="builtin">print</span>(<span class="builtin">nops</span>(<span class="builtin">select</span>(x -&gt; ( x &lt;&gt; []), SolsBBSym)));
+<span class="comment-delimiter"># </span><span class="comment">156
+</span>
+IndBBSym := <span class="builtin">select</span>(x -&gt; ( SolsBBSym[x] &lt;&gt; []),
+                   [<span class="builtin">seq</span>(i, i = 1 .. <span class="builtin">nops</span>(SolsBBSym))]):
+
+SolsBBNoSym := [<span class="builtin">seq</span>(<span class="builtin">select</span>(x -&gt; (<span class="builtin">evalb</span>(0 &lt; <span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y1^2, x)))
+                                 <span class="keyword">and</span> <span class="builtin">evalb</span>(0 &lt; <span class="maplev-protected">evala</span>(<span class="builtin">eval</span>(y2^2, x)))
+                                 <span class="keyword">and</span> insideBB(x)), Sols[i]),
+                    i = 1 .. <span class="builtin">nops</span>(Sols))]:
+
+<span class="builtin">print</span>(<span class="builtin">nops</span>(<span class="builtin">select</span>(x -&gt; ( x &lt;&gt; []), SolsBBNoSym)));
+<span class="comment-delimiter"># </span><span class="comment">31
+</span>
+IndBBNoSym := <span class="builtin">select</span>(x -&gt; ( SolsBBNoSym[x] &lt;&gt; []),
+                     [<span class="builtin">seq</span>(i, i = 1 .. <span class="builtin">nops</span>(SolsBBNoSym))]):
+
+g2G2_1 := sAvgValid[IndBBSym]:
+g2G2_2 := sAvgValid[IndBBNoSym]:
+
+filename1 := <span class="string">"pts_cad_1.txt"</span>;
+fid1 := fopen(filename1,WRITE);
+<span class="keyword">for</span> s <span class="keyword">in</span> g2G2_1 <span class="keyword">do</span>
+    fprintf(fid1,<span class="string">"%a %a\n"</span>,<span class="builtin">evalf</span>(<span class="builtin">eval</span>(g2,s)), <span class="builtin">evalf</span>(<span class="builtin">eval</span>(G2,s)));
+<span class="keyword">od</span>:
+fclose(fid1);
+
+filename2 := <span class="string">"pts_cad_2.txt"</span>;
+fid2 := fopen(filename2,WRITE);
+<span class="keyword">for</span> s <span class="keyword">in</span> g2G2_2 <span class="keyword">do</span>
+    fprintf(fid2,<span class="string">"%a %a\n"</span>,<span class="builtin">evalf</span>(<span class="builtin">eval</span>(g2,s)), <span class="builtin">evalf</span>(<span class="builtin">eval</span>(G2,s)));
+<span class="keyword">od</span>:
+fclose(fid2);
+
+f0,f1,f2,f3,f4,f5,f6,f7,f8,f9 := <span class="builtin">op</span>(Pols[3..-1]):
+
+test_all := x -&gt; <span class="builtin">map</span>(f -&gt; <span class="builtin">evalb</span>(<span class="builtin">eval</span>(f,x) &gt; 0),
+                     [f1,f2,f3,f4,f5,f6,f7,f8,f9]);
+
+
+<hr />
+
+crit_1 := x -&gt; ((<span class="builtin">eval</span>(f1,x) &gt; 0
+                 <span class="keyword">and</span> <span class="builtin">eval</span>(f4,x) &gt; 0
+                 <span class="keyword">and</span> <span class="builtin">eval</span>(f2,x) &lt; 0)
+                <span class="keyword">or</span> (<span class="builtin">eval</span>(f1,x) &lt; 0
+                    <span class="keyword">and</span> <span class="builtin">eval</span>(f2,x) &gt; 0));
+<span class="builtin">print</span>({<span class="builtin">op</span>(<span class="builtin">map</span>(crit_1,g2G2_1))});
+
+<span class="builtin">print</span>(<span class="builtin">nops</span>(g2G2_1));
+<span class="comment-delimiter"># </span><span class="comment">156
+</span><span class="builtin">print</span>(<span class="builtin">nops</span>(<span class="builtin">select</span>(crit_1,sAvgValid)));
+<span class="comment-delimiter"># </span><span class="comment">156
+
+<hr /></span>
+
+crit_2 := x -&gt; ((<span class="builtin">eval</span>(f1,x) &lt; 0
+                 <span class="keyword">and</span> <span class="builtin">eval</span>(f6,x) &gt; 0
+                 <span class="keyword">and</span> <span class="builtin">eval</span>(f3,x) &lt; 0)
+                <span class="keyword">or</span> (<span class="builtin">eval</span>(f1,x) &gt; 0
+                    <span class="keyword">and</span> <span class="builtin">eval</span>(f6,x) &lt; 0
+                    <span class="keyword">and</span> <span class="builtin">eval</span>(f5,x) &gt; 0)):
+<span class="builtin">print</span>({<span class="builtin">op</span>(<span class="builtin">map</span>(crit_2,g2G2_2))});
+
+<span class="builtin">print</span>(<span class="builtin">nops</span>(g2G2_2));
+<span class="comment-delimiter"># </span><span class="comment">31
+</span><span class="builtin">print</span>(<span class="builtin">nops</span>(<span class="builtin">select</span>(crit_2,sAvgValid)));
+<span class="comment-delimiter"># </span><span class="comment">31
+</span></pre>
+  </body>
+</html>

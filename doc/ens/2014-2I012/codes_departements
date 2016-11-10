@@ -1,0 +1,5 @@
+#!/bin/bash
+
+fic=$1
+
+cut -d';' -f1 $fic | uniq

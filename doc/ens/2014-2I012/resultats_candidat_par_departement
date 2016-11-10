@@ -1,0 +1,32 @@
+#!/bin/bash
+
+cand=$1
+fic=$2
+
+num_cand=$(sed -nr "s/(.*);${cand}/\1/p" <<EOF
+7;Eva Joly
+8;Marine Le Pen
+9;Nicolas Sarkozy
+10;Jean-Luc Mélenchon
+11;Philippe Poutou
+12;Nathalie Arthaud
+13;Jacques Cheminade
+14;Francois Bayrou
+15;Nicolas Dupont-Aignan
+16;Francois Hollande
+EOF
+)
+
+depts=$(codes_departements $fic)
+
+tmp=$(mktemp)
+
+for d in $depts ; do
+    resultats_departement $d $fic > $tmp
+    insc=$(total_colonne 4 <  $tmp)
+    voix=$(total_colonne $num_cand < $tmp)
+    score=$((100*voix / insc))
+    echo "$d;$score"
+done | sort -t';' -k2 -nr
+
+rm -f $tmp

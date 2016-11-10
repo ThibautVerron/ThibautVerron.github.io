@@ -1,0 +1,6 @@
+#!/bin/bash
+
+fic=$2
+dep=$1
+
+grep -E "^$dep;" $fic

@@ -1,0 +1,57 @@
+\documentclass[a4paper,headinclude=false,footinclude=false]{scrartcl}
+
+\usepackage[utf8]{inputenc}  %% Pour les accents dans le fichier.tex
+\usepackage{lmodern}         %% 
+\usepackage[T1]{fontenc}     %% Pour la césure des mots accentués
+
+\usepackage[frenchb]{babel}
+\usepackage{csquotes}
+
+\usepackage{amsmath,amssymb}
+
+\usepackage{authblk}
+\renewcommand{\Authands}{ et }
+\renewcommand{\Affilfont}{\footnotesize}
+
+\newcommand{\F}[1]{\ensuremath{\mathsf{F}_{#1}}}
+
+
+\title{Complexité du calcul de bases de Gröbner pour les systèmes quasi-homogènes}
+\date{}
+
+\author[1]{Jean-Charles Faugère}
+\author[1]{Mohab Safey El Din}
+\author[1,2]{Thibaut Verron}
+
+\affil[1]{Équipe-projet POLSYS (INRIA/UPMC/LIP6)}
+\affil[2]{École Normale Supérieure, Paris}
+
+\begin{document}
+\maketitle
+
+On s'intéresse au problème de la résolution de systèmes polynomiaux.
+Plus précisément, soit $K$ un corps et $(f_{1},\dots,f_{n}) \subset K[X_{1},\dots,X_{n}]$ une famille de polynômes, on cherche à décrire l'ensemble des racines communes des polynômes $f_{j}$.
+Ce problème est riche en applications, qu'elles soient théoriques (géométrie algorithmique, équations implicites) ou pratiques (cryptographie, robotique).
+L'outil que l'on utilise pour la résolution est le calcul d'une base de Gröbner du système.
+Ce calcul est difficile en général (par exemple, l'existence de solutions à un système polynomial est un problème NP-dur sur un corps fini), mais on peut souvent exploiter des informations supplémentaires sur la structure des systèmes afin d'en améliorer la complexité.
+
+On considère ici la structure quasi-homogène.
+Plus précisément, on dira qu'un polynôme $f \in K[X_{1},\dots,X_{n}]$ est quasi-homogène de degré pondéré $d$ s'il existe $(w_{1},\dots,w_{n}) \in \mathbb{Z}_{>0}^{n}$ tels que le polynôme $f(X_{1}^{w_{1}},\dots,X_{n}^{w_{n}})$ est homogène de degré $d$.
+Des polynômes avec cette structure sont susceptibles d'apparaître dans de nombreuses applications, par exemple dans des systèmes issus de la physique, où l'on voudrait tenir compte de la dimension des grandeurs, ou dans des problèmes plus théoriques, lorsqu'on introduit une variable pour représenter un polynôme homogène.
+
+Dans cet exposé, on montre comment on peut utiliser les algorithmes adaptés aux systèmes homogènes pour calculer une base de Gröbner d'un système de polynômes quasi-homogènes $F=(f_{1},\dots,f_{n})$.
+Sous des hypothèses de généricité, le système n'a qu'un nombre fini de solutions, qui est donné par la borne de Bézout pondérée $\prod_{i=1}^n\frac{d_i}{w_i}$ (où $d_{i}$ est le degré pondéré de $f_{i}$).
+On montre aussi que le degré maximal atteint par les polynômes que l'on doit calculer est borné par la borne de Macaulay pondérée $\sum_{i=1}^{n}(d_{i}-w_{i}) + \max\{w_{i}\}$.
+Ces résultats s'obtiennent en étudiant la série de Hilbert de l'idéal.
+
+On analyse la complexité des algorithmes \F5 et FGLM pour cette stratégie.
+L'analyse de la complexité de l'algorithme \F5 se fait en étudiant l'algorithme \F5-matriciel, qui modélise les réductions polynomiales par la réduction sous forme échelon de sous-matrices de la matrice de Macaulay de l'idéal.
+Au final, on montre que la complexité du calcul de base de Gröbner pour un système quasi-homogène est améliorée d'un facteur $\left(\prod_{i=1}^{n} w_{i}\right)^{\omega}$, par rapport à la complexité du calcul pour un système homogène de mêmes degrés.
+
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

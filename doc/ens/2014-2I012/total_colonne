@@ -1,0 +1,11 @@
+#!/bin/bash
+
+col=$1
+
+cut -f"$col" -d";" | (
+    res=0
+    while read elt ; do
+        res=$((res+elt))
+    done 
+    echo $res
+    )

@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.43 in css mode. -->
+<html>
+  <head>
+    <title>functions.mpl</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #212121;
+        background-color: #FAFAFA;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #B71C1C;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #607d8b;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #607d8b;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #558b2f;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #0097A7;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00796b;
+      }
+      .maplev-protected {
+        /* maplev-protected-face */
+        color: #32cd32;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #689f38;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment-delimiter"># </span><span class="comment">File "functions.mpl";
+</span>
+<span class="maplev-protected">with</span>(LinearAlgebra):
+<span class="maplev-protected">with</span>(FGb):
+<span class="maplev-protected">with</span>(VectorCalculus):
+<span class="maplev-protected">with</span>(combinat):
+
+<span class="maplev-protected">randomize</span>():
+randval := <span class="maplev-protected">rand</span>(100..10000):
+
+<span class="function-name">Minors</span> := <span class="keyword">proc</span>(s,K)
+<span class="keyword">description</span> <span class="string">"it computes the minors of size s of a (d1 X d2) matrix K output: the list of (s X s) minors of K"</span>;
+<span class="keyword">local</span> d1,d2,MIN,j,l,listofminors:
+    (d1,d2):=Dimension(K):
+    <span class="keyword">if</span> s &gt; <span class="builtin">min</span>(d1,d2) <span class="keyword">then</span>
+        <span class="maplev-protected">printf</span>(<span class="string">"ERROR: INPUT s TOO LARGE\n"</span>);
+        <span class="comment-delimiter"># </span><span class="comment">print(s,Dimensions(K));
+</span>        <span class="keyword">return</span>;
+    <span class="keyword">fi</span>;
+
+    MIN:=<span class="maplev-protected">Matrix</span>(<span class="maplev-protected">binomial</span>(d1,s),<span class="maplev-protected">binomial</span>(d2,s)):
+    <span class="keyword">for</span> j <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="maplev-protected">binomial</span>(d1,s) <span class="keyword">do</span>
+        <span class="keyword">for</span> l <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="maplev-protected">binomial</span>(d2,s) <span class="keyword">do</span>
+            MIN[j,l]:=Determinant(SubMatrix(K,(choose([<span class="builtin">seq</span>(i,i=1..d1)],s))[j],
+                                            (choose([<span class="builtin">seq</span>(i,i=1..d2)],s))[l])):
+        <span class="keyword">od</span>:
+    <span class="keyword">od</span>:
+
+    listofminors:=<span class="builtin">seq</span>(<span class="builtin">seq</span>(MIN[j,l],l=1..<span class="maplev-protected">binomial</span>(d2,s)),j=1..<span class="maplev-protected">binomial</span>(d1,s)):
+    <span class="keyword">return</span>(listofminors):
+<span class="keyword">end</span>:
+
+<span class="function-name">dimension</span> := <span class="keyword">proc</span>(sys, vars := <span class="builtin">indets</span>(sys))
+<span class="keyword">description</span> <span class="string">"Find the dimension of the variety defined by the system "</span>
+    <span class="string">"by cutting it with random hyperplanes"</span>;
+    <span class="keyword">local</span> dim, hyp, randgen,hh, v, gg,sysCut,j, firstdone;
+
+    dim := <span class="builtin">nops</span>(vars):
+
+    hyp := []:
+    randgen := <span class="maplev-protected">rand</span>(-500..500):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="builtin">seq</span>(i,i=1..dim) <span class="keyword">do</span>
+        hh := randgen():
+        <span class="keyword">for</span> v <span class="keyword">in</span> vars <span class="keyword">do</span>
+            hh := hh + randgen()*v:
+        <span class="keyword">od</span>;
+        hyp := [<span class="builtin">op</span>(hyp),hh]:
+    <span class="keyword">od</span>:
+
+    sysCut := [<span class="builtin">op</span>(sys),<span class="builtin">op</span>(hyp)]:
+
+    gg := [1]:
+    firstdone := <span class="constant">false</span>;
+    <span class="keyword">while</span> gg = [1] <span class="keyword">and</span> dim &gt;= 0 <span class="keyword">do</span>
+        <span class="keyword">if</span> firstdone <span class="keyword">then</span>
+            dim := dim -1:
+            sysCut := sysCut[1..-2]:
+        <span class="keyword">else</span>
+            firstdone := <span class="constant">true</span>:
+        <span class="keyword">fi</span>:
+        <span class="maplev-protected">printf</span>(<span class="string">"Trying dimension %d\n"</span>,dim):
+        <span class="comment-delimiter"># </span><span class="comment">printf("%a %a\n",nops(sysCut),nops(vars)):
+</span>        gg := fgb_gbasis(sysCut,65521,vars,[],{<span class="string">"index"</span>=2000000}):
+    <span class="keyword">od</span>:
+    <span class="keyword">return</span> dim:
+<span class="keyword">end</span>:
+
+<span class="function-name">sqfr</span> := <span class="keyword">proc</span>(f)
+    <span class="keyword">description</span> <span class="string">"Square-free reduction of f"</span>;
+    <span class="keyword">return</span> <span class="builtin">mul</span>(ff,ff <span class="keyword">in</span> <span class="builtin">map</span>(x -&gt; x[1],<span class="maplev-protected">factors</span>(f)[2])):
+<span class="keyword">end</span>:
+
+<span class="function-name">GB_interpolate</span> := <span class="keyword">proc</span>(sys,charac,vars1,vars2,varinter,deg)
+<span class="keyword">description</span> <span class="string">"Use interpolation on varinter up to degree deg to compute a "</span>
+    <span class="string">"Groebner basis of sys for the order eliminating vars1"</span>;
+<span class="keyword">local</span> points, bases, v, i, gb, res, t0, safety, tgtdeg, m, bases_i, pol, frct;
+    v := -1:
+    points := []:
+    bases := []:
+    safety := 1:
+    tgtdeg := 2*deg + 2 + 2*safety:
+    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> tgtdeg <span class="keyword">do</span>
+        <span class="maplev-protected">printf</span>(<span class="string">"GB %a/%a: "</span>, i,tgtdeg):
+        t0 := <span class="builtin">time</span>():
+        <span class="keyword">while</span> v = -1 <span class="keyword">or</span> v <span class="keyword">in</span> points <span class="keyword">do</span>
+            v := randval():
+        <span class="keyword">od</span>:
+        gb := fgb_gbasis_elim(<span class="builtin">eval</span>(sys,varinter=v),charac,vars1,vars2,{<span class="comment-delimiter">#</span><span class="comment">"verb"=3,
+</span>                                                                       <span class="string">"index"</span>=20000000}):
+        points := [<span class="builtin">op</span>(points),v]:
+        bases := [<span class="builtin">op</span>(bases),gb]:
+        <span class="maplev-protected">printf</span>(<span class="string">"done (%a) [v=%a]\n"</span>, <span class="builtin">time</span>()-t0,v):
+    <span class="keyword">od</span>:
+    res := []:
+
+    m := <span class="builtin">mul</span>(varinter-v,v <span class="keyword">in</span> points):
+
+    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(bases[1]) <span class="keyword">do</span>
+        bases_i := <span class="builtin">map</span>(x -&gt; x[i]/<span class="builtin">lcoeff</span>(x[i])
+                       , bases):
+        <span class="comment-delimiter"># </span><span class="comment">lprint(points,bases_i):
+</span>        pol := CurveFitting[PolynomialInterpolation](points,bases_i,varinter):
+        frct := <span class="maplev-protected">ratrecon</span>(pol,m,varinter,deg+safety,deg+safety):
+        res := [<span class="builtin">op</span>(res),<span class="builtin">numer</span>(frct)]:
+    <span class="keyword">od</span>:
+    <span class="keyword">return</span> res:
+<span class="keyword">end</span>:
+
+<span class="function-name">GB_find_deg</span> := <span class="keyword">proc</span>(sys,vars1,vars2,varinter,ntrials := 10)
+<span class="keyword">description</span> <span class="string">"Find the maximal degree in variable varinter of the polynomials in "</span>
+    <span class="string">"a Groebner basis of sys eliminating vars1"</span>;
+<span class="keyword">local</span> deg, gb, ss, i, v, t0;
+    deg := -1:
+    <span class="maplev-protected">printf</span>(<span class="string">"Finding degree (%a tests): "</span>, ntrials):
+    i := 0:
+    facts := []:
+    <span class="keyword">while</span> i &lt; ntrials <span class="keyword">do</span>
+        ss := {}:
+        <span class="keyword">for</span> v <span class="keyword">in</span> vars2 <span class="keyword">do</span>
+            <span class="keyword">if</span> v &lt;&gt; varinter <span class="keyword">then</span>
+                ss := {<span class="builtin">op</span>(ss), v=randval()}:
+            <span class="keyword">fi</span>:
+        <span class="keyword">od</span>:
+        gb := fgb_gbasis_elim(<span class="builtin">eval</span>(sys,ss),0,vars1,vars2):
+        <span class="comment-delimiter">#</span><span class="comment">gb := sort(gb):
+</span>        <span class="keyword">for</span> j <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(gb) <span class="keyword">do</span>
+            <span class="keyword">if</span> i = 0 <span class="keyword">then</span>
+                facts := [<span class="builtin">op</span>(facts),0]:
+            <span class="keyword">fi</span>:
+            <span class="comment-delimiter">#</span><span class="comment">lprint(nops(facts),j):
+</span>            facts[j] := <span class="maplev-protected">gcd</span>(facts[j],gb[j]);
+        <span class="keyword">od</span>:
+        <span class="comment-delimiter"># </span><span class="comment">if nops(gb) &gt;= idx then
+</span>        deg := <span class="builtin">max</span>(<span class="builtin">map</span>(<span class="builtin">degree</span>,gb,varinter),deg):
+        <span class="maplev-protected">printf</span>(<span class="string">"|"</span>):
+        i := i+1:
+        <span class="comment-delimiter"># </span><span class="comment">else:
+</span>        <span class="comment-delimiter">#     </span><span class="comment">printf("x"):
+</span>        <span class="comment-delimiter"># </span><span class="comment">fi:
+</span>    <span class="keyword">od</span>:
+    <span class="maplev-protected">printf</span>(<span class="string">"\n"</span>):
+    facts_prod := sqfr(<span class="builtin">mul</span>(p,p <span class="keyword">in</span> facts));
+    <span class="keyword">return</span> deg, facts_prod:
+<span class="keyword">end</span>:
+
+
+<span class="function-name">Elimination_codim1</span> := <span class="keyword">proc</span>(F,vars,params,{algo:=default})
+<span class="keyword">description</span> <span class="string">"Compute a polynomial whose zeroes cover the projection of V(F) on the parameter space"</span>
+    <span class="string">""</span>
+    <span class="string">"Compute a system of generators for the elimination ideal "</span>
+    <span class="string">"of F obtained by eliminated the variables vars"</span>
+    <span class="string">"Uses the algorithm `algo` to compute the basis. Admissible values "</span>
+    <span class="string">"for `algo` are:"</span>
+    <span class="string">"- gb_direct : compute an elimination Gr&#246;bner basis directly "</span>
+    <span class="string">"- gb_interp : compute an elimination Gr&#246;bner basis using evaluation/interpolation"</span>
+    <span class="string">"Any other value defaults to gb_interp."</span>
+    ;
+<span class="keyword">local</span> var,deg_interp,G:
+    <span class="comment-delimiter"># </span><span class="comment">print(algo);
+</span>    <span class="keyword">if</span> algo = gb_direct <span class="keyword">then</span>
+        <span class="comment-delimiter">### </span><span class="comment">Direct
+</span>        G := fgb_gbasis_elim(F,0,vars,params ,{<span class="string">"verb"</span>=3}):
+        <span class="keyword">return</span> G[1];
+    <span class="keyword">else</span>
+        <span class="comment-delimiter">### </span><span class="comment">Interpolation with first param
+</span>        var := params[1]:
+        deg_interp, facts := GB_find_deg(F,vars,params,var):
+        G := GB_interpolate(F,0,vars,params,var,deg_interp):
+        <span class="comment-delimiter"># </span><span class="comment">!!! Peut-&#234;tre incorrect
+</span>        <span class="keyword">return</span> facts*G[1];
+    <span class="keyword">fi</span>:
+<span class="keyword">end</span>:
+
+<span class="function-name">DiscriminatingPolynomial</span> := <span class="keyword">proc</span>(M,r0,H,vars,params,eqs := [], neqs := [], {algo:=default})
+<span class="keyword">description</span> <span class="string">"Compute a polynomial P as in section 3."</span>
+    <span class="string">""</span>
+    <span class="string">"The argument `eqs` is a set of extra equations and inequations restricting "</span>
+    <span class="string">"the solutions: the solutions returned are projections in the params "</span>
+    <span class="string">"of points at which all polynomials of eqs vanish."</span>
+    <span class="string">""</span>
+    <span class="string">"The polynomials in `neqs` are saturated in the computations."</span>
+    <span class="string">""</span>
+    <span class="string">"See Elimination for the parameter `algo`"</span>:
+<span class="keyword">local</span> res,res1,res2,res3,t0,t1,t2,t3:
+    <span class="comment-delimiter"># </span><span class="comment">print(algo);
+</span>    t0 := <span class="builtin">time</span>():
+    res1 := RankExactly(M,r0,vars,params,eqs,neqs,<span class="string">':-algo'</span>=algo):
+    t1 := <span class="builtin">time</span>():
+    res2 := DeterminantCritVals(M,r0,vars,params,eqs,neqs,<span class="constant">true</span>,<span class="string">':-algo'</span>=algo):
+    t2 := <span class="builtin">time</span>():
+    res3 := DeterminantBoundary(M,r0,H,vars,params,eqs,neqs,<span class="constant">true</span>,<span class="string">':-algo'</span>=algo):
+    t3 := <span class="builtin">time</span>():
+    <span class="maplev-protected">printf</span>(<span class="string">"RankExactly\t%as\n"</span>,t1-t0):
+    <span class="maplev-protected">printf</span>(<span class="string">"DeterminantCritVals\t%as\n"</span>,t2-t1):
+    <span class="maplev-protected">printf</span>(<span class="string">"DeterminantBoundary\t%as\n"</span>,t3-t2):
+    <span class="keyword">return</span> res1*res2*res3, res1, res2, res3;
+<span class="keyword">end</span>:
+
+<span class="comment-delimiter"># </span><span class="comment">DiscPoly_factors := proc(M,r0,H,vars,params,eqs := [], neqs := [], {algo:=default})
+</span><span class="comment-delimiter"># </span><span class="comment">description "Compute a polynomial P as in section 3."
+</span><span class="comment-delimiter">#     </span><span class="comment">""
+</span><span class="comment-delimiter">#     </span><span class="comment">"The argument `eqs` is a set of extra equations and inequations restricting "
+</span><span class="comment-delimiter">#     </span><span class="comment">"the solutions: the solutions returned are projections in the params "
+</span><span class="comment-delimiter">#     </span><span class="comment">"of points at which all polynomials of eqs vanish."
+</span><span class="comment-delimiter">#     </span><span class="comment">""
+</span><span class="comment-delimiter">#     </span><span class="comment">"The polynomials in `neqs` are saturated in the computations."
+</span><span class="comment-delimiter">#     </span><span class="comment">""
+</span><span class="comment-delimiter">#     </span><span class="comment">"See Elimination for the parameter `algo`":
+</span><span class="comment-delimiter"># </span><span class="comment">local res,res1,res2,res3,t0,t1,t2,t3:
+</span><span class="comment-delimiter">#     </span><span class="comment"># print(algo);
+</span><span class="comment-delimiter">#     </span><span class="comment">t0 := time():
+</span><span class="comment-delimiter">#     </span><span class="comment">res1 := RankExactly_factors(M,r0,vars,params,eqs,neqs,':-algo'=algo):
+</span><span class="comment-delimiter">#     </span><span class="comment">t1 := time():
+</span><span class="comment-delimiter">#     </span><span class="comment">res2 := DeterminantCritVals_factors(M,r0,vars,params,eqs,neqs,true,':-algo'=algo):
+</span><span class="comment-delimiter">#     </span><span class="comment">t2 := time():
+</span><span class="comment-delimiter">#     </span><span class="comment">res3 := DeterminantBoundary_factors(M,r0,H,vars,params,eqs,neqs,true,':-algo'=algo):
+</span><span class="comment-delimiter">#     </span><span class="comment">t3 := time():
+</span><span class="comment-delimiter">#     </span><span class="comment">printf("RankExactly\t%as\n",t1-t0):
+</span><span class="comment-delimiter">#     </span><span class="comment">printf("DeterminantCritVals\t%as\n",t2-t1):
+</span><span class="comment-delimiter">#     </span><span class="comment">printf("DeterminantBoundary\t%as\n",t3-t2):
+</span><span class="comment-delimiter">#     </span><span class="comment">return res1*res2*res3, res1, res2, res3;
+</span><span class="comment-delimiter"># </span><span class="comment">end:
+</span>
+
+<span class="function-name">IncidenceVariety</span> := <span class="keyword">proc</span>(M,r)
+<span class="keyword">description</span> <span class="string">"Compute a system of generators for the incidence variety "</span>
+    <span class="string">"of rank r of M"</span>
+    ;
+<span class="keyword">local</span> MatrixU, MatrixY,k,i,j,Prod1,Sys1,Prod2,Sys2,Sys:
+    k := RowDimension(M):
+    MatrixU := <span class="maplev-protected">Matrix</span>(k-r,k):
+    <span class="comment-delimiter"># </span><span class="comment">print(MatrixU);
+</span>    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> k-r <span class="keyword">do</span>
+        <span class="keyword">for</span> j <span class="keyword">from</span> 1 <span class="keyword">to</span> k <span class="keyword">do</span>
+            MatrixU[i,j] := randval():
+            <span class="comment-delimiter"># </span><span class="comment">print(i,j,MatrixU);
+</span>        <span class="keyword">od</span>:
+    <span class="keyword">od</span>:
+    <span class="comment-delimiter"># </span><span class="comment">MatrixU1 := Matrix(k-r,k-r,shape=identity):
+</span>    <span class="comment-delimiter"># </span><span class="comment">MatrixU2 := Matrix(k-r,r,shape=zero):
+</span>    <span class="comment-delimiter"># </span><span class="comment">MatrixU := Matrix([MatrixU1,MatrixU2]):
+</span>
+    <span class="builtin">print</span>(MatrixU);
+
+    MatrixY := <span class="maplev-protected">Matrix</span>(k,k-r):
+    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> k <span class="keyword">do</span>
+        <span class="keyword">for</span> j <span class="keyword">from</span> 1 <span class="keyword">to</span> k-r <span class="keyword">do</span>
+            MatrixY[i,j] := Y[i,j]:
+        <span class="keyword">od</span>:
+    <span class="keyword">od</span>:
+    Prod1 := M . MatrixY:
+    <span class="comment-delimiter"># </span><span class="comment">print(Dimensions(Prod1));
+</span>    Sys1 := [<span class="builtin">seq</span>(<span class="builtin">seq</span>(Prod1[i][j],j=1..k-r),i=1..k)]:
+    Prod2 := MatrixU . MatrixY - <span class="maplev-protected">Matrix</span>(k-r,k-r,shape=identity):
+    <span class="comment-delimiter"># </span><span class="comment">print(Dimensions(Prod2));
+</span>    Sys2 := [<span class="builtin">seq</span>(<span class="builtin">seq</span>(Prod2[i][j],j=1..k-r),i=1..k-r)]:
+    Sys := [<span class="builtin">op</span>(Sys1),<span class="builtin">op</span>(Sys2)]:
+    <span class="keyword">return</span> Sys, <span class="builtin">indets</span>(MatrixY):
+<span class="keyword">end</span>:
+
+<span class="function-name">RankExactly</span> := <span class="keyword">proc</span>(M,r0,vars,params,eqs := [], neqs := [], {algo := default})
+<span class="keyword">description</span> <span class="string">"Algorithm RankExactly (section 3.4)"</span>
+    <span class="string">""</span>
+    <span class="string">"See DiscriminatingPolynomial for a description of parameters `eqs` and "</span>
+    <span class="string">"`neqs`."</span>
+    <span class="string">"See Elimination for a description of the parameter `algo`"</span>;
+<span class="keyword">local</span> res,k,n,FVr,dim,JVr,FV,F0,varsY,Mins,i,Sysi,G, codim:
+    <span class="comment-delimiter"># </span><span class="comment">print(algo);
+</span>    k := RowDimension(M):
+    n := <span class="builtin">nops</span>(vars):
+    res := 1:
+
+    FVr := [Minors(r0+1,M)]:
+    codim := (k-r0)^2:
+    JVr := Jacobian(FVr,[<span class="builtin">op</span>(vars)]):
+    FV := [<span class="builtin">op</span>(FVr), Minors(codim,JVr),<span class="builtin">op</span>(eqs),u*<span class="builtin">mul</span>(f, f <span class="keyword">in</span> neqs)-1]:
+    F0, varsY := IncidenceVariety(M,r0):
+
+    Mins := [Minors(r0,M)]:
+    <span class="keyword">for</span> i <span class="keyword">from</span> 1 <span class="keyword">to</span> <span class="builtin">nops</span>(Mins) <span class="keyword">do</span>
+        <span class="comment-delimiter">#</span><span class="comment">i := 1:
+</span>        Sysi := [<span class="builtin">op</span>(FV),<span class="builtin">op</span>(F0),<span class="builtin">op</span>(Mins[1..i-1]),uu*Mins[i]-1]:
+        g := Elimination_codim1(Sysi,[uu,u,<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)],params,<span class="string">':-algo'</span>=algo):
+        <span class="keyword">if</span> g &lt;&gt; <span class="constant">FAIL</span> <span class="keyword">then</span>
+            res := res*g:
+        <span class="keyword">fi</span>:
+    <span class="keyword">od</span>:
+    <span class="maplev-protected">printf</span>(<span class="string">"RankExactly: %a\n"</span>, <span class="maplev-protected">factor</span>(res));
+    <span class="keyword">return</span> res:
+<span class="keyword">end</span>:
+
+<span class="function-name">DeterminantCritVals</span> := <span class="keyword">proc</span>(M,r0,vars,params,eqs := [], neqs := [], skipRankExactly := <span class="constant">false</span>, {algo:=default})
+    <span class="keyword">description</span> <span class="string">"Algorithm DeterminantCritVals (section 3.5)"</span>
+    <span class="string">""</span>
+    <span class="string">"See DiscriminatingPolynomial for a description of parameters `eqs` and "</span>
+    <span class="string">"`neqs`."</span>
+    <span class="string">"See Elimination for a description of the parameter `algo`"</span>:
+<span class="keyword">local</span> res,F0,varsY,N,J,F1,G:
+    <span class="keyword">if</span> <span class="keyword">not</span> skipRankExactly <span class="keyword">then</span>
+        res := RankExactly(M,r0,vars,params):
+    <span class="keyword">else</span>
+        res := 1:
+    <span class="keyword">fi</span>:
+    <span class="comment-delimiter">#</span><span class="comment">res := 1;
+</span>    F0, varsY := IncidenceVariety(M,r0-1):
+    N := <span class="builtin">nops</span>(F0):
+    J := Jacobian(F0,[<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)]):
+    F1 := [<span class="builtin">op</span>(F0),Minors(N,J),<span class="builtin">op</span>(eqs),u*<span class="builtin">mul</span>(f, f <span class="keyword">in</span> neqs)-1]:
+    g := Elimination_codim1(F1,[u,<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)],params,<span class="string">':-algo'</span>=algo):
+    res := res*g:
+    <span class="maplev-protected">printf</span>(<span class="string">"CritVals: %a\n"</span>, <span class="maplev-protected">factor</span>(res));
+    <span class="keyword">return</span> res:
+<span class="keyword">end</span>:
+
+<span class="function-name">DeterminantBoundary</span> := <span class="keyword">proc</span>(M,r0,H,vars,params,
+                            eqs := [], neqs := [], skipRankExactly := <span class="constant">false</span>,
+                            {algo := default})
+    <span class="keyword">description</span> <span class="string">"Algorithm DeterminantBoundary (section 3.6)"</span>
+    <span class="string">""</span>
+    <span class="string">"See DiscriminatingPolynomial for a description of parameters `eqs` and "</span>
+    <span class="string">"`neqs`."</span>
+    <span class="string">"See Elimination for a description of the parameter `algo`"</span>;
+<span class="keyword">local</span> res, F0, varsY, h, F1, G:
+    <span class="keyword">if</span> <span class="keyword">not</span> skipRankExactly <span class="keyword">then</span>
+        res := RankExactly(M,r0,vars,params):
+    <span class="keyword">else</span>
+        res := 1:
+    <span class="keyword">fi</span>:
+    F0, varsY := IncidenceVariety(M,r0-1):
+    <span class="keyword">for</span> h <span class="keyword">in</span> H <span class="keyword">do</span>
+        F1 := [<span class="builtin">op</span>(F0),h,<span class="builtin">op</span>(eqs),u*<span class="builtin">mul</span>(f, f <span class="keyword">in</span> neqs)-1]:
+        g := Elimination_codim1(F1,[u,<span class="builtin">op</span>(varsY),<span class="builtin">op</span>(vars)],params,<span class="string">':-algo'</span>=algo):
+        res := res * g:
+    <span class="keyword">od</span>:
+    <span class="maplev-protected">printf</span>(<span class="string">"Boundary: %a\n"</span>, <span class="maplev-protected">factor</span>(res));
+    <span class="keyword">return</span> res:
+<span class="keyword">end</span>:
+
+
+</pre>
+  </body>
+</html>

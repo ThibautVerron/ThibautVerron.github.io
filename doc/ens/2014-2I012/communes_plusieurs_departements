@@ -1,0 +1,6 @@
+#!/bin/bash
+
+fic=$1
+
+cut -d';' -f1,3  $fic | uniq  \
+    | cut -d';' -f2 | sort | uniq -d
