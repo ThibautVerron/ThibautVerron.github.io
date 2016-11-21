@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css" />
-    <title>
-      Thibaut Verron
-    </title>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <title>Thibaut Verron</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="w3.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <style>
+   html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+  </style>
+  <body class="w3-light-grey">
 
-      ga('create', 'UA-44280246-1', 'lip6.fr');
-      ga('send', 'pageview');
+    
+    
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top" style="max-width:1000px;">
 
-    </script>
-  </head>
-  <body>
-    <h2 id="top"></h2>
-    <div id="bloc_page">
-      <nav>
+      <!-- Header -->
+      <nav class="w3-container w3-light-grey w3-border-bottom w3-display-topmiddle w3-hide-small" style="padding-bottom:27px;margin-bottom:27px;height:27px;position:fixed">
         <div id="menu">
-          <div id="menu_left">
+	  <div id="menu_left">
 	    <ul>
+	      <!-- <li> -->
+	      <!--   <a href="#top"> -->
+	      <!--     <img src="img/actions/go-top.png" -->
+	      <!--          title="Back to top" -->
+	      <!--          alt="Back to top" /> -->
+	      <!--   </a> -->
+	      <!-- </li> -->
 	      <li>
-		<a href="#top">
-		  <img src="img/actions/go-top.png"
-		       title="Haut de page"
-		       alt="Haut de page" />
-		</a>
-	      </li>
-	      <li>
-		<a href="index.html">
-		  <img src="img/button_flag_uk.png"
-		       title="English"
-		       alt="English version" />
-		</a>
+                <a href="index.html">
+		<img src="img/button_flag_uk.png"
+		     title="English"
+		     alt="English version"
+                     style="padding-left:8px"/>
+                </a>
 	      </li>
 	      <li>
 		<img src="img/button_flag_fr_checked.png"
@@ -48,56 +47,63 @@
 	  
 	  <div id="menu_right">
 	    <ul>
-	      <li><a href="#apropos">
-		  Résumé
+	      <li><a href="#apropos" class="w3-hover-teal">
+		À propos
 	      </a></li>
-	      <li><a href="#publis">
-		  Publications
+	      <li><a href="#publis" class="w3-hover-teal">
+		Publications
 	      </a></li>
-	      <li><a href="#talks">
-		  Exposés
+	      <li><a href="#talks" class="w3-hover-teal">
+		Exposés
 	      </a></li>
-	      <li><a href="#enseignement">
-		  Enseignement
+	      <li><a href="#enseignement" class="w3-hover-teal">
+		Enseignement
 	      </a></li>
-              <li><a href="#software">
-                  Logiciel
-              </a> </li>
+              <li><a href="#software" class="w3-hover-teal">Logiciel</a>
 	    </ul>
 	  </div>
         </div>
       </nav>
-      <header>
-	<div id="photo">
-	  <img src="img/photo_disney.png" alt="Photo"  />
-	</div>
-	<div id="nom">
-	  <h2>Thibaut <span class="sc">Verron</span></h2>
-	  <p>
-	    <a href="mailto:thibaut.verron@lip6.fr">thibaut.verron@irit.fr</a>
-	    <br>
-	    <a href="mailto:thibaut.verron@gmail.com">thibaut.verron@gmail.com</a>
-	  </p>
-	</div>
-	<div id="coordonnees">
-	  <h2>
-	    Adresse
+    </div> 
+
+    
+    <!-- The Grid -->
+    <div class="w3-row-padding" style="margin-top:35px">
+      
+      <!-- Left Column -->
+      <div class="w3-quarter" style="">
+        
+        <div class="w3-white w3-text-grey w3-card-4" style="/*position:fixed*/">
+          <div class="w3-display-container">
+            <img src="img/photo_disney.png" style="max-width:100%" alt="Avatar">
+            <div class="w3-container w3-display-bottomleft w3-text-light-grey" id="name-on-pic" style="width:100%">
+              <h2>Thibaut Verron</h2>
+            </div>
+          </div>
+          <div class="w3-container">
+            <!-- <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i></p> -->
+            <p><i class="fa fa-home fa-fw w3-large w3-text-teal w3-hide-small" style="margin-right:0.3em" ></i>2, rue Charles Camichel<br>
+              <i class="w3-hide-small" style="margin-right:2em"></i>Bureau F317<br>
+              <i class="w3-hide-small" style="margin-right:2em"></i>Toulouse, France</p>
+            <p><iclass="w3-hide-small"  class="fa fa-envelope fa-fw w3-large w3-text-teal w3-hide-small"  style="margin-right:0.3em"></i> <a href="mailto:thibaut.verron@irit.fr">thibaut.verron@irit.fr</a><br>
+              <i class="w3-hide-small" style="margin-right:2.15em"></i> <a href="mailto:thibaut.verron@gmail.com">thibaut.verron@gmail.com</a></p>
+            <!-- <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p> -->
+              <!-- <hr> -->
+              
+          </div>
+        </div><br>
+
+        <!-- End Left Column -->
+      </div>
+
+      <!-- Right Column -->
+      <div class="w3-threequarter">
+
+        <div  class="w3-container w3-card-2 w3-white w3-margin-bottom">
+          <h2  class="w3-text-grey w3-padding-16" id="apropos">
+	    À propos de moi
 	  </h2>
-	  <p>
-	    2, rue Charles Camichel<br>
-            Bureau F-317<br>
-            31000 Toulouse, France
-	  </p>
-	  <!-- <p> -->
-	  <!--   01 44 27 71 30 -->
-	  <!-- </p> -->
-	</div>
-      </header>
-      <section>
-	<h2 id="apropos">
-	  À propos de moi
-	</h2>
-	<p class="text">
+          	<p class="text">
           Je suis actuellement en post-doc à l'équipe APO (Algorithmes
           Parallèles et Optimisation) de l'IRIT (ENSEEIHT, Toulouse,
           France).
@@ -120,10 +126,13 @@
           problème de classification des racines réelles d'une variété
           déterminantielle.
 	</p>
-	<h2 id="publis">
-	  Publications
-	</h2>
-        <h3>Articles de conférences</h3>
+        </div>
+        
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16"  id="publis">
+            Publications
+          </h2>
+          <h3  class="w3-text-grey ">Articles de conférences</h3>
 	<ul>
           <li>
             Determinantal sets, singularities and application to optimal control in medical imagery<br>
@@ -145,7 +154,7 @@
             <a href="doc/2013-ISSAC.bib">.bib</a>
 	  </li>
 	</ul>
-        <h3>Articles de journaux</h3>
+        <h3  class="w3-text-grey ">Articles de journaux</h3>
         <ul><li>On the complexity of computing Gröbner bases for weighted homogeneous systems<br>
             Jean-Charles Faugère, Mohab Safey El Din, Thibaut Verron<br>
             Journal of Symbolic Computations, Volume 76, 2016<br>
@@ -155,7 +164,7 @@
             <a href="http://www.sciencedirect.com/science/article/pii/S0747717115001273">ScienceDirect</a>,
             <a href="doc/2015-JSC.bib">.bib</a>
         </li></ul>
-        <h3>Thèse</h3>
+        <h3  class="w3-text-grey ">Thèse</h3>
         <ul>
           <li>Régularisation du calcul de bases de Gröbner pour des systèmes avec poids et déterminantiels, et application en imagerie médicale<br>
             Thèse soutenue le 26 septembre 2016<br>
@@ -165,8 +174,11 @@
             <a href="doc/2016-these-slides.pdf">slides</a>
           </li>
         </ul>
-	<h2 id="talks">
-	  Exposés (sélection, liste complète <a href="all_talks.html">ici</a>)
+        </div>
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16" id="talks">
+            Exposés (sélection, liste complète <a href="all_talks.html">ici</a>)
 	</h2>
 	<ul>
           <li>Determinantal sets, singularities and application to optimal control in medical imagery<br>
@@ -200,11 +212,14 @@
 	    <a href="doc/2013-06-29-ISSAC-slides.pdf">slides</a>
 	  </li>
           </ul>
-	<h2 id="enseignement">
-	  Enseignement
-	</h2>
-        <ul>
-          <li>2015-2016 semestre 1: chargé de TME pour l'UE 2I004 de la licence d'informatique de l'UPMC, <em>Introduction à l'architecture et à la représentation des données et des programmes</em>
+        </div>
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16" id="enseignement">
+            Enseignement
+          </h2>
+          <ul>
+             <li>2015-2016 semestre 1: chargé de TME pour l'UE 2I004 de la licence d'informatique de l'UPMC, <em>Introduction à l'architecture et à la représentation des données et des programmes</em>
             (<a href="http://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2015/ue/2I004-2015oct/">page d'accueil de l'UE</a>)
           </li>
           <li>2015-2016 semestre 1: chargé de TME pour l'UE 1I001 de la licence d'informatique de l'UPMC, <em>Éléments de programmation en python</em> (<a href="https://www.licence.info.upmc.fr/lmd/licence/2015/ue/1I001-2015oct/">page d'accueil de l'UE</a>)
@@ -232,10 +247,15 @@
               l'UE</a>, <a href="enseignement/2013-li218.html">liens utiles,
               devoirs et corrigés</a>)
           </li>
-        </ul>
- 	<h2 id="software">Logiciel</h2>
-        <ul>
-          <li>
+          </ul>
+        </div>
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16"  id="software">
+            Logiciel
+          </h2>
+          <ul>
+             <li>
             <a href="https://github.com/ThibautVerron/magma-mode">Magma-mode</a>:
             mode emacs pour éditer du code Magma, basé sur le
             magma-mode développé
@@ -245,26 +265,23 @@
             ou
             via <a href="http://melpa.org/#/magma-mode">melpa</a>. 
           </li>
-        </ul>
-      </section>
-      <hr />
-      <footer>
-	<!-- <div id="valid"> -->
-	<!--   <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww-polsys.lip6.fr%2F~verron%2Findex_fr.html">HTML5 valide! -->
-	<!--   </a> -->
-	<!--   <a href="http://jigsaw.w3.org/css-validator/check/referer"> -->
-	<!--     <img style="border:0;width:88px;height:20px" -->
-	<!-- 	 src="http://jigsaw.w3.org/css-validator/images/vcss-blue" -->
-	<!-- 	 alt="CSS Valide !" /> -->
-	<!--   </a> -->
-	<!-- </div> -->
-	<div id="timestamp">
-	  <p>(Dernière mise à jour le 13 novembre 2016 à 20:06)</p>
-	</div>
-      </footer>
+          </ul>
+        </div>
+        
+        <!-- End Right Column -->
+      </div>
+      
+      <!-- End Grid -->
     </div>
+    <!-- End Page Container -->
+    </div>
+
+    <footer class="w3-container w3-center w3-margin-top" id="timestamp">
+      <p>(Dernière mise à jour le 21 novembre 2016 à 16:01)</p>
+    </footer>
+
   </body>
-</html> 
+</html>
 
 <!-- Local Variables: -->
 <!-- time-stamp-pattern: "-12/^[[:space:]]*<p>(Dernière mise à jour le %:d %:b %:y à %02H:%02M)</p>" -->
