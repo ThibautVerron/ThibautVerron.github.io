@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="w3.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <style>
+   html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+  </style>
     <title>
       T. Verron : List of talks
     </title>
@@ -17,10 +25,10 @@
 
     </script>
   </head>
-  <body>
+  <body class="w3-container w3-light-grey">
     <h1 id="top"></h1>
     <div id="bloc_page">
-      <nav>
+      <nav class="w3-container w3-light-grey w3-border-bottom w3-display-topmiddle" style="padding-bottom:27px;margin-bottom:27px;height:27px;position:fixed">
         <div id="menu">
 	  <div id="menu_left">
 	    <ul>
@@ -28,7 +36,8 @@
 	        <a href="index.html">
 		  <img src="img/actions/go-home.png"
 		       title="Page d'accueil"
-		       alt="Page d'accueil" />
+		       alt="Page d'accueil"
+                       style="padding-left:8px"/>
 	        </a>
 	      </li>
 	      <li>
@@ -45,10 +54,10 @@
 	  </div>
         </div>
       </nav>
-      <section>
-        <h1 id="first">List of talks</h1>
+      <div class="w3-container w3-white w3-card-2" style="margin-top:35px">
+        <h1 id="first" class="w3-text-grey">List of talks</h1>
     	<hr/>
-        <h2>2016</h2>
+        <h2 class="w3-text-grey">2016</h2>
         <ul>
         <li>Determinantal sets, singularities and application to optimal control in medical imagery<br>
              <a href="http://www.issac-symposium.org/2016/">
@@ -58,7 +67,7 @@
              Links: <a href="doc/2016-07-20-ISSAC-slides.pdf">slides</a>
           </li>
         </ul>
-        <h2>2015</h2>
+        <h2 class="w3-text-grey">2015</h2>
         <ul>
           <li>Algebraic classification related to contrast optimization for MRI<br>
             <a href="http://gdrmoa.math.cnrs.fr/activites/journees-annuelles-gdr-moa-2015/">Journées annuelles du GdR MOA 2015</a><br>
@@ -73,7 +82,7 @@
             <a href="doc/2015-11-05-JNCF-slides.pdf">slides</a>
           </li>
         </ul>
-        <h2>2014</h2>
+        <h2 class="w3-text-grey">2014</h2>
         <ul>
           <li>Complexité du calcul de bases de Gröbner pour les systèmes homogènes avec poids<br>
             <a href="http://www.lifl.fr/jncf2014/">Journées Nationales de Calcul Formel (JNCF 2014)</a><br>
@@ -106,7 +115,7 @@
             <a href="doc/2014-05-22-Rouen-slides.pdf">slides</a>
           </li>
         </ul>
-        <h2>2013</h2>
+        <h2 class="w3-text-grey">2013</h2>
         <ul>
           <li>
             On the complexity of computing Gröbner bases for
@@ -146,7 +155,7 @@
             <a href="doc/2013-03-22-PolSys-slides.pdf">slides</a>
           </li>
         </ul>
-      </section>
+      </div>
       <hr />
       <footer>
 	<!-- <div id="valid"> -->
@@ -158,8 +167,8 @@
 	<!-- 	 alt="CSS Valide !" /> -->
 	<!--   </a> -->
 	<!-- </div> -->
-        <footer>
-          <p>(Last updated: 2016/11/10, 15:25)</p>
+        <footer class="w3-container w3-center w3-margin-top">
+          <p>(Last updated: 2016/11/21, 15:46)</p>
         </footer>
       </footer>
     </div>
