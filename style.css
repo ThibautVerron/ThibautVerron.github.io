@@ -5,8 +5,9 @@ body
 {
     /* color: black; */
     /* background-color: #FCFCFF; */
-    min-width: 200px;
-    max-width: 1000px;
+    min-width: 300px;
+    /* overflow: scroll; */
+    max-width: 1200px;
     /* position: absolute; */
     /* top: 0px; */
     /* z-index: 0; */
@@ -102,6 +103,7 @@ a[href*=mailto]
     /* font-family: monospace, Courier, sans-serif, serif; */
     /* font-size: 9pt; */
     text-decoration: none;
+    color: inherit;
 }
 
 /* Nav */
@@ -125,7 +127,7 @@ nav
 nav #menu
 {
     /* min-width: 800px; */
-    max-width: 1000px;
+    max-width: 100%;
     margin: auto;
     position: relative;
 }
@@ -138,6 +140,7 @@ nav #menu_right
     top: 0px;
     right: 0px;
     padding-top: 2px;
+    /* padding-right:1.5em; */
     /* text-align: right; */
     /* margin-left: auto; */
     /* margin-right: 0px; */
@@ -208,8 +211,8 @@ h2[id]
     /* font-family: sans-serif; */
     /* font-size: 24px; */
     /* padding-top: 80px; */
-    margin-top: -10px;
-    margin-bottom: -10px;
+    /* margin-top: -2px; */
+    margin-bottom: -5px;
 }
 
 /* h3 */
@@ -262,23 +265,37 @@ section h2
     /* font-variant: small-caps; */
 }
 
-section a
+body a
 {
+    text-decoration: none;
     /* border-width: 1px; */
     /* border-style: dotted; */
-    color: #000055;
-    text-decoration: none;
+    color: #004a43;
 }
+
+body h2 a
+{
+    /* text-decoration: underline; */
+    /* text-decoration-style: dotted; */
+    /* text-decoration-width: 1px; */
+    border-bottom: 1px solid;
+    color: inherit;
+    /* color: #FF0000; */
+    /* border-width: 1px; */
+    /* border-style: dotted; */
+    /* color: #004a43; */
+}
+
 
 section li
 {
     margin-bottom: 5px;
 }
 
-section a:hover
+body a:hover
 {
-    background-color: #000055;
-    color: white;
+    /* background-color: #000055; */
+    /* color: white; */
 }
 
 /* section a:visited */
@@ -330,3 +347,26 @@ section a:hover
 /*     left: 55%; */
 /*     text-align: right; */
 /* } */
+
+.left{
+    text-align:left; width: 50%; display:inline-block;
+}
+
+.right{
+    text-align:right; width: 49%; display:inline-block;
+}
+
+
+@media  only screen and (max-width:992px){
+    .my-left{float:left;width:26%;min-width:261px}
+    .my-right{}
+}
+
+@media only screen and (max-width:600px){
+    .my-left{float:center;width:100%;min-width:initial}
+    .my-right{float:right;width:100%}
+}
+@media (min-width:993px){
+    .my-left{float:left;width:26%;min-width:261px}
+    .my-right{}
+}

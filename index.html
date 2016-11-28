@@ -7,23 +7,26 @@
   <link rel="alternate" href="http://thibautverron.github.io/index_fr.html" hreflang="fr" />
   <link rel="stylesheet" href="w3.css">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style_en.css" />
+  <!-- <link rel="stylesheet" href="w3-theme-emerald.css"> -->
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-teal.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   <style>
-   html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   </style>
   <body class="w3-light-grey">
 
     
     
     <!-- Page Container -->
-    <div class="w3-content w3-margin-top" style="max-width:1000px;">
+    <div class="w3-content w3-margin-top" style="max-width:1200px;">
 
       <!-- Header -->
       <nav class="w3-container w3-light-grey w3-border-bottom w3-display-topmiddle w3-hide-small" style="padding-bottom:27px;margin-bottom:27px;height:27px; position:fixed">
         <div id="menu">
 	  <div id="menu_left">
-	    <ul>
+	    <ul class="lang_en">
 	      <!-- <li> -->
 	      <!--   <a href="#top"> -->
 	      <!--     <img src="img/actions/go-top.png" -->
@@ -40,28 +43,59 @@
 	      <li>
 		<a href="index_fr.html">
 		  <img src="img/button_flag_fr.png"
-		       title="Version française"
+		       title="Français"
 		       alt="Français" />
 		</a>
 	      </li>
 	    </ul>
+            <ul class="lang_fr">
+	      <!-- <li> -->
+	      <!--   <a href="#top"> -->
+	      <!--     <img src="img/actions/go-top.png" -->
+	      <!--          title="Back to top" -->
+	      <!--          alt="Back to top" /> -->
+	      <!--   </a> -->
+	      <!-- </li> -->
+	      <li>
+                <a href="index.html">
+		  <img src="img/button_flag_uk.png"
+		       title="English"
+		       alt="Site en anglais"
+                       style="padding-left:8px"/>
+                </a>
+	      </li>
+	      <li>
+		<img src="img/button_flag_fr_checked.png"
+		     title="Français"
+		     alt="Version française" />
+	      </li>
+	    </ul>
+
 	  </div>
 	  
 	  <div id="menu_right">
 	    <ul>
-	      <li><a href="#apropos" class="w3-hover-teal">
-		About
+	      <li><a href="#apropos" class="w3-hover-theme">
+		  <span class="lang_en">About</span>
+                  <span class="lang_fr">À propos</span>
 	      </a></li>
-	      <li><a href="#publis" class="w3-hover-teal">
-		Publications
+	      <li><a href="#publis" class="w3-hover-theme">
+		  Publications
 	      </a></li>
-	      <li><a href="#talks" class="w3-hover-teal">
-		Talks
+              <li><a href="#talks" class="w3-hover-theme">
+		  <span class="lang_en">Talks</span>
+                  <span class="lang_fr">Exposés</span>
 	      </a></li>
-	      <li><a href="#enseignement" class="w3-hover-teal">
-		Teaching
+	      <li><a href="#cv" class="w3-hover-theme">CV</a>
+	      <li><a href="#enseignement" class="w3-hover-theme">
+		  <span class="lang_en">Teaching</span>
+                  <span class="lang_fr">Enseignement</span>
 	      </a></li>
-              <li><a href="#software" class="w3-hover-teal">Software</a>
+              <li>
+                <a href="#software" class="w3-hover-theme" style="/*padding-right:1.5em;*/">
+                  <span class="lang_en">Software</span>
+                  <span class="lang_fr">Logiciel</span>
+                </a>
 	    </ul>
 	  </div>
         </div>
@@ -73,180 +107,504 @@
     <div class="w3-row-padding" style="margin-top:35px">
       
       <!-- Left Column -->
-      <div class="w3-quarter" style="/*width:260px;padding-right:290px*/">
+      <div class="w3-col my-left" style="/*min-width:260px;*//*padding-right:290px*/">
         
-        <div class="w3-white w3-text-grey w3-card-4" style="/*position:fixed*/">
-          <div class="w3-display-container" style="max-width:280px">
+        <div class="w3-white w3-text-grey w3-card-4" style="max-width:281px;/*min-width:240px;*//*position:fixed*/">
+          <div class="w3-display-container" style="">
             <img src="img/photo_disney.png" style="max-width:100%" alt="Avatar">
-            <div class="w3-container w3-display-bottomleft w3-text-light-grey" id="name-on-pic" style="width:100%">
+            <div class="w3-container w3-display-bottomleft w3-text-light-grey" id="name-on-pic" style="width:100%;max-width:281px">
               <h2>Thibaut Verron</h2>
             </div>
           </div>
           <div class="w3-container">
-            <!-- <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i></p> -->
-            <p><i class="fa fa-home fa-fw w3-large w3-text-teal w3-hide-medium" style="margin-right:0.3em" ></i>2, rue Charles Camichel<br>
-              <i class="w3-hide-medium" style="margin-right:2em"></i>Bureau F317<br>
-              <i class="w3-hide-medium" style="margin-right:2em"></i>Toulouse, France</p>
-            <p><i class="fa fa-envelope fa-fw w3-large w3-text-teal w3-hide-medium"  style="margin-right:0.3em"></i> <a href="mailto:thibaut.verron@irit.fr">thibaut.verron@irit.fr</a><br>
-              <i class="w3-hide-medium" style="margin-right:2.15em"></i> <a href="mailto:thibaut.verron@gmail.com">thibaut.verron@gmail.com</a></p>
-            <!-- <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p> -->
-              <!-- <hr> -->
-              
+            <p><i class="fa fa-briefcase fa-fw w3-text-theme" style="margin-left:-0.4em;margin-right:0.4em"></i>Post-doc, IRIT</p>
+            <p><i class="fa fa-home fa-fw w3-large w3-text-theme" style="margin-left:-0.5em;margin-right:0.3em" ></i>INP-ENSEEIHT<br>
+              <i style="margin-right:1.3em"></i>2, rue Charles Camichel<br>
+              <i style="margin-right:1.3em"></i>Bureau F317<br>
+              <i style="margin-right:1.3em"></i>Toulouse, France</p>
+            <p><i class="fa fa-envelope fa-fw w3-text-theme"  style="margin-left:-0.5em;margin-right:0.3em"></i> <a href="mailto:thibaut.verron@irit.fr">thibaut.verron@irit.fr</a><br>
+              <i style="margin-right:1.3em"></i> <a href="mailto:thibaut.verron@gmail.com">thibaut.verron@gmail.com</a></p>
+            <!-- <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-theme"></i>1224435534</p> -->
+            <!-- <hr> -->
+            
           </div>
         </div><br>
 
         <!-- End Left Column -->
       </div>
-
+   
       <!-- Right Column -->
-      <div class="w3-threequarter">
+      <div class="w3-rest my-right">
 
         <div  class="w3-container w3-card-2 w3-white w3-margin-bottom">
           <h2  class="w3-text-grey w3-padding-16" id="apropos">
-	    About me
+            <i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>
+	    <span class="lang_en">About me</span>
+            <span class="lang_fr">À propos de moi</span>
 	  </h2>
-          <p class="text">
-            I am currently a post-doc in computer science in the APO team at the IRIT (ENSEEIHT, Toulouse, France).<!-- , working with Joseph Gergaud and Olivier Cots. -->
-          </p>
-          
-	  <p class="text">
-            I did my PhD thesis in the PolSys team in the PolSys team, in the <a href="www.lip6.fr">LIP6</a> (UPMC, Paris, France), under supervision by <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles Faugère</a> and <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey El Din</a>.
+          <div class="w3-container">
+            <p class="text lang_en">
+              I am currently a post-doc in computer science in the APO team at the IRIT (INP-ENSEEIHT, Toulouse, France).<!-- , working with Joseph Gergaud and Olivier Cots. -->
+            </p>
+            <p class="text lang_fr">
+              Je suis actuellement en post-doc à l'équipe APO (Algorithmes
+              Parallèles et Optimisation) de l'IRIT (INP-ENSEEIHT, Toulouse,
+              France).
+            </p>
             
-            My thesis was about the algorithmic resolution of polynomial systems, and more precisely, the regularity of the computations of Gröbner bases for structured systems.
-            I have been working on Gröbner basis algorithms for weighted homogeneous systems, and on a real roots classification problem for determinantal systems.
-          </p>
+	    <p class="text lang_en">
+              I did my PhD thesis in the PolSys team, in the <a href="www.lip6.fr">LIP6</a> (UPMC, Paris, France), under supervision by <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles Faugère</a> and <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey El Din</a>.
+              
+              My thesis was about the algorithmic resolution of polynomial systems, and more precisely, the regularity of the computations of Gröbner bases for structured systems.
+              I have been working on Gröbner basis algorithms for weighted homogeneous systems, and on a real roots classification problem for determinantal systems.
+            </p>
+            <p class="text lang_fr">
+              J'ai effectué ma thèse au sein de l'équipe PolSys
+	      (Polynomial Systems) du <a href="www.lip6.fr">LIP6</a> (UPMC,
+	      Paris, France), sous la direction
+	      de <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles
+	        Faugère</a>
+	      et <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey
+	        El Din</a>.
+              Mon sujet de thèse portait sur la résolution algorithmique
+	      de systèmes de polynômes, et plus précisément sur la
+	      régularité du calcul de bases de Gröbner pour les systèmes
+	      structurés.
+
+              J'ai notamment travaillé sur le calcul de bases de Gröbner
+              pour des systèmes homogènes avec poids, ainsi que sur un
+              problème de classification des racines réelles d'une variété
+              déterminantielle.
+            </p>
+            
+          </div>
         </div>
         
         <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16"  id="publis">
+            <i class="fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>
             Publications
           </h2>
-          <h3  class="w3-text-grey ">Conference proceedings</h3>
-          <ul>
-            <!-- <li><h3>Conference proceedings</h3></li> -->
-            <li>
-              Determinantal sets, singularities and application to optimal control in medical imagery<br>
-              Bernard Bonnard, Jean-Charles Faugère, Alain Jacquemard, Mohab Safey El Din, Thibaut Verron<br>
-              Proceedings of the 41st International Symposium on Symbolic and Algebraic Computation, 2016<br>
-              Links:
-              <a href="doc/2016-ISSAC.pdf">.pdf</a>,
-              <a href="http://arxiv.org/abs/1605.00887">arXiv</a>,
-              <a href="doc/2016-ISSAC.bib">.bib</a>,
-              <a href="http://mercurey.gforge.inria.fr">source code and data</a>
-            </li>
-            <li>
-              On the complexity of computing Gröbner bases for quasi-homogeneous systems<br>
-              Jean-Charles Faugère, Mohab Safey El Din, Thibaut Verron<br>
-              Proceedings of the 38th International Symposium on Symbolic and Algebraic Computation, 2013<br>
-              Links:
-              <a href="doc/2013-ISSAC.pdf">.pdf</a>,
-              <a href="http://arxiv.org/abs/1301.5612">arXiv</a>,
-              <a href="doc/2013-ISSAC.bib">.bib</a>
-            </li>
-          </ul>
-          <h3  class="w3-text-grey ">Journals</h3>
-          <ul>
-            <li>On the complexity of computing Gröbner bases for weighted homogeneous systems<br>
-              Jean-Charles Faugère, Mohab Safey El Din, Thibaut Verron<br>
-              Journal of Symbolic Computations, Volume 76, 2016<br>
-              Links:
-              <a href="doc/2015-JSC.pdf">.pdf</a>,
-              <a href="http://arxiv.org/abs/1412.7547">arXiv</a>,
-              <!-- <a href="http://www.sciencedirect.com/science/article/pii/S0747717115001273">ScienceDirect</a>, -->
-              <a href="doc/2015-JSC.bib">.bib</a>
-            </li>
-          </ul>
-          <h3  class="w3-text-grey ">Thesis</h3>
-          <ul>
-            <li>Regularisation of Gröbner basis computations for weighted and determinantal systems, and an application to medical imagery<br>
-              Defended on 2016/09/26<br>
-              Links:
-              <a href="doc/2016-these.pdf">.pdf</a>,
-              <a href="doc/2016-these.bib">.bib</a>,
-              <a href="doc/2016-these-slides.pdf">slides</a>
-            </li>
-          </ul> 
+          <div class="w3-container">
+            <h3  class="w3-text-grey "><i class="fa fa-newspaper-o fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
+              <span class="lang_en">Conference proceedings</span>
+              <span class="lang_fr">Articles de conférences</span>
+            </h3>
+            
+            <ul class="w3-ul">
+              <li>
+                <b class="w3-text-dark-grey">Determinantal sets, singularities and application to optimal control in medical imagery</b><br>
+                <div class="w3-container">
+                  B. Bonnard, J.-C. Faugère, A. Jacquemard, M. Safey El Din, T. Verron<br>
+                  <i>Proceedings of the 41st International Symposium on Symbolic and Algebraic Computation, 2016</i><br>
+                  <span class="lang_en">Links</span>
+                  <span class="lang_fr">Liens</span>:
+                  <a href="doc/2016-ISSAC.pdf">.pdf</a>,
+                  <a href="http://arxiv.org/abs/1605.00887">arXiv</a>,
+                  <a href="doc/2016-ISSAC.bib">.bib</a>,
+                  <a href="http://mercurey.gforge.inria.fr">
+                    <span class="lang_en">source code and data</span>
+                    <span class="lang_fr">données et code source</span>
+                </a></div>
+              </li>
+              <li>
+                <b class="w3-text-dark-grey">On the complexity of computing Gröbner bases for quasi-homogeneous systems</b><br>
+                <div class="w3-container">
+                  J.-C. Faugère, M. Safey El Din, T. Verron<br>
+                  <i>Proceedings of the 38th International Symposium on Symbolic and Algebraic Computation, 2013</i><br>
+                  <span class="lang_en">Links</span>
+                  <span class="lang_fr">Liens</span>:
+                  <a href="doc/2013-ISSAC.pdf">.pdf</a>,
+                  <a href="http://arxiv.org/abs/1301.5612">arXiv</a>,
+                  <a href="doc/2013-ISSAC.bib">.bib</a>
+                </div>
+              </li>
+            </ul>
+            <hr>
+            <h3  class="w3-text-grey">
+              <i class="fa fa-newspaper-o fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
+              <span class="lang_en">Journals</span>
+              <span class="lang_fr">Journaux</span>
+            </h3>
+            <ul class="w3-ul">
+              <li><b class="w3-text-dark-grey">On the complexity of computing Gröbner bases for weighted homogeneous systems</b><br>
+                <div class="w3-container">
+                  J.-C. Faugère, M. Safey El Din, T. Verron<br>
+                  <i>Journal of Symbolic Computations, Volume 76, 2016</i><br>
+                  <span class="lang_en">Links</span>
+                  <span class="lang_fr">Liens</span>:
+                  <a href="doc/2015-JSC.pdf">.pdf</a>,
+                  <a href="http://arxiv.org/abs/1412.7547">arXiv</a>,
+                  <!-- <a href="http://www.sciencedirect.com/science/article/pii/S0747717115001273">ScienceDirect</a>, -->
+                  <a href="doc/2015-JSC.bib">.bib</a>
+                </div>
+              </li>
+            </ul>
+            <hr>
+            <h3  class="w3-text-grey ">
+              <i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
+              <span class="lang_en">Thesis</span>
+              <span class="lang_fr">Thèse<span>
+            </h3>
+            <ul class="w3-ul">
+              <li><b class="w3-text-dark-grey">
+                  <span class="lang_en">Regularisation of Gröbner basis computations for weighted and determinantal systems, and an application to medical imagery</span>
+                  <span class="lang_fr">Régularisation du calcul de bases de Gröbner pour des systèmes avec poids et déterminantiels, et application en imagerie médicale</span>
+                </b><br>
+                <div class="w3-container">
+                  <span class="lang_en">Defended on 2016/09/26</span>
+                  <span class="lang_fr">Soutenue le 26 septembre 2016</span><br>
+                  <span class="lang_en">Links</span>
+                  <span class="lang_fr">Liens</span>:
+                  <a href="doc/2016-these.pdf">.pdf</a>,
+                  <a href="doc/2016-these.bib">.bib</a>,
+                  <a href="doc/2016-these-slides.pdf">slides</a>
+                </div>
+              </li>
+            </ul>
+            <br>
+          </div>
         </div>
 
         <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16" id="talks">
-            Selected talks (full list <a href="all_talks.html">here</a>)
+            <i class="fa fa-commenting fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>
+            <span class="lang_en">
+              Selected talks (full list <a href="all_talks.html">here</a>)
+            </span>
+            <span class="lang_fr">
+              Exposés (sélection, liste complète <a href="all_talks.html">ici</a>)
+            </span>
+            
           </h2>
-          <ul>
-            <li>Determinantal sets, singularities and application to optimal control in medical imagery<br>
-              <a href="http://www.issac-symposium.org/2016/">
-	        International Symposium on Symbolic and Algebraic Computation
-	      </a><br>
-              Wilfrid Laurier University, Waterloo, Canada, 20 juillet 2016<br>
-              Links: <a href="doc/2016-07-20-ISSAC-slides.pdf">slides</a>
+          <ul class="w3-ul">
+            <li><b class="w3-text-dark-grey">Determinantal sets, singularities and application to optimal control in medical imagery</b><br>
+              <div class="w3-container">
+                <a href="http://www.issac-symposium.org/2016/">
+	          <i>International Symposium on Symbolic and Algebraic Computation</i>
+	        </a><br>
+                Wilfrid Laurier University, Waterloo, Canada, 20 juillet 2016<br>
+                <span class="lang_en">Links</span>
+                <span class="lang_fr">Liens</span>: <a href="doc/2016-07-20-ISSAC-slides.pdf">slides</a>
+              </div>
             </li>
-            <li>Complexité du calcul de bases de Gröbner pour les systèmes homogènes avec poids<br>
-              <a href="http://www.lifl.fr/jncf2014/">Journées Nationales de Calcul Formel (JNCF 2014)</a><br>
-              CIRM, Luminy, France, 2014/11/06<br>
-              Links: <a href="doc/2014-11-06-JNCF-abstract.pdf">abstract</a> (in French),
-              <a href="doc/2014-11-06-JNCF-slides.pdf">slides</a>
+            <li><b class="w3-text-dark-grey">Complexité du calcul de bases de Gröbner pour les systèmes homogènes avec poids</b><br>
+              <div class="w3-container">
+                <a href="http://www.lifl.fr/jncf2014/"><i>Journées Nationales de Calcul Formel (JNCF 2014)</i></a><br>
+                CIRM, Luminy, France, 2014/11/06<br>
+                <span class="lang_en">Links</span>
+                <span class="lang_fr">Liens</span>: <a href="doc/2014-11-06-JNCF-abstract.pdf">abstract</a> (in French),
+                <a href="doc/2014-11-06-JNCF-slides.pdf">slides</a>
+              </div>
             </li>
-            <li>Bases de Gröbner et systèmes structurés<br>
-              <a href="http://lebesgue.fr/fr/content/doctorales2014">Rencontres doctorales Lebesgue 2014</a><br>
-              IRMAR, Rennes, France, 2014/10/13<br>
-              Links: <a href="doc/2014-10-13-RDL-abstract.pdf">abstract</a> (in French),
-              <a href="doc/2014-10-13-RDL-slides.pdf">slides</a>
+            <li><b class="w3-text-dark-grey">Bases de Gröbner et systèmes structurés</b><br>
+              <div class="w3-container">
+                <a href="http://lebesgue.fr/fr/content/doctorales2014"><i>Rencontres doctorales Lebesgue 2014</i></a><br>
+                IRMAR, Rennes, France, 2014/10/13<br>
+                <span class="lang_en">Links</span>
+                <span class="lang_fr">Liens</span>: <a href="doc/2014-10-13-RDL-abstract.pdf">abstract</a> (in French),
+                <a href="doc/2014-10-13-RDL-slides.pdf">slides</a>
+              </div>
             </li>
             <li>
-              On the complexity of computing Gröbner bases for
-              quasi-homogeneous systems<br>
-              <a href="http://www.issac-symposium.org/2013/">
-                International Symposium on Symbolic and Algebraic Computation (ISSAC 2013)
-              </a><br>
-              Northeastern University, Boston, USA,
-              2013/06/29
-              <br>
-              Links:
-              <a href="doc/2013-06-29-ISSAC-slides.pdf">slides</a>
+              <b class="w3-text-dark-grey">On the complexity of computing Gröbner bases for
+                quasi-homogeneous systems</b><br>
+              <div class="w3-container">
+                <a href="http://www.issac-symposium.org/2013/">
+                  <i>International Symposium on Symbolic and Algebraic Computation (ISSAC 2013)</i>
+                </a><br>
+                Northeastern University, Boston, USA,
+                2013/06/29
+                <br>
+                <span class="lang_en">Links</span>
+                <span class="lang_fr">Liens</span>:
+                <a href="doc/2013-06-29-ISSAC-slides.pdf">slides</a>
+              </div>
             </li>
             <!-- <li style="list-style: none;"> -->
             <!--  <a href="all_talks.html">Complete list of talks</a></p></li> -->
           </ul>
+          <br>
         </div>
 
         <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-16" id="enseignement">
-            Teaching
+          <h2 class="w3-text-grey w3-padding-16" id="cv"><i class="fa fa-list-ul fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>
+            Curriculum Vitae
           </h2>
-          <ul>
-            <li>Fall 2015: teaching assistant for the course 2I004 of the licence in computer science at the UPMC <em>Introduction to the architecture and representation of data and programs</em>
-              (<a href="http://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2015/ue/2I004-2015oct/">main page in French</a>)
-            </li>
-            <li>Fall 2015: teaching assistant for the course 1I001 of the licence in computer science at the UPMC <em>Elements of programmation with python</em> (<a href="https://www.licence.info.upmc.fr/lmd/licence/2015/ue/1I001-2015oct/">main page in French</a>)
-            </li>
-            <li>Spring 2015: teaching assistant for the course 2I009 of the licence in computer science at the UPMC <em>Introduction to relational databases</em> (<a href="http://www-bd.lip6.fr/wiki/doku.php?id=site:enseignement:licence:2i009:start">main page in French</a>)
-            </li>
-            <li>Spring 2015: teaching assistant for the course 2I012 (formerly LI218) of the licence in computer science at the UPMC <em>Developement Environment on Linux</em> (<a href="http://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2014/ue/2I012-2015fev/">main page in French</a>)</li>
-            <li>Spring 2014: teaching assistant for the course LI217 of the licence in computer science at the UPMC <em>Scientific computing</em> (<a href="https://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2013/ue/LI217-2014jan/">main page in French</a>)
-            </li>
-            <li>Fall 2013: teaching assistant for the course LI218 of the licence in computer science at the UPMC <em>Introduction to task automation</em> (<a href="https://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2013/ue/LI218-2013oct/">main page in French</a>)
-            </li>
+          <div class="w3-container">
+            <h3  class="w3-text-grey "><i class="fa fa-suitcase fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
+              <span class="lang_en">Previous positions</span>
+              <span class="lang_fr">Travail</span>
+            </h3>
+            <ul class="w3-ul">
+              <li>
+                <h6 class="w3-text-dark-grey">
+                  <table style="width:100%"> 
+                    <tr>
+                      <td style="min-width:60%">
+                        <b>
+                          <span class="lang_en">Post-doc / APO team, IRIT (INP-ENSEEIHT, Toulouse, France)</span>
+                          <span class="lang_fr">Post-doc / Équipe APO, IRIT (INP-ENSEEIHT, Toulouse, France)</span>
+                        </b>
+                      </td>
+                      <td style="float:right; text-align:right">
+                        <span class="w3-text-theme">
+                          <i class="fa fa-calendar fa-fw "></i>
+                          Oct 2016 - <span class="w3-tag w3-theme w3-round">Current</span>
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </h6>
+              </li>
+              <li>
+                <h6 class="w3-text-dark-grey">
+                  <table style="width:100%"> 
+                    <tr>
+                      <td style="min-width:60%">
+                        <b>
+                          <span class="lang_en">PhD student / PolSys team, LIP6 (UPMC, Paris, France)</span>
+                          <span class="lang_fr">Doctorant / Équipe PolSys, LIP6 (UPMC, Paris, France)</span>
+                        </b>
+                      </td>
+                      <td style="float:right; text-align:right">
+                        <span class="w3-text-theme">
+                          <i class="fa fa-calendar fa-fw "></i>
+                          Sep 2012 - Sep 2016
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </h6>
+              </li> 
+              <li>
+                <h6 class="w3-text-dark-grey">
+                  <table style="width:100%"> 
+                    <tr>
+                      <td style="min-width:60%">
+                        <b>
+                          <span class="lang_en">Research internship / PolSys team, LIP6 (UPMC, Paris, France)</span>
+                          <span class="lang_fr">Stage de M2 / Équipe PolSys, LIP6 (UPMC, Paris, France)</span>
+                        </b>
+                      </td>
+                      <td style="float:right; text-align:right">
+                        <span class="w3-text-theme">
+                          <i class="fa fa-calendar fa-fw "></i>
+                          Mar 2012 - Aug 2012
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </h6>
+              </li>
+            </ul>
+            
+            <hr>
+            <h3  class="w3-text-grey "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
+              <span class="lang_en">Education</span>
+              <span class="lang_fr">Formation</span>
+            </h3>
+            <ul class="w3-ul">
+              <li>
+                <h6 class="w3-text-dark-grey">
+                  <table style="width:100%"> 
+                    <tr>
+                      <td style="min-width:60%">
+                        <b>
+                          <span class="lang_en">University Pierre et Marie Curie</span>
+                          <span class="lang_fr">Université Pierre et Marie Curie</span>
+                        </b>
+                      </td>
+                      <td style="float:right; text-align:right">
+                        <span class="w3-text-theme">
+                          <i class="fa fa-calendar fa-fw "></i>
+                          2012 - 2016
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </h6>
+                <div class="w3-margin-left">
+                  <span class="lang_en">PhD thesis in Computer Science</span>
+                  <span class="lang_fr">Thèse de doctorat en Informatique</span>
+                </div>
+                <!-- <hr> -->
+              </li>
+              <li>
+                <h6 class="w3-text-dark-grey">
+                  <table style="width:100%"> 
+                    <tr>
+                      <td style="min-width:60%">
+                        <b>
+                          École Normale Supérieure, Paris, France
+                        </b>
+                      </td>
+                      <td style="float:right; text-align:right">
+                        <span class="w3-text-theme">
+                          <i class="fa fa-calendar fa-fw "></i>
+                          2009 - 2013
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </h6>
+                <div class="w3-margin-left">
+                  <span class="lang_en">Diploma of the ENS, major in Mathematics, minor in Computer Science</span>
+              <span class="lang_fr">Diplôme de l'ENS, Mathématiques, spécialité secondaire Informatique</span>
+                </div>
+                <!-- <hr> -->
+              </li>
+              <li>
+                <h6 class="w3-text-dark-grey">
+                  <table style="width:100%"> 
+                    <tr>
+                      <td style="min-width:60%">
+                        <b>
+                          <span class="lang_en">University Paris-Sud 11, Orsay, France</span>
+                          <span class="lang_fr">Université Paris-Sud 11, Orsay, France</span>
+                        </b>
+                      </td>
+                      <td style="float:right; text-align:right">
+                        <span class="w3-text-theme">
+                          <i class="fa fa-calendar fa-fw "></i>
+                          2011 - 2012
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </h6>
+                <div class="w3-margin-left">
+                  <span class="lang_en">Master degree, Pure and Applied Mathematics, specialty Algebra, Analysis and Geometry</span>
+                  <span class="lang_fr">Master 2, Mathématiques Fondamentales et Appliquées, spécialité Algèbre, Analyse et Géométrie</span>
+                </div>
+              </li>
+            </ul>
+            <br>
+          </div>
+        </div>
+        
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16" id="enseignement">
+            <i class="fa fa-group fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>
+            <span class="lang_en">Teaching</span>
+            <span class="lang_fr">Enseignement</span>
+          </h2>
+          <!-- Licence of Computer Science at the UPMC -->
+              <ul class="w3-ul">
+                <li><a href="https://www.licence.info.upmc.fr/lmd/licence/2015/ue/1I001-2015oct/">
+                    [1I001]
+                    <span class="lang_en">Elements of programmation with Python</span>
+                    <span class="lang_fr">Éléments de programmation en Python</span>
+                  </a>
+                  <div class="w3-container">
+                    <div class="lang_en">
+                      1st year of the Licence of computer science at the UPMC<br>
+                      Fall 2015: teaching assistant (programming sessions)
+                    </div>
+                    <div class="lang_fr">
+                      1ère année de Licence d'Informatique à l'UPMC<br>
+                      2015-2016 semestre 1 : chargé de TME
+                    </div>                    
+                  </div>
+                </li>
+                <li><a href="http://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2015/ue/2I004-2015oct/">
+                    [2I004]
+                    <span class="lang_en">Introduction to the architecture and representation of data and programs</span>
+                    <span class="lang_fr">Introduction à l'architecture et à la représentation des données et des programmes</span>
+                  </a>
+                  <div class="w3-container">
+                    <div class="lang_en">
+                      2nd year of the Licence of computer science at the UPMC<br>
+                      Fall 2015: teaching assistant (programming sessions)
+                    </div>
+                    <div class="lang_fr">
+                      2ème année de Licence d'Informatique à l'UPMC<br>
+                      2015-2016 semestre 1 : chargé de TME
+                    </div>
+                  </div>
+                </li>
+                <li><a href="http://www-bd.lip6.fr/wiki/doku.php?id=site:enseignement:licence:2i009:start">
+                    [2I009]
+                    <span class="lang_en">Introduction to relational databases</span>
+                    <span class="lang_fr">Introduction aux bases de données relationnelles</span>
+                  </a>
+                  <div class="w3-container">
+                    <div class="lang_en">
+                      2nd year of the Licence of computer science at the UPMC<br>
+                      Spring 2015: teaching assistant (exercise and programming sessions): <a href="enseignement/2014-2I009.html">documents</a></div>
+                    <div class="lang_fr">
+                      2ème année de Licence d'Informatique à l'UPMC<br>
+                      2014-2015 semestre 2 : chargé de TD et TME : <a href="enseignement/2014-2I009.html">documents</a>
+                    </div>
+                  </div> 
+                </li>
+                <li><a href="http://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2014/ue/2I012-2015fev">
+                    [2I012/LI218]
+                    <span class="lang_en">Developement environment on Linux</span>
+                    <span class="lang_fr">Environnement de développement sous Linux</span>
+                </a>
+                  <div class="w3-container">
+                    <div class="lang_en">
+                    2nd year of the Licence of computer science at the UPMC<br>
+                    Spring 2015: teaching assistant (exercise and programming sessions): <a href="enseignement/2014-2I012.html">documents</a><br>
+                    Fall 2013: teaching assistant (exercise and programming sessions): <a href="enseignement/2013-li218.html">documents</a>
+                    </div>
+                    <div class="lang_fr">
+                      2ème année de Licence d'Informatique à l'UPMC<br>
+                      2014-2015 semestre 2 : chargé de TD et TME : <a href="enseignement/2014-2I012.html">documents</a><br>
+                      2013-2014 semestre 1 : chargé de TD et TME : <a href="enseignement/2013-li218.html">documents</a>
+                    </div>
+                  </div>
+                  </li>
+                <li><a href="https://www-licence.ufr-info-p6.jussieu.fr/lmd/licence/2013/ue/LI217-2014jan/">
+                    [LI217]
+                    <span class="lang_en">Scientific computing</span>
+                    <span class="lang_fr">Calcul scientifique</span>
+                  </a>
+                  <div class="w3-container">
+                    <div class="lang_en">2nd year of the Licence of computer science at the UPMC<br>
+                    Spring 2015: teaching assistant (programming sessions)</div>
+                    <div class="lang_fr">2ème année de Licence d'Informatique à l'UPMC<br>
+                      2013-2014 semestre 2 : chargé de TME</div>
+                  </div>
+                </li>
           </ul>
+
+          <br>
         </div>
 
         <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16"  id="software">
+            <i class="fa fa-code fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>
             Software
           </h2>
-          <ul>
+          <ul class="w3-ul">
             <li>
-              <a href="https://github.com/ThibautVerron/magma-mode">Magma-mode</a>:
-              an emacs mode to edit Magma source code. It is built on
-              the magma-mode written
-              by <a href="http://www-salsa.lip6.fr/~bettale/">Luk
-                Bettale</a> during his PhD. The package can be obtained
-              from <a href="https://github.com/ThibautVerron/magma-mode">github</a>
-              or
-              via <a href="http://melpa.org/#/magma-mode">melpa</a>.
+              <a href="https://github.com/ThibautVerron/magma-mode"><b class="w3-text-dark-grey">Magma-mode</b></a>
+              <div class="w3-container">
+                <div class="lang_en">
+                  Emacs mode to edit Magma source code. It is built on
+                  the magma-mode written
+                  by <a href="http://www-salsa.lip6.fr/~bettale/">Luk
+                    Bettale</a> during his PhD. The package can be obtained
+                  from <a href="https://github.com/ThibautVerron/magma-mode">github</a>
+                  or
+                  via <a href="http://melpa.org/#/magma-mode">melpa</a>.
+                </div>
+                <div class="lang_fr">
+                  Mode emacs pour éditer du code Magma, basé sur le
+                  magma-mode développé
+                  par <a href="http://www-salsa.lip6.fr/~bettale/">Luk
+                    Bettale</a> au cours de sa thèse. Le package est disponible
+                  sur <a href="https://github.com/ThibautVerron/magma-mode">github</a>
+                  ou
+                  via <a href="http://melpa.org/#/magma-mode">melpa</a>.
+                </div>
+              </div>
             </li>
           </ul>
+        <br>
         </div>
-        
 
         <!-- End Right Column -->
       </div>
@@ -254,16 +612,17 @@
       <!-- End Grid -->
     </div>
     <!-- End Page Container -->
-    </div>
+</div>
 
-    <footer class="w3-container w3-center w3-margin-top">
-      <p>(Last updated: 2016/11/24, 17:52)</p>
-    </footer>
 
-  </body>
+<footer class="w3-container w3-center w3-margin-top">
+  <p><span class="lang_en">(Last updated: 2016/11/28, 11:59)</span><span class="lang_fr">(Dernière mise à jour le 28 novembre 2016 à 11:59)</span></p>
+</footer>
+
+</body>
 </html>
 
 <!-- Local Variables: -->
-<!-- time-stamp-pattern: "-12/^[[:space:]]*<p>(Last updated: %:y/%02m/%02d, %02H:%02M)</p>" -->
+<!-- time-stamp-pattern: "-12/^[[:space:]]*<p><span class=\"lang_en\">(Last updated: %:y/%02m/%02d, %02H:%02M)</span><span class=\"lang_fr\">(Dernière mise à jour le %:d %:b %:y à %02H:%02M)</span></p>" -->
 <!-- eval: (visual-line-mode t) -->
 <!-- End: -->
