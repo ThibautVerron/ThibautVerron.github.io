@@ -127,7 +127,7 @@ nav
 nav #menu
 {
     /* min-width: 800px; */
-    max-width: 100%;
+    max-width: 1200px;
     margin: auto;
     position: relative;
 }
@@ -360,13 +360,17 @@ body a:hover
 @media  only screen and (max-width:992px){
     .my-left{float:left;width:26%;min-width:261px}
     .my-right{}
+    .my-nav{position:fixed}
 }
 
 @media only screen and (max-width:600px){
     .my-left{float:center;width:100%;min-width:initial}
     .my-right{float:right;width:100%}
+    .my-nav{position:absolute}
+    nav #menu_right{display:none}
 }
 @media (min-width:993px){
-    .my-left{float:left;width:26%;min-width:261px}
+    .my-left{float:left;/* width:26%; */width:261px}
     .my-right{}
+    .my-nav{position:fixed}
 }
