@@ -97,7 +97,8 @@ header h2
     vertical-align: top;
 }
 
-a[href*=mailto]
+/* a[href*=mailto] */
+#left-band a
 {
     /* color: #000055; */
     /* font-family: monospace, Courier, sans-serif, serif; */
