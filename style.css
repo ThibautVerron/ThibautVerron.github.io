@@ -104,7 +104,7 @@ header h2
     /* font-family: monospace, Courier, sans-serif, serif; */
     /* font-size: 9pt; */
     text-decoration: none;
-    color: inherit;
+    /* color: inherit; */
 }
 
 /* Nav */
@@ -271,7 +271,17 @@ body a
     text-decoration: none;
     /* border-width: 1px; */
     /* border-style: dotted; */
+    /* color: #004a43; */
+    /* color: inherit; */
+}
+
+.w3-container a{
     color: #004a43;
+}
+
+
+.inherit-link a{
+    color: inherit;
 }
 
 body h2 a
@@ -375,3 +385,4 @@ body a:hover
     .my-right{}
     .my-nav{position:fixed}
 }
+
