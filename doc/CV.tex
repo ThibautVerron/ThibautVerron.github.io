@@ -1,0 +1,239 @@
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+%% Serif font
+% \IfFileExists{stix.sty}{%
+%   \usepackage[upint]{stix}}%
+% {\usepackage{lmodern}
+%   \def\coloneq{:=}}
+
+\usepackage{newtxtext}
+%% Sans font
+\usepackage[scaled=0.875]{helvet}
+
+% \usepackage[tt=false]{libertine}
+% \usepackage{newtxtext}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsthm}
+\usepackage[slantedGreek,cmintegrals,bigdelims,vvarbb,libertine,libaltvw,liby]{newtxmath}
+%\useosf
+
+\usepackage[english]{babel} 
+
+
+\usepackage{url}
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{Last updated : \today}
+\rfoot{Page \thepage{}/\pageref*{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{xspace}
+
+\usepackage{tabu}
+
+\usepackage{hyperref}
+
+\usepackage[backend=biber,maxnames=5]{biblatex}
+\addbibresource{MyBiblio.bib}
+\addbibresource{exposes.bib}
+
+%\setkomafont{title}{\small}
+
+\newcommand{\F}[1]{%                               % F algorithm
+  \ifmmode%
+  \mathsf{F_{#1}}%
+  \else%
+  \textsf{F}$_{\mathsf#1}$%
+  \fi\xspace}
+\newcommand{\FGLM}{FGLM\xspace}      
+
+\newcommand{\pbox}[2][l]{%
+  \begin{tabular}[t]{@{}#1@{}}#2\end{tabular}%
+}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\CC}{\mathbb{C}}
+
+\title{}
+\date{}
+
+\begin{document}
+
+\newcommand{\structure}[1]{\textbf{\textsf{#1}}}
+
+\section*{\huge Thibaut Verron}
+\label{sec:Inform-pers}
+
+% \begin{tabular}{ll}
+%   \structure{Date de naissance} & 21 mars 1991 \\
+%   \structure{Âge} & 25 ans \\
+%   \structure{Adresse professionnelle} &
+%   \pbox{2, rue Charles Camichel\\
+%     Bureau F317\\
+%     31000, Toulouse, France} \\
+%   \structure{Adresse électronique} & thibaut.verron@irit.fr \\
+%   \structure{Page web} & https://thibautverron.github.io
+% \end{tabular}
+
+\begin{description}
+  \item[Birth date (age)] 21 march 1991 (26)
+  \item[Nationality] French
+  \item[Professional address]
+  \begin{tabular}[t]{l}
+    Johannes Kepler University\\
+    4040 Linz/Donau, Austria
+  \end{tabular}
+
+  \item[E-mail address] \url{thibaut.verron@irit.fr}
+  \item[Webpage] \url{https://thibautverron.github.io}
+\end{description}
+
+\section*{Current position}
+\label{sec:Current-position}
+
+\begin{description}
+  \item[Status] Post-doctoral researcher
+  \item[Dates] October 2017 -- September 2019
+  \item[Location] Institute for Algebra, Johannes Kepler University (Linz, Austria)
+  \item[Supervisor] Manuel Kauers
+  \item[Keywords] computer algebra, analytic combinatorics
+\end{description}
+
+
+\section*{Previous positions}
+\label{sec:Previous-positions}
+
+\begin{tabular}{rl}
+  \structure{2016 -- 2017} & \pbox{Post-doctoral researcher at INP-ENSEEIHT (Toulouse, France)\\
+  Supervisors: Joseph Gergaud, Olivier Cots% \\
+  % Keywords: optimal control
+} 
+\end{tabular}
+
+
+% \begin{description}
+%   \item[2012 -- 2016] Thèse de doctorat, Université Pierre et Marie Curie (Paris)
+%   \item[2011 -- 2012] Master 2, Université Paris-Sud 11 (Orsay)\\
+%   Mathématiques fondamentales et appliquées, spécialité Algèbre, analyse et géométrie\\
+%   Mention Assez Bien
+%   \item[2009 -- 2013] École Normale Supérieure de Paris\\
+%   Diplôme de l'ENS, spécialité Mathématiques, spécialité secondaire Informatique
+%   \item[2007 -- 2009] Classes préparatoires MPSI, MP*, Lycée Hoche (Versailles)
+%   \item[2007] Baccalauréat, mention Très Bien
+% \end{description}
+
+
+\section*{Ph.D. thesis}
+\label{sec:Formation}
+
+\begin{description}
+  \item[Dates] September 2012 -- September 2016
+  \item[Location] PolSys team, LIP6, Université Pierre et Marie Curie (Paris, France)
+  \item[Supervisors] Jean-Charles Faugère, Mohab Safey El Din
+  \item[Title] Regularization of Gröbner basis computations for weighted and determinantal systems, and an application to medical imagery
+  \item[Defended on] 26 september 2016
+  \item[Keywords] polynomial systems; Gröbner bases; structured systems; weighted-homogeneous systems; determinantal systems; real algebraic geometry
+\end{description}
+
+\paragraph{Jury}${}$\\
+
+\begin{tabular}{lll}
+  \structure{Director} & Jean-Charles Faugère & Research director, Inria \\
+  \structure{Advisor} & Mohab Safey El Din & Professor, UPMC \\
+  \structure{Reviewer} & Laurent Busé & Researcher, Inria, HdR \\
+  \structure{Reviewer} & Bruno Salvy & Research director, Inria \\
+  \structure{Examiner} & Bernard Bonnard & Professor, Université de Bourgogne \\
+  \structure{Examiner} & Stef Graillat & Professor, UPMC
+\end{tabular}
+
+\section*{Education}
+
+\begin{tabular}{rl}
+  \structure{2012 -- 2016} & \pbox{University Pierre et Marie Curie (Paris, France)\\
+    Ph.D. thesis} \\
+  \structure{2011 -- 2012} & \pbox{University Paris-Sud 11 (Orsay, France)\\
+    Master degree, Pure and Applied Mathematics,\\
+    specialty Algebra, Analysis and Geometry} \\
+  \structure{2009 -- 2013} & \pbox{École Normale Supérieure de Paris (France)\\
+    Diploma of the ENS, Major in Mathematics, minor in Computer Science} \\
+  \structure{2007 -- 2009} & Preparatory classes MPSI, MP*, Lycée Hoche (Versailles, France)
+  \\
+  \structure{2007} & A levels
+\end{tabular}
+
+\section*{Publications and communications}
+\label{sec:Publ-comm}
+
+\subsection*{Conference papers}
+
+\begin{itemize}
+  \item \fullcite{BFJSV16}
+  \item \fullcite{FSV13}
+\end{itemize}
+
+\subsection*{Journal paper}
+
+\begin{itemize}
+  \item \fullcite{FSV15}
+\end{itemize}
+
+\subsection*{Conference talks}
+\label{sec:Quelq-autr-expos}
+
+\begin{itemize}
+  \item \fullcite{talk-SMAI17}
+  \item \fullcite{talk-ISSAC16}
+  \item \fullcite{talk-GdRMOA15}
+  \item \fullcite{talk-JNCF14}
+  \item \fullcite{talk-RDHL14}
+  \item \fullcite{talk-ISSAC13}
+\end{itemize}
+
+% \section*{Sélection d'exposés}
+% \label{sec:Selection-dexposes}
+
+% \section*{Enseignement}
+% \label{sec:Enseignement-2}
+
+% \noindent Moniteur à l'UFR 919 (Ingénierie) de l'UPMC de 2013 à 2016:
+% \begin{itemize}
+%   \item 3 groupes de TD (118.5 heures équivalent TD) en licence d'informatique 2\ieme année
+%   \item 3 groupes de TME (59.25 heures équivalent TD) en licence d'informatique 1\iere et 2\ieme année
+% \end{itemize}
+
+\section*{Teaching}
+\label{sec:Teaching}
+
+\begin{tabular}{rl}
+  \structure{2016 -- 2017} & Teaching assistant at INP Toulouse, in applied mathematics (total: 26h) \\
+  \structure{2013 -- 2016} & Teaching assistant (\emph{moniteur}) at UPMC, in computer science (total: 189h)
+\end{tabular}
+
+\section*{Language skills}
+\begin{description}
+  \item[French] Native speaker
+  \item[English] Fluent
+  \item[German] Basic
+  \item[Russian] Basic
+\end{description}
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
