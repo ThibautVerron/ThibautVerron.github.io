@@ -141,6 +141,7 @@ nav #menu_right
     top: 0px;
     right: 0px;
     padding-top: 2px;
+    padding-right: 8px;
     /* padding-right:1.5em; */
     /* text-align: right; */
     /* margin-left: auto; */
@@ -159,6 +160,8 @@ nav #menu_left
     /* margin-right:auto; */
     top: 0px;
     left: 0px;
+    padding-top: 2px;
+    padding-left: 17px;
     text-align: left;
     /* padding-top: 0px; */
     /* padding-bottom: 0px; */
@@ -175,14 +178,14 @@ nav li
 {
     display: inline-block;
 }
-#menu_left li
-{
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 2px;
-}
+/* #menu_left li */
+/* { */
+/*     padding-left: 10px; */
+/*     padding-right: 10px; */
+/*     padding-top: 2px; */
+/* } */
 
-#menu_right a
+#menu a
 {
     padding-left: 10px;
     padding-right: 10px;
