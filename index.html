@@ -17,107 +17,128 @@
   <style>
     html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   </style>
+  <script>
+    function myFunction() {
+    var x = document.getElementById("menu_dropdown");
+    if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    } else { 
+    x.className = x.className.replace(" w3-show", "");
+    }
+    }
+  </script>
+
   <body class="w3-light-grey">
 
     
     
     <!-- Page Container -->
-    <div class="w3-content w3-margin-top" style="max-width:1200px;">
+    <div class="w3-content w3-row-padding w3-margin-top">
 
       <!-- Header -->
-      <nav class="w3-container w3-light-grey w3-border-bottom w3-display-topmiddle my-nav" style="padding-bottom:27px;margin-bottom:27px;height:27px">
-        <div id="menu">
-	  <div id="menu_left">
-	    <ul class="lang_en">
-	      <li>
-		<a class="w3-theme-d4">
-                  EN
-                </a>
-	      </li>
-	      <li>
-		<a href="index_fr.html" class="w3-hover-theme">
-		  FR
-		</a>
-	      </li>
-              <li>
-                <a href="index_de.html" class="w3-hover-theme">
-		  DE
-                </a>	
-              </li>
-	    </ul>
-            <ul class="lang_fr">
-	      <li>
-                <a href="index.html" class="w3-hover-theme">
-		  EN
-                </a>
-	      </li>
-	      <li>
-                <a class="w3-theme-d4">
-                  FR
-                </a>
-	      </li>
-              <li>
-                <a href="index_de.html" class="w3-hover-theme">
-		  DE
-                </a>
-	      </li>
-	    </ul>
-            <ul class="lang_de">
-	      <li>
-                <a href="index.html" class="w3-hover-theme">
-		  EN
-                </a>
-	      </li>
-              <li>
-		<a href="index_fr.html" class="w3-hover-theme">
-		  FR
-		</a>
-	      </li>
-	      <li>
-                <a class="w3-theme-d4">
-                  DE
-                </a>
-	      </li>
-	    </ul>
+      <nav class="w3-display-container w3-light-grey w3-border-bottom my-nav" style="padding-bottom:37px;margin-bottom:37px;height:37px" >
+        <div id="menu" class="w3-bar">
+          <div class="w3-margin-left w3-margin-right">
+	  <div class="lang_en">
+	      <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
+                EN
+              </a>
+	      <a href="index_fr.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+		FR
+	      </a>
+              <a href="index_de.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+		DE
+              </a>
+	    </div>
+            <div class="lang_fr">
+	      <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+		EN
+              </a>
+              <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
+                FR
+              </a>
+              <a href="index_de.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+		DE
+              </a>
+            </div>
+            <div class="lang_de">
+              <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+		EN
+              </a>
+	      <a href="index_fr.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+		FR
+	      </a>
+              <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
+                DE
+              </a>
+            </div>
 
-	  </div>
-	  
-	  <div id="menu_right">
-	    <ul>
-	      <li><a href="#apropos" class="w3-hover-theme">
-		  <span class="lang_en">About</span>
-                  <span class="lang_fr">À propos</span>
-                  <span class="lang_de">Über mich</span>
-	      </a></li>
-	      <li><a href="#publis" class="w3-hover-theme">
-		  <span class="lang_en">Publications</span>
-                  <span class="lang_fr">Publications</span>
-                  <span class="lang_de">Publikationen</span>
-	      </a></li>
-              <li><a href="#talks" class="w3-hover-theme">
-		  <span class="lang_en">Talks</span>
-                  <span class="lang_fr">Exposés</span>
-                  <span class="lang_de">Vorträge</span>
-	      </a></li>
-	      <!-- <li><a href="#cv" class="w3-hover-theme">CV</a></li> -->
-	      <li><a href="#enseignement" class="w3-hover-theme">
-                  <span class="lang_en">Teaching</span>
-                  <span class="lang_fr">Enseignement</span>
-                  <span class="lang_de">Lehre</span>
-                </a></li>
-              <li>
-                <a href="#software" class="w3-hover-theme" style="/*padding-right:1.5em;*/">
-                  <span class="lang_en">Software</span>
-                  <span class="lang_fr">Logiciel</span>
-                  <span class="lang_de">Software</span>
-                </a>
-	    </ul>
-	  </div>
+            <a href="#software" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right"  style="margin-right:-8px;">
+              <span class="lang_en">Software</span>
+              <span class="lang_fr">Logiciel</span>
+              <span class="lang_de">Software</span>
+            </a><a href="#enseignement" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+              <span class="lang_en">Teaching</span>
+              <span class="lang_fr">Enseignement</span>
+              <span class="lang_de">Lehre</span>
+            </a><a href="#talks" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+              <span class="lang_en">Talks</span>
+              <span class="lang_fr">Exposés</span>
+              <span class="lang_de">Vorträge</span>
+            </a>
+            <a href="#publis" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+              <span class="lang_en">Publications</span>
+              <span class="lang_fr">Publications</span>
+              <span class="lang_de">Publikationen</span>
+            </a>
+            <a href="#apropos" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+              <span class="lang_en">About</span>
+              <span class="lang_fr">À propos</span>
+              <span class="lang_de">Über mich</span>
+            </a>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+          </div>
+        
+        <!-- Vertical menu for small devices -->
+        <div id="menu_dropdown" class="w3-bar-block w3-right w3-light-grey w3-hide w3-hide-medium w3-hide-large">
+          <a href="#apropos" class="w3-bar-item w3-button w3-border w3-hover-theme">
+            <span class="lang_en">About</span>
+            <span class="lang_fr">À propos</span>
+            <span class="lang_de">Über mich</span>
+          </a>
+          
+          <a href="#publis" class="w3-bar-item w3-button w3-border w3-hover-theme">
+            <span class="lang_en">Publications</span>
+            <span class="lang_fr">Publications</span>
+            <span class="lang_de">Publikationen</span>
+          </a>
+          
+          <a href="#talks" class="w3-bar-item w3-button w3-border  w3-hover-theme">
+            <span class="lang_en">Talks</span>
+            <span class="lang_fr">Exposés</span>
+            <span class="lang_de">Vorträge</span>
+          </a>
+          
+          <a href="#enseignement" class="w3-bar-item w3-button w3-border w3-hover-theme">
+            <span class="lang_en">Teaching</span>
+            <span class="lang_fr">Enseignement</span>
+            <span class="lang_de">Lehre</span>
+          </a>
+          
+          <a href="#software" class="w3-bar-item w3-button w3-border w3-hover-theme"
+             style="/*padding-right:1.5em;*/">
+            <span class="lang_en">Software</span>
+            <span class="lang_fr">Logiciel</span>
+            <span class="lang_de">Software</span>
+          </a>
+        </div>
+        </div>
         </div>
       </nav>
+      
     </div> 
 
-    
+
     <!-- The Grid -->
     <div class="w3-row-padding" style="margin-top:35px" id="left-band">
       
@@ -133,16 +154,17 @@
           </div>
           <div class="w3-container inherit-link">
             <p><i class="fa fa-briefcase fa-fw w3-text-theme" style="margin-left:-0.4em;margin-right:0.2em"></i>
-              <span class="lang_en">Post-doc, </span>
-              <span class="lang_fr">Post-doc, </span>
-              <span class="lang_de">Postdoc, </span>
+              <span class="lang_en">Post-doc </span>
+              <span class="lang_fr">Post-doc </span>
+              <span class="lang_de">Postdoc</span>
               <br>
-              <i style="margin-right:1.3em"></i>
+            </p>
+            <p><i class="fa fa-home fa-fw w3-large w3-text-theme" style="margin-left:-0.5em;margin-right:0.1em" ></i>
               <span class="lang_en">Institute for Algebra</span>
               <span class="lang_fr">Institute for Algebra</span>
               <span class="lang_de">Institut für Algebra</span>
-            </p>
-            <p><i class="fa fa-home fa-fw w3-large w3-text-theme" style="margin-left:-0.5em;margin-right:0.1em" ></i>
+              <br>
+              <i style="margin-right:1.3em"></i>
               <span class="lang_en">Johannes Kepler University</span>
               <span class="lang_fr">Johannes Kepler University</span>
               <span class="lang_de">Johannes Kepler Universität</span>
@@ -202,7 +224,7 @@
 	    <span class="lang_en">About me</span>
             <span class="lang_fr">À propos de moi</span>
             <span class="lang_de">Über mich</span>
-	  </h2>
+          </h2>
           <div class="w3-container">
             <p class="text lang_en">
               I am currently a post-doc at the Institute for Algebra at the Johannes Kepler University (Linz, Austria), working with <a href="http://www.kauers.de/">Manuel Kauers</a> on analytic combinatorics and computer algebra.
@@ -406,7 +428,7 @@
                 </div>
               </li>
               <li>
-              <b class="w3-text-dark-grey">Algebraic-geometric techniques for the feedback classification and robustness of the optimal control of a pair of Bloch equations with application to Magnetic Resonance Imaging</b> (2017)<br>
+                <b class="w3-text-dark-grey">Algebraic-geometric techniques for the feedback classification and robustness of the optimal control of a pair of Bloch equations with application to Magnetic Resonance Imaging</b> (2017)<br>
                 <div class="w3-container">
                   B.&nbsp;Bonnard, O.&nbsp;Cots, J.-C.&nbsp;Faugère, A.&nbsp;Jacquemard, J.&nbsp;Rouot, M.&nbsp;Safey El Din, T.&nbsp;Verron<br>
                   <span class="lang_en">Links</span>
@@ -440,9 +462,9 @@
                   <span class="lang_fr">Liens</span>:
                   <a href="doc/2016-these.pdf">.pdf</a>,
                   <a href="doc/2016-these-erratum.pdf">erratum</a>
-                    <span class="lang_en">(last updated on 2018/05/16),</span>
-                    <span class="lang_fr">(mis à jour le 16 mai 2018),</span>
-                    <span class="lang_de">(zuletzt aktualisiert am 16. Mai 2018),</span>
+                  <span class="lang_en">(last updated on 2018/05/16),</span>
+                  <span class="lang_fr">(mis à jour le 16 mai 2018),</span>
+                  <span class="lang_de">(zuletzt aktualisiert am 16. Mai 2018),</span>
                   <a href="doc/2016-these.bib">.bib</a>,
                   <a href="doc/2016-these-slides.pdf">slides</a>
                 </div>
@@ -473,7 +495,7 @@
               <div class="w3-container">
                 <!-- <i class="lang_en"></i> -->
                 <a href="https://www.usc.es/regaca/aca2018/index.html">
-                24th Conference on Applications of Computer Algebra (ACA 2018)</a>,
+                  24th Conference on Applications of Computer Algebra (ACA 2018)</a>,
                 session <a href="https://www.unilim.fr/pages_perso/vincent.neiger/aca18/">
                   <i>Algorithms for zero-dimensional ideals</i>
                 </a>
@@ -543,10 +565,10 @@
                   <span class="lang_en">2018-2019 Winter semester</span>
                   <span class="lang_fr">2018-2019 semestre 1: chargé de cours</span>
                   <span class="lang_de">2018-2019 Wintersemester</span>
-                  </div> 
+                </div> 
               </li>
             </ul>
-          <hr>
+            <hr>
           </div>
           <div class="w3-container w3-margin-top lang_en">
             For my teachings in France, please visit the <a href="index_fr.html#enseignement">french version</a> of this page.
@@ -723,7 +745,7 @@
 <!-- <span class=\"lang_de\">(Zuletzt aktualisiert am %:d %:b %:y, %02H:%02M)</span></p>&#0; -->
 
 <footer class="w3-container w3-center w3-margin-topologique">
-<p><span class="lang_en">(Last updated: 2018/08/23, 13:09)</span><span class="lang_fr">(Dernière mise à jour le 23 August 2018 à 13:09)</span><span class="lang_de">(Last updated: 2018/08/23, 13:09)</span></p>
+  <p><span class="lang_en">(Last updated: 2018/08/24, 13:10)</span><span class="lang_fr">(Dernière mise à jour le 24 August 2018 à 13:10)</span><span class="lang_de">(Last updated: 2018/08/24, 13:10)</span></p>
 </footer>
 
 

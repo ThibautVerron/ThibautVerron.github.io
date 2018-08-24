@@ -130,7 +130,7 @@ nav #menu
     /* min-width: 800px; */
     max-width: 1200px;
     margin: auto;
-    position: relative;
+    /* position: absolute;*/
 }
 
 nav #menu_right
@@ -140,8 +140,8 @@ nav #menu_right
     text-align: right;
     top: 0px;
     right: 0px;
-    padding-top: 2px;
-    padding-right: 8px;
+    /* padding-top: 2px; */
+    /* padding-right: 8px; */
     /* padding-right:1.5em; */
     /* text-align: right; */
     /* margin-left: auto; */
@@ -156,12 +156,12 @@ nav #menu_left
 {
     display: inline-block;
     position: absolute;
-    /* margin-left:0px; */
-    /* margin-right:auto; */
+    margin-left:16px;
+    margin-right:auto;
     top: 0px;
     left: 0px;
-    padding-top: 2px;
-    padding-left: 17px;
+    /* padding-top: 2px; */
+    /* padding-left: 17px; */
     text-align: left;
     /* padding-top: 0px; */
     /* padding-bottom: 0px; */
@@ -382,7 +382,7 @@ body a:hover
     .my-left{float:center;width:100%;min-width:initial}
     .my-right{float:right;width:100%}
     .my-nav{position:absolute}
-    nav #menu_right{display:none}
+    /* nav #menu_right{display:none} */
 }
 @media (min-width:993px){
     .my-left{float:left;/* width:26%; */width:261px}
