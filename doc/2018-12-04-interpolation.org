@@ -1,0 +1,423 @@
+#+TITLE: Computing elimination polynomials using interpolation
+
+* Problem
+
+When one wants to eliminate one or several variables from a system,
+the result may have very large degree.
+
+This makes the computations very difficult.
+
+It is sometimes worthwile to try using evaluation and interpolation
+techniques.
+
+* Example system
+
+http://mercurey.gforge.inria.fr/
+
+Loading relevant libraries:
+#+BEGIN_SRC maple
+  with(LinearAlgebra): 
+  with(VectorCalculus): 
+  with(combinat):
+#+END_SRC
+
+System definition:
+#+BEGIN_SRC maple
+d1 := g1-G1; d2 := g2-G2;
+MatrixD := Matrix([[-G1*y1, -z1-1, d1*z1-G1, 2*d1*y1],
+                   [-g1*z1, y1, d1*y1, -2*d1*z1+G1-d1],
+                   [-G2*y2, -z2-1, d2*z2-G2, 2*d2*y2],
+                   [-g2*z2, y2, d2*y2, -2*d2*z2+G2-d2]]);
+
+vars := [y1, y2, z1, z2];
+g1 := 1; # Dehomogenization
+params := [G1, g2, G2]
+
+k := 4; n := 4; t := 2;
+
+detD := Determinant(MatrixD):
+
+sys := [detD, seq(diff(detD, v), v in vars)]:
+#+END_SRC
+
+Some measures:
+#+BEGIN_SRC maple
+nops(sys);
+map(degree, sys, y1);
+map(degree, sys, y2);
+map(degree, sys, z1);
+map(degree, sys, z2);
+map(degree, sys, G1);
+map(degree, sys, g2);
+map(degree, sys, G2);
+#+END_SRC
+
+* Trying a direct calculation
+
+We want a polynomial in one of y1, y2, z1 or z2, together with g2, G1
+and G2.
+
+In other words, we want to compute an *elimination polynomial*. There
+are many tools for that, I usually use Gröbner bases, which I compute
+using Jean-Charles Faugère's FGb package for Maple.
+
+https://www-polsys.lip6.fr/~jcf/FGb/index.html
+
+#+BEGIN_SRC maple
+with(FGb);
+# This is FGb version 1.68
+#+END_SRC
+
+So, let's try to find a polynomial in y2:
+
+#+BEGIN_SRC maple
+gb := fgb_gbasis_elim(sys,0,[z1,z2,y1],[y2,g2,G2,G1],{"verb"=3}):
+#+END_SRC
+
+The degree increases, so does the size of the matrices, and the time
+needed to construct them...
+
+** How long will we need to wait?
+
+We need to know the degree that we will need to reach.
+
+How to do it? Fix some values for some variables, compute with what
+remains, see the degree of the result.
+
+Let's start with y2:
+
+#+BEGIN_SRC maple
+randomize():
+randval := rand(100..10000):
+
+sys_simpler := eval(sys,{G1=randval(),G2=randval(),g2=randval()}):
+gb_simpler := fgb_gbasis(sys_simpler,0,[z1,z2,y1],[y2,g2,G2,G1],{"verb"=3}):
+
+nops(gb_simpler);
+map(indets, gb_simpler);
+map(irreduc,gb_simpler);
+map(degree, gb_simpler);     # Relevant value !!!
+map(degree, gb_simpler, y1);
+map(degree, gb_simpler, y2);
+map(degree, gb_simpler, [y1,y2]);
+#+END_SRC
+
+As a bonus, we observe that the result seems to be y2*(a degree 4 polynomial in y2)
+Let's simplify the system in consequence:
+
+#+BEGIN_SRC maple
+sys0 := sys:
+
+sys := [y2*u-1,       # y2 <> 0
+        y2^2 - Y2,    # change of variables, could also be done with repeated calls to algsubs
+        # y2*Y1 - y1, # another possible simplification which I don't justify here
+        op(sys0)
+       ]:
+#+END_SRC
+
+** But we still don't know the degree in the g2,G2,G1.
+
+One way to get a quick estimate is to use the same calculation, and
+look at the size of the coefficients.
+
+#+BEGIN_SRC maple
+sys_simpler := eval(sys,{G1=10,G2=21,g2=31}): # ~10, linear combinations ~10, and coprime
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -> evalf(log(abs(x))/log(10)),[coeffs(pol)]);
+#+END_SRC
+
+So, total degree between 23 and 25.
+
+And if we want the degree in each of the gi:
+
+#+BEGIN_SRC maple
+sys_simpler := eval(sys,{G1=101,G2=2,g2=3}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -> evalf(log(abs(x))/log(100)),[coeffs(pol)]);
+# In G1: 7 to 9
+
+sys_simpler := eval(sys,{G1=2,G2=101,g2=3}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -> evalf(log(abs(x))/log(100)),[coeffs(pol)]);
+# In G2: 14 to 19
+
+sys_simpler := eval(sys,{G1=2,G2=3,g2=101}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -> evalf(log(abs(x))/log(100)),[coeffs(pol)]);
+# In g2: 13 to 16
+#+END_SRC
+
+It's still not very precise.
+
+The best way is of course to do the same as we did with y2.
+
+*Remark:* since we're only interested in the degree, we can do the
+computations modulo p and save a bit of time (sub-linear, since fgb
+uses CRT reconstruction behind the scenes).
+
+#+BEGIN_SRC maple
+sys_simpler := eval(sys,{Y2=randval(),G2=randval(),g2=randval()}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,65521,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+degree(pol);
+# 9 in G1
+
+sys_simpler := eval(sys,{Y2=randval(),G1=randval(),g2=randval()}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,65521,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+degree(pol);
+# 19 in G2
+
+sys_simpler := eval(sys1,{Y2=randval(),G1=randval(),G2=randval()}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,65521,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+degree(pol);
+# 19 in g2
+#+END_SRC
+
+So the final result has (at best) degree 19+4=23.
+
+The complexity scales like binomial(n,n+d)^k where n is the number of
+variables, d the maximal degree and k some number between 1.9 and 3
+(or omega)
+
+If the polynomial we want to compute is f(x,y) with degree 4 in x
+and degree 20 in y, it's significantly faster to compute 21+epsilon
+bases in degree 4 and reconstruct f, than to compute one basis in
+degree 24.
+
+But real-life cases are never that not usually that clear-cut.
+
+* Specialization
+
+So let's see if we can make it work with interpolation here.
+And let's use g2 as the interpolation variable.
+
+** First, we need to make sure that our degree estimate is correct.
+
+#+NAME: degree_estimate
+#+BEGIN_SRC maple
+for i from 1 to 20 do
+    sys_simpler := eval(sys,{Y2=randval(),G1=randval(),G2=randval()}):
+    gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1]):
+
+    pol := gb_simpler[1]:
+    print(degree(pol));
+od:
+#+END_SRC
+
+So, 19 seems to be correct.
+
+** Second, let's see if specializing g2 is enough to complete the computation
+
+... It would be, but not enough to complete the computation many times in less than 20 minutes, so I will cheat.
+
+#+BEGIN_SRC maple
+sys1 := sys;
+sys := eval(sys1,{G1=11,G2=5}):
+#+END_SRC
+
+After cheating, it is enough!
+
+#+BEGIN_SRC maple
+sys_g2 := eval(sys,{g2=randval()}):
+gb_g2 := fgb_gbasis_elim(sys_g2,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+nops(gb_g2);
+#+END_SRC
+
+** Then, we need to see how many times we will have to do the specialized computation
+
+If we want to interpolate coefficients with degree 19 in g2, we need
+to compute the polynomial 20 times.
+
+We can't just use polynomial interpolation, because the GB
+computations may have simplified some results. For example, if we
+want to recover x*y + 2 by interpolating on x, and we only pick even
+values of x:
+x=2 -> 2*y + 2, simplified into y+1
+x=4 -> 4*y + 2, simplified into y+1/2
+x=6 -> 6*y + 2, simplified into y+1/3
+and polynomial interpolation would conclude that the constant coefficient is 1.
+
+This is because the Gröbner basis is not computed over Z but over Q!
+
+So we will have to:
+
+1. Normalize the intermediate results (for example ensuring that the
+   leading coefficient is always 1)
+2. Use rational reconstruction to recover the result (to account for
+   those denominators we introduced)
+
+In order to determine how many sample values we need:
+
+1. Start with the degree bound you have found: 19
+2. Add one for the interpolation: 20
+3. Add some safety net in case we were really lucky (or unlucky) when determining the degree: 25
+4. Multiply by 2 to account for the denominator: 50
+
+Now we can evaluate:
+
+#+BEGIN_SRC maple
+nvals := 50:
+
+xvals := []:
+yvals := []:
+for i from 1 to nvals do
+    printf("%a/%a\n",i,nvals):
+    g2_val := randval();
+    while g2_val in xvals do
+        g2_val := randval();
+    od:
+    sys_g2 := eval(sys,{g2=g2_val});
+    gb_g2 := fgb_gbasis_elim(sys_g2,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1]):
+    pol_g2 := gb_g2[1];
+    xvals := [g2_val,op(xvals)]:
+    yvals := [pol_g2,op(yvals)]:
+od:
+#+END_SRC
+
+and normalize:
+
+#+BEGIN_SRC maple
+yyvals := map(y -> y/lcoeff(y), yvals):
+#+END_SRC
+
+* Reconstruction
+
+And now it is time to reconstruct.
+
+Rational reconstruction will give us a rational function
+N(g2,Y2)/D(g2) which is congruent to yvals[i] modulo <g2 - xvals[i]>
+for all i.
+And the polynomial that we want is just N(g2,Y2).
+
+Rational reconstruction in maple is done with the function ratrecon
+
+https://www.maplesoft.com/support/help/maple/view.aspx?path=ratrecon
+
+To call it, we have to construct a polynomial u and a
+polynomial m so that "N/D is congruent to yvals[i]
+modulo <g2 - xvals[i]> for all i" is equivalent to
+"N/D is congruent to u modulo m".
+
+m is the product of the g2 - xvals[i] for all i
+
+u has to be constructed using interpolation.
+
+https://www.maplesoft.com/support/help/maple/view.aspx?path=CurveFitting%2fPolynomialInterpolation
+
+#+BEGIN_SRC maple
+with(CurveFitting):
+
+pp := PolynomialInterpolation(xvals,yyvals,g2):
+
+degree(pp,Y2);
+degree(pp,g2); # too much
+#+END_SRC
+
+And then we use ratrecon to obtain a smaller representative:
+
+#+BEGIN_SRC maple
+m := mul(g2-x,x in xvals):
+rat := ratrecon(pp,m,g2,24,24):
+
+res := numer(rat):
+#+END_SRC
+
+Let's see if this one is small enough:
+
+#+BEGIN_SRC maple
+degree(res,Y2);
+degree(res,g2);
+#+END_SRC
+
+** Is this good?
+
+Wait... Why 18?
+
+We found degree 19 before in one of the specializations (all of them
+actually), so the resulting polynomial can NOT have degree less than
+19.
+
+What happened?
+
+Imagine that you want to reconstruct x*y + x by interpolating on x.
+x=2 -> 2*y+2 simplifies to y+1
+x=3 -> 3*y+3 simplifies to y+1
+Etc.
+
+The same happens any time the polynomial you want to reconstruct is
+A(x)*B(x,y): after evaluating, A(x) becomes just a scalar factor in
+the computations and it is impossible to recover it.
+
+To recover it, there are two possibilities.
+
+(1) We don't have to interpolate on specific variables. We can
+    interpolate along a random line (e.g. choose a random v = 13*x +
+    23*y + 7, instead of a random x before).
+
+Then generically on the choice of the line, the problem doesn't
+appear. And if it still happens, it means that the polynomial has a
+factor A(13*x + 23*y + 7).
+
+If we repeat the computations with another line (say, choosing v =
+x + 3*y + 12), we should find that factor in the result. That is,
+unless A actually only depends on (13*x + 23*y + 7)*(x + 3*y +
+12)...
+
+But realistically, the process terminates fast. However, it
+completely destroys the structure of the system (that's the whole
+point!) which makes the computation of the GB potentially slower.
+
+But there is a better way!
+
+(2) If we evaluate A(x)*B(x,y) at random values of y, we obtain
+    A(x)*B(x,v) for a lot of different v. Then A(x) is just the gcd of
+    all those polynomials.
+
+In reality, for a polynomial in n variables where we
+evaluate/interpolate on 1, we would have
+F(x,y1,...,y(n-1)) = A(x)*B(x,y1,...,y(n-1))
+and we would find A by evaluating F at random values of y1...y(n-1).
+
+Those are very cheap computations, since they are univariate.
+
+And even better, those are computations that we are ALREADY doing: [[degree_estimate]] .
+
+#+BEGIN_SRC maple
+common_div := 0;
+for i from 1 to 20 do
+    sys_simpler := eval(sys,{Y2=randval(),G1=randval(),G2=randval()}):
+    # Need to use the same values for G1 and G2, since they may appear
+    # in that factor
+
+    gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1]):
+    # !!! No modulo p here
+
+    pol := gb_simpler[1]:
+    common_div := gcd(common_div,pol):
+    print(degree(pol));
+od:
+print(common_div);
+#+END_SRC
+
+* Conclusion
+
+#+BEGIN_SRC maple
+final_res := res*common_div;
+print(collect(final_res,Y2,factor));
+#+END_SRC
+
+
