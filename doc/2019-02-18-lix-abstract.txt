@@ -1,0 +1,33 @@
+Les algorithmes à signatures sont devenus une approche classique pour
+le calcul de bases de Gröbner pour des polynômes à coefficients dans
+un corps, et l'extension de cette technique à des polynômes à
+coefficients dans des anneaux a fait l'objet de travaux récents.
+
+Dans ce travail, nous nous intéressons à deux algorithmes dûs à Möller
+(1988).  Le premier de ces algorithmes permet de calculer des bases de
+Gröbner dites faibles, pourvu que l'anneau de coefficients soit
+noethérien et effectif.  Nous montrons que, dans le cas où l'anneau
+des coefficients est principal, cet algorithme peut être adapté pour
+calculer des bases de Gröbner avec signatures.  En particulier,
+l'algorithme garantit l'absence de chutes de signatures, ce qui permet
+d'adapter les critères de signatures classiques comme le critère
+singulier ou le critère F5.
+
+Le second de ces algorithmes de Möller est quant à lui spécifique au
+cas des anneaux principaux, et permet de calculer une base de Gröbner
+forte de manière plus efficace que l'algorithme général. Nous montrons
+que cet algorithme peut également être adapté pour prendre en compte
+les signatures, et éviter un grand nombre de calculs redondants ou
+inutiles.
+
+L'algorithme dédié aux anneaux principaux, contrairement à
+l'algorithme général, est également compatible avec les critères de
+Buchberger, notamment le critère de chaîne, et nous montrons que ce
+critère peut être ajouté de manière compatible avec les signatures.
+
+Nous présentons enfin des résultats expérimentaux en termes de nombres
+de S-polynômes calculés, réduits ou écartés par les différents
+critères, mesurés sur une implantation "jouet" des algorithmes en
+Magma.
+
+(Travail en commun avec Maria Francis)
