@@ -17,6 +17,7 @@
   <style>
     html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   </style>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
   <script>
     function showMenuByWidth() {
     var x = document.getElementById("menu_dropdown");
@@ -43,9 +44,9 @@
 	      <a href="index_fr.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
 		FR
 	      </a>
-              <a href="index_de.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
-		DE
-              </a>
+              <!-- <a href="index_de.html" class="w3-bar-item w3-button w3-hover-theme w3-left"> -->
+	      <!--   DE -->
+              <!-- </a> -->
 	    </div>
             <div class="lang_fr">
 	      <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
@@ -54,9 +55,9 @@
               <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
                 FR
               </a>
-              <a href="index_de.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
-		DE
-              </a>
+              <!-- <a href="index_de.html" class="w3-bar-item w3-button w3-hover-theme w3-left"> -->
+	      <!--   DE -->
+              <!-- </a> -->
             </div>
             <div class="lang_de">
               <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
@@ -223,22 +224,81 @@
         <span class="lang_de">Über mich</span>
       </h2>
       <div class="w3-container">
-        <p class="text lang_en">
-          I am currently a post-doc at the Institute for Algebra at the Johannes Kepler University (Linz, Austria), working with <a href="http://www.kauers.de/">Manuel Kauers</a> on analytic combinatorics and computer algebra.
-        </p>
-        <p class="text lang_fr">
-          Je suis actuellement en post-doc à l'Institute for Algebra à l'Université Johannes Kepler (JKU, Linz, Autriche), pour un travail en combinatoire analytique et calcul formel en collaboration avec Manuel Kauers.
-        </p>
-        <p class="text lang_de">
-          Ich bin derzeit als Postdoc am Institut für Algebra an der Johannes Kepler Universität (Linz, Österreich) angestellt, und arbeite mit Manuel Kauers im Bereich analytische Kombinatorik und Computeralgebra.
-        </p>
+        <div class="lang_en text">
+          <p>
+            I am currently a post-doc at the Institute for Algebra at the Johannes Kepler University (Linz, Austria), working with
+            <a href="http://www.kauers.de/">Manuel Kauers</a> on analytic combinatorics and computer algebra.
+          </p>
 
-        <p class="lang_en text">
-          I did my PhD thesis in the PolSys team, in the <a href="http://www.lip6.fr">LIP6</a> (UPMC, Paris, France), under supervision by <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles Faugère</a> and <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey El Din</a>.
+          <p>
+            My research interest is in effective mathematics, in particular in algebra and geometry.
+            More precisely, I like to describe and develop algorithms to help handle complicated mathematical objects arising in applications.
+          </p>
           
-          My thesis was about the algorithmic resolution of polynomial systems, and more precisely, the regularity of the computations of Gröbner bases for some structured systems.
-          <!-- I have been working on Gröbner basis algorithms for weighted homogeneous systems, and on a real roots classification problem for determinantal systems. -->
-        </p>
+          <p>
+            In this framework, I have been working on algorithms for solving polynomial systems, and in particular on the regularity of the computation of Gröbner bases in different contexts: weighted homogeneous systems which arise for example in cryptography, a classification problem in real algebraic geometry which arose from an optimal control problem, polynomial systems over rings which appear for example in number theory, and systems described by convergent power series from \(p\)-adic geometry.
+          </p>
+
+          <p>
+            I studied Mathematics and Computer Science at the École Normale Supérieure in Paris, and I obtained my Masters in Mathematics at the University Paris 11 (Orsay) in 2012.
+            I prepared my PhD thesis in the PolSys team, in the <a href="http://www.lip6.fr">LIP6</a> (Sorbonne Universités, Paris, France), under the supervision of <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles Faugère</a> and <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey El Din</a>.
+            I then spent one year as a post-doc at <a href="https://www.irit.fr/">IRIT</a> (ENSEEIHT, Toulouse, France), working with
+            <a href="http://gergaud.perso.enseeiht.fr">Joseph Gergaud</a>
+            and
+            <a href="http://cots.perso.enseeiht.fr/">Olivier Cots</a>
+            on algebraic techniques for optimal control, before moving to my current position in Linz.          
+          </p>
+        </div>
+
+        <div class="lang_fr text">
+          <p>
+            Je suis actuellement en post-doc à l'Institute for Algebra à l'Université Johannes Kepler (JKU, Linz, Autriche), pour un travail en combinatoire analytique et calcul formel en collaboration avec
+            <a href="http://www.kauers.de/">Manuel Kauers</a>.
+          </p>
+          
+          <p>
+            Mes travaux de recherche s'intéressent aux mathématiques effectives, en particulier en algèbre et géométrie.
+            Plus précisément, je cherche à décrire et développer des algorithmes permettant de manipuler des objets mathématiques complexes pouvant apparaître dans les applications.
+          </p>
+          
+          <p>
+            Dans ce cadre, j'ai travaillé sur différents algorithmes pour résoudre les systèmes d'équations polynomiales, et en particulier différentes questions liées à la régularité du calcul de bases de Gröbner dans différents contextes: systèmes homogènes avec poids par exemple issus de la cryptanalyse, un problème de classification en géométrie algébrique réelle provenant d'un problème de contrôle optimal, systèmes polynomiaux à coefficients dans des anneaux qui peuvent apparaître en théorie des nombres, ou encore systèmes décrits par des séries formelles convergentes en géométrie algébrique \(p\)-adique.
+          </p>
+          
+          <p>
+            J'ai étudié les mathématiques et l'informatique à l'École Normale Supérieure de Paris, et j'ai obtenu mon master de mathématiques à l'université Paris 11 (Orsay) en 2012.
+            J'ai réalisé ma thèse de doctorat dans l'équipe PolSys, au <a href="http://www.lip6.fr">LIP6</a> (UPMC, devenue Sorbonne Universités, Paris, France), sous la direction de <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles Faugère</a> et <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey El Din</a>.
+            J'ai ensuite passé un an en post-doc à l'<a href="https://www.irit.fr/">IRIT</a> (ENSEEIHT, Toulouse, France), afin de travailler avec
+            <a href="http://gergaud.perso.enseeiht.fr">Joseph Gergaud</a>
+            et
+            <a href="http://cots.perso.enseeiht.fr/">Olivier Cots</a>
+            sur des techniques algébriques pour le contrôle optimal, avant de rejoindre ma position actuelle à Linz.
+          </p>
+        </div>
+        
+        <div class="lang_de text">
+          <p>
+            Ich bin derzeit als Postdoc am Institut für Algebra an der Johannes Kepler Universität (Linz, Österreich) angestellt, und arbeite mit Manuel Kauers im Bereich analytische Kombinatorik und Computeralgebra.
+          </p>
+          
+          <p>
+            In meiner Forschung interessiere ich mich für effective Mathematik, insbesonders Algebra und Geometrie.
+            Genauer gesagt suche ich wie Algorithmen zu beschreiben und entwickeln zur manipulierenden komplizierten mathematischen Objekte aus Anwendungen.
+            My research interest is in effective mathematics, in particular in algebra and geometry.
+            More precisely, I like to describe and develop algorithms to help handle complicated mathematical objects arising in applications.
+          </p>
+          
+          <p>
+            In this framework, I have been working on algorithms for solving polynomial systems, and in particular on the regularity of the computation of Gröbner bases in different contexts: weighted homogeneous systems which arise for example in cryptography, a classification problem in real algebraic geometry which arose from an optimal control problem, polynomial systems over rings which appear for example in number theory, and systems described by convergent power series from \(p\)-adic geometry.
+          </p>
+          
+          <p>
+            I studied Mathematics and Computer Science at the École Normale Supérieure in Paris, and I obtained my Masters in Pure Mathematics in Orsay in 2012.
+            I prepared my PhD thesis in the PolSys team, in the <a href="http://www.lip6.fr">LIP6</a> (UPMC, Paris, France), under supervision by <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles Faugère</a> and <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey El Din</a>.
+            I spent one year as a post-doc in the APO team in Toulouse (France), working with Joseph Gergaud and Olivier Cots on algebraic techniques for optimal control, before moving to my current position in Linz.          
+          </p>
+        </div>
+
         <p class="text lang_de">
           Meine Doktorarbeit habe ich im PolSys (Polynomial Systems) Team des <a href="www.lip6.fr">LIP6</a> (UPMC, Paris, France), unter Aufsicht von
           <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles Faugère</a>
@@ -246,30 +306,6 @@
           <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey El Din</a>, geschrieben.
 
           Darin ging es um algorithmische Auflösung von Polynomsystemen, und genauer um Regularität von Gröbner-Basisberechnungen für strukturierte Systeme.
-        </p>
-        <p class="text lang_fr">
-          J'ai effectué ma thèse au sein de l'équipe PolSys
-	  (Polynomial Systems) du <a href="www.lip6.fr">LIP6</a> (UPMC,
-	  Paris, France), sous la direction
-	  de <a href="http://www-polsys.lip6.fr/~jcf/">Jean-Charles
-	    Faugère</a>
-	  et <a href="http://www-polsys.lip6.fr/~safey/">Mohab Safey
-	    El Din</a>.
-          Mon sujet de thèse portait sur la résolution algorithmique
-	  de systèmes de polynômes, et plus précisément sur la
-	  régularité du calcul de bases de Gröbner pour certains systèmes
-	  structurés.
-
-          <!-- J'ai notamment travaillé sur le calcul de bases de Gröbner pour des systèmes homogènes avec poids, ainsi que sur un problème de classification des racines réelles d'une variété déterminantielle. -->
-        </p>
-
-        
-        <p class="text lang_en">
-          More generally, my research interests are exact algorithms for polynomial system solving and their applications.
-        </p>
-
-        <p class="text lang_fr">
-          Plus généralement, je m'intéresse à la résolution exacte de systèmes polynomiaux et à ses applications.
         </p>
 
         <p class="text lang_de">
@@ -341,6 +377,62 @@
 
         <hr>
         
+        <h3  class="w3-text-grey">
+          <i class="fa fa-newspaper-o fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
+          <span class="lang_en">Journals</span>
+          <span class="lang_fr">Journaux</span>
+          <span class="lang_de">Zeitschriften</span>
+        </h3>
+        <ul class="w3-ul">
+          <li>
+            <b class="w3-text-dark-grey">A Signature-based Algorithm for Computing Gröbner Bases over Principal Ideal Domains</b> (2018)<br>
+            <div class="w3-container">
+              <!-- <span class="lang_en">with </span> -->
+              <!-- <span class="lang_fr">avec </span> -->
+              <!-- <span class="lang_de">mit </span> -->
+              M.&nbsp;Francis, T.&nbsp;Verron<br>
+              To appear in <i>Mathematics in Computer Science: special issue on the ACA 2018 conference</i><br>
+              <span class="lang_en">Links</span>
+              <span class="lang_de">Links</span>
+              <span class="lang_fr">Liens</span>:
+              <a href="doc/2018-signature_moller.pdf">.pdf</a>,
+              <a href="https://arxiv.org/abs/1802.01388">arXiv</a>,
+              <a href="doc/2018-signature_moller.bib">.bib</a>,
+              <a href="https://github.com/ThibautVerron/SignatureMoller">
+                <span class="lang_de">Quellcode</span>
+                <span class="lang_en">source code</span>
+                <span class="lang_fr">code source</span></a>
+            </div>
+          </li>
+
+          <li>
+            <b class="w3-text-dark-grey">Time minimal saturation of a pair of spins and application in Magnetic Resonance Imaging</b><br>
+            <div class="w3-container">
+              B.&nbsp;Bonnard, O.&nbsp;Cots, J.&nbsp;Rouot, T.&nbsp;Verron<br>
+              To appear in <i>Mathematical Control and Related Fields</i><br>
+              <span class="lang_en">Links</span>
+              <span class="lang_de">Links</span>
+              <span class="lang_fr">Liens</span>:
+              <a href="https://www.archives-ouvertes.fr/hal-01764022">hal</a>
+            </div>
+          </li>
+
+          <li><b class="w3-text-dark-grey">On the complexity of computing Gröbner bases for weighted homogeneous systems</b><br>
+            <div class="w3-container">
+              J.-C.&nbsp;Faugère, M.&nbsp;Safey El Din, T.&nbsp;Verron<br>
+              <i>Journal of Symbolic Computations, Volume 76, 2016</i><br>
+              <span class="lang_en">Links</span>
+              <span class="lang_de">Links</span>
+              <span class="lang_fr">Liens</span>:
+              <a href="doc/2015-JSC.pdf">.pdf</a>,
+              <a href="http://arxiv.org/abs/1412.7547">arXiv</a>,
+              <!-- <a href="http://www.sciencedirect.com/science/article/pii/S0747717115001273">ScienceDirect</a>, -->
+              <a href="doc/2015-JSC.bib">.bib</a>
+            </div>
+          </li>
+        </ul>
+        <hr>
+
         <h3  class="w3-text-grey "><i class="fa fa-file-text-o fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
           <span class="lang_en">Conference proceedings</span>
           <span class="lang_fr">Articles de conférences</span>
@@ -415,61 +507,6 @@
           </li>
         </ul>
         <hr>
-        <h3  class="w3-text-grey">
-          <i class="fa fa-newspaper-o fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
-          <span class="lang_en">Journals</span>
-          <span class="lang_fr">Journaux</span>
-          <span class="lang_de">Zeitschriften</span>
-        </h3>
-        <ul class="w3-ul">
-          <li>
-            <b class="w3-text-dark-grey">A Signature-based Algorithm for Computing Gröbner Bases over Principal Ideal Domains</b> (2018)<br>
-            <div class="w3-container">
-              <!-- <span class="lang_en">with </span> -->
-              <!-- <span class="lang_fr">avec </span> -->
-              <!-- <span class="lang_de">mit </span> -->
-              M.&nbsp;Francis, T.&nbsp;Verron<br>
-              To appear in <i>Mathematics in Computer Science: special issue on the ACA 2018 conference</i><br>
-              <span class="lang_en">Links</span>
-              <span class="lang_de">Links</span>
-              <span class="lang_fr">Liens</span>:
-              <a href="doc/2018-signature_moller.pdf">.pdf</a>,
-              <a href="https://arxiv.org/abs/1802.01388">arXiv</a>,
-              <a href="doc/2018-signature_moller.bib">.bib</a>,
-              <a href="https://github.com/ThibautVerron/SignatureMoller">
-                <span class="lang_de">Quellcode</span>
-                <span class="lang_en">source code</span>
-                <span class="lang_fr">code source</span></a>
-            </div>
-          </li>
-
-          <li>
-            <b class="w3-text-dark-grey">Time minimal saturation of a pair of spins and application in Magnetic Resonance Imaging</b><br>
-            <div class="w3-container">
-              B.&nbsp;Bonnard, O.&nbsp;Cots, J.&nbsp;Rouot, T.&nbsp;Verron<br>
-              To appear in <i>Mathematical Control and Related Fields</i><br>
-              <span class="lang_en">Links</span>
-              <span class="lang_de">Links</span>
-              <span class="lang_fr">Liens</span>:
-              <a href="https://www.archives-ouvertes.fr/hal-01764022">hal</a>
-            </div>
-          </li>
-
-          <li><b class="w3-text-dark-grey">On the complexity of computing Gröbner bases for weighted homogeneous systems</b><br>
-            <div class="w3-container">
-              J.-C.&nbsp;Faugère, M.&nbsp;Safey El Din, T.&nbsp;Verron<br>
-              <i>Journal of Symbolic Computations, Volume 76, 2016</i><br>
-              <span class="lang_en">Links</span>
-              <span class="lang_de">Links</span>
-              <span class="lang_fr">Liens</span>:
-              <a href="doc/2015-JSC.pdf">.pdf</a>,
-              <a href="http://arxiv.org/abs/1412.7547">arXiv</a>,
-              <!-- <a href="http://www.sciencedirect.com/science/article/pii/S0747717115001273">ScienceDirect</a>, -->
-              <a href="doc/2015-JSC.bib">.bib</a>
-            </div>
-          </li>
-        </ul>
-        <hr>
         <h3  class="w3-text-grey ">
           <i class="fa fa-file-o fa-fw w3-margin-right w3-xlarge w3-text-theme"></i>
           <span class="lang_en">Other documents</span>
@@ -477,6 +514,22 @@
           <span class="lang_de">Andere Dokumente</span>
         </h3>
         <ul class="w3-ul">
+          <li>
+            <b class="w3-text-dark-grey">Why You Should Remove Zeros From Data Before Guessing</b><br>
+            <div class="w3-container">
+              <!-- <span class="lang_en">with </span> -->
+              <!-- <span class="lang_fr">avec </span> -->
+              <!-- <span class="lang_de">mit </span> -->
+              M.&nbsp;Kauers, T.&nbsp;Verron<br>
+              <i>Poster to be presented at the <i>International Symposium on Symbolic and Algebraic Computation 2019</i></i><br>
+              Beihang University, Beijing, China, 2019/07/15-18<br>
+              <span class="lang_en">Links</span>
+              <span class="lang_de">Links</span>
+              <span class="lang_fr">Liens</span>:
+              <a href="doc/2019-issac-poster_abstract.pdf">abstract</a><!-- , -->
+              <!-- <a href="doc/2019-issac-poster_poster.pdf">poster</a> -->
+            </div>
+          </li>
           <li>
             <b class="w3-text-dark-grey">Working Notes on the Time Minimal Saturation of a Pair of Spins and Application in Magnetic Resonance Imaging</b> (2018)<br>
             <div class="w3-container">
@@ -543,10 +596,10 @@
       <h2 class="w3-text-grey w3-padding-16 inherit-link" id="talks">
         <i class="fa fa-commenting fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>
         <span class="lang_en">
-          Selected other talks (full list <a href="all_talks.html">here</a>)
+          Selected talks (full list <a href="all_talks.html">here</a>)
         </span>
         <span class="lang_fr">
-          Quelques autres exposés (liste complète <a href="all_talks.html">ici</a>)
+          Quelques exposés (liste complète <a href="all_talks.html">ici</a>)
         </span>
         <span class="lang_de">
           Einige Vorträge (komplette Liste <a href="all_talks.html">hier</a>)
@@ -554,9 +607,34 @@
         
       </h2>
       <ul class="w3-ul">
+        <li><b class="w3-text-dark-grey"> 
+            Gröbner bases for Tate algebras </b> <i>(upcoming)</i><br>
+            <div class="w3-container">
+              <a href="http://www.issac-conference.org/2019/">
+                International Symposium on Symbolic and Algebraic Computation (ISSAC 2019)</a><br>
+              Beihang University, Beijing, China, 2019/07/16<br>
+              <!-- <span class="lang_en">Links</span> -->
+              <!-- <span class="lang_de">Links</span> -->
+              <!-- <span class="lang_fr">Liens</span>:  -->
+              <!-- <a href="doc/2019-03-21-JKU-seminar-slides.pdf">slides</a> -->
+            </div>
+          </li>
+          <li><b class="w3-text-dark-grey">
+            Signature-based Möller's algorithm for strong Gröbner bases over PIDs</b> <i>(upcoming)</i><br>
+            <div class="w3-container">
+              <a href="https://mathsites.unibe.ch/siamag19/index.php?location=home">
+                SIAM Conference on Applied Algebraic Geometry</a><br>
+              University of Bern, Bern, Switzerland, 2019/07/13<br>
+              <!-- <span class="lang_en">Links</span> -->
+              <!-- <span class="lang_de">Links</span> -->
+              <!-- <span class="lang_fr">Liens</span>:  -->
+              <!-- <a href="doc/2019-03-21-JKU-seminar-slides.pdf">slides</a> -->
+            </div>
+          </li>
+        
         <li><b class="w3-text-dark-grey">
-           Signature-based algorithms for computing Gröbner bases
-  over Principal Ideal Domains</b><br>
+            Signature-based algorithms for computing Gröbner bases
+            over Principal Ideal Domains</b><br>
           <div class="w3-container">
             <!-- <i class="lang_en"></i> -->
             <a href="http://www.lix.polytechnique.fr/max/max-web/max/max-seminar.en.html">MAX computer algebra seminar</a><br>
@@ -570,17 +648,6 @@
             <a href="doc/2019-02-18-lix-slides.pdf">slides</a>
           </div>
         </li> 
-        <li><b class="w3-text-dark-grey">
-            Who wants (a few) "guessing" data points for free?</b><br>
-          <div class="w3-container">
-            <!-- <i class="lang_en"></i> -->
-            SFB Statusseminar, Strobl, Austria, 2018/12/05<br>
-            <span class="lang_en">Links</span>
-            <span class="lang_de">Links</span>
-            <span class="lang_fr">Liens</span>: 
-            <a href="doc/2018-12-05-guessing.pdf">slides</a>
-          </div>
-        </li>
         <li><b class="w3-text-dark-grey">
             Software tutorial: Computing elimination polynomials using interpolation</b><br>
           <div class="w3-container">
@@ -809,6 +876,74 @@
       </h2>
       <ul class="w3-ul">
         <li>
+          <a href="https://trac.sagemath.org/ticket/26195"><b class="w3-text-dark-grey">Tate Algebras</b></a>
+          <div class="w3-container">
+            <div class="lang_en">
+              Sage package for working with Tate series over \(\mathbb{Z}_p\) and \(\mathbb{Q}_p\).
+              Class definitions are implemented, as well as Buchberger's algorithm for Gröbner bases.
+              The package is included in Sage since version 8.5 (22/12/2018).
+              Gröbner bases algorithms for Tate algebras will be presented at ISSAC 2019.
+              Joint development with
+              <a href="http://xavier.toonywood.org/">Xavier Caruso</a>
+              and
+              <a href="https://www.unilim.fr/pages_perso/tristan.vaccon/contact.html">Tristan Vaccon</a>.
+            </div>
+            <div class="lang_fr">
+              Module Sage pour travailler avec des séries de Tate sur \(\mathbb{Z}_p\) et \(\mathbb{Q}_p\).
+              Le paquet implante les définitions des objets et des opérations usuelles, ainsi que l'algorithme de Buchberger pour le calcul de bases de Gröbner.
+              Le module est inclus dans Sage depuis la version 8.5 (22/12/2018).
+              Les algorithmes pour le calcul de bases de Gröbner dans les algèbres de Tate seront présentés à ISSAC 2019.
+              Développement en collaboration avec
+              <a href="http://xavier.toonywood.org/">Xavier Caruso</a>
+              et
+              <a href="https://www.unilim.fr/pages_perso/tristan.vaccon/contact.html">Tristan Vaccon</a>.
+            </div>
+            <!-- <div class="lang_de"> -->
+            <!-- </div> -->
+          </div>
+        </li>
+        <li>
+          <a href="https://github.com/ThibautVerron/SignatureMoller">
+            <b class="w3-text-dark-grey">Signature Gröbner bases over PIDs</b></a>
+          <div class="w3-container">
+            <div class="lang_en">
+              Magma implementation of signature-enabled versions of Möller's algorithms for computing Gröbner bases for PIDs.
+              Möller's weak GB algorithm with signatures was presented at ACA 2018
+              (<a href="doc/2018-06-20-ACA-slides.pdf">slides</a>),
+              and Möller's strong GB algorithm with signatures will be presented at SIAM AG 2019.
+            </div>
+            <div class="lang_fr">
+              Implantation en Magma de variantes à signatures des algorithmes de Möller pour le calcul de bases de Gröbner à coefficients dans des anneaux principaux.
+              L'algorithme de Möller pour les bases faibles a été présenté à ACA 2018
+              (<a href="doc/2018-06-20-ACA-slides.pdf">slides</a>),
+              et l'algorithme de Möller pour les bases fortes sera présenté à SIAM AG 2019.
+            </div>
+            <!-- <div class="lang_de"> -->
+            <!-- </div> -->
+          </div>
+        </li>
+        <li>
+          <a href="http://mercurey.gforge.inria.fr"><b class="w3-text-dark-grey">Real algebraic classification algorithms for determinantal varieties</b></a>
+          <div class="w3-container">
+            <div class="lang_en">
+              Maple implementation of algorithms computing a classification of the real singularities of determinantal varieties.
+              The algorithms were presented at ISSAC 2016
+              (<a href="doc/2016-07-20-ISSAC-slides.pdf">slides</a>),
+              in the context of an application to contrast optimization in medical imagery.
+              Joint development with Mohab Safey El Din.
+            </div>
+            <div class="lang_fr">
+              Implantation en Maple d'algorithmes pour la classification des singularités réelles de variétés déterminantielles.
+              Les algorithmes ont été présentés à ISSAC 2016
+              (<a href="doc/2016-07-20-ISSAC-slides.pdf">slides</a>),
+              dans le cadre d'une application au problème d'optimisation de contraste en imagerie médicale.
+              Développement en collaboration avec Mohab Safey El Din.
+            </div>
+            <!-- <div class="lang_de"> -->
+            <!-- </div> -->
+          </div>
+        </li>
+        <li>
           <a href="https://github.com/ThibautVerron/magma-mode"><b class="w3-text-dark-grey">Magma-mode</b></a>
           <div class="w3-container">
             <div class="lang_en">
@@ -854,7 +989,7 @@
 <!-- <span class=\"lang_de\">(Zuletzt aktualisiert am %:d %:b %:y, %02H:%02M)</span></p>&#0; -->
 
 <footer class="w3-container w3-center w3-margin-topologique">
-  <p><span class="lang_en">(Last updated: 2019/05/14, 16:33)</span><span class="lang_fr">(Dernière mise à jour le 14 May 2019 à 16:33)</span><span class="lang_de">(Last updated: 2019/05/14, 16:33)</span></p>
+  <p><span class="lang_en">(Last updated: 2019/07/05, 07:04)</span><span class="lang_fr">(Dernière mise à jour le 5 juillet 2019 à 07:04)</span><span class="lang_de">(Last updated: 2019/07/05, 07:04)</span></p>
 </footer>
 
 
