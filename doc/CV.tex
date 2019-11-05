@@ -50,6 +50,8 @@
 
 \usepackage{tabu}
 
+\usepackage{enumitem}
+
 \usepackage[colorlinks]{hyperref}
 
 \usepackage[backend=biber,maxnames=5]{biblatex}
@@ -112,7 +114,7 @@
   \structure{E-mail:} \url{thibaut.verron@jku.at}\\[3pt]
   \structure{Webpage:} \url{https://thibautverron.github.io}
 \end{minipage}
-\\[7pt]
+%\\[7pt]
 
 % \begin{description}
 %   % \item[Birth date (age)] 21 March 1991 (28)
@@ -136,6 +138,16 @@
 %   \item[Principal Investigator] Manuel Kauers
 % \end{description}
 
+\section*{Past and present research activities}
+
+\begin{itemize}[itemsep=0pt]
+  \item Gröbner bases for weighted homogeneous systems
+  \item Strategy for the classification of real roots of determinantal systems, \\
+  application to optimal control for medical imagery
+  \item Signature-based Gröbner bases for polynomials over a ring
+  \item Tropical Gröbner bases, Gröbner bases for Tate series
+  \item D-finite functions
+\end{itemize}
 
 \section*{Employment}
 \label{sec:Previous-positions}
@@ -145,8 +157,8 @@
 \begin{tabular}{rl}
   \structure{2017 -- cur.} & \pbox{\structure{Post-doctoral researcher at JKU (Linz, Austria)}\\
     Supervisor: Manuel Kauers (Institute for Algebra)\\
-    Keywords: computer algebra, algebraic combinatorics, D-finite functions\\
-    Project: Algorithmic and Enumerative Combinatorics (AEC, FWF 5004)
+    Keywords: computer algebra, algebraic combinatorics, D-finite functions% \\
+    % Project: Algorithmic and Enumerative Combinatorics (AEC, FWF 5004)
   }\\
   \structure{2016 -- 2017} & \pbox{\structure{Post-doctoral researcher at INP-ENSEEIHT (Toulouse, France)}\\
   Supervisors: Joseph Gergaud, Olivier Cots  (Team \emph{Parallel algorithms}\emph{ and optimization})\\
@@ -181,7 +193,7 @@
 %   \item[2007] Baccalauréat, mention Très Bien
 % \end{description}
 
-
+%\newpage
 \section*{Ph.D. thesis}
 \label{sec:Formation}
 
@@ -258,34 +270,72 @@
 % \section*{Sélection d'exposés}
 % \label{sec:Selection-dexposes}
 
+\section*{Software}
+\label{sec:Software}
+
+\paragraph{Tate Algebras}
+\begin{itemize}[itemsep=0pt]
+  \item SageMath package for working with Tate series over
+  \(\mathbb{Z}_p\) and \(\mathbb{Q}_p\)
+  \item Implementation of algorithms presented at ISSAC 2019
+  \item Distributed with SageMath since version 8.5 (22/12/2018)
+  \item Joint development with X.~Caruso and T.~Vaccon
+  \item Link: \url{https://doc.sagemath.org/html/en/reference/power_series/sage/rings/tate_algebra.html}
+\end{itemize}
+
+\paragraph{Signature Gröbner bases over PIDs}
+\begin{itemize}[itemsep=0pt]
+  \item Toy implementation in Magma of signature-enabled versions of Möller's algorithms for computing Gröbner bases over PIDs
+  \item Implementation of algorithms presented at ACA 2018 and SIAM AG 2019
+%  \item Joint work with M.~Francis
+  \item Link: \url{https://github.com/ThibautVerron/SignatureMoller}
+\end{itemize}
+
+\paragraph{Real algebraic classification algorithms for determinantal varieties}
+
+\begin{itemize}[itemsep=0pt]
+  \item Implementation in Maple of algorithms computing a classification of the real singularities of determinantal varieties
+  \item Implementation of algorithms presented at ISSAC 2016
+  \item Example run on an application to optimal control in medical imagery
+  \item Joint development with M.~Safey El Din
+  \item Link: \url{http://mercurey.gforge.inria.fr}
+\end{itemize}
+
 \section*{Teaching and supervising experience}
 \label{sec:Teaching}
 
-\paragraph{2018 -- 2019 : Guest lecturer / teaching assistant in Mathematics, JKU, Linz (Austria)}
-\begin{itemize}
-  \item \structure{Co-advisor for a bachelor thesis}, together with Manuel Kauers (in progress)
-  \item \structure{Special lecture}: \emph{Computer Algebra 2} \\
-  (Accessible from bachelor level, 15 lectures, 30h)\\
-  Preparation of lecture notes, final evaluation on programming exercises as homework
-  \item \structure{Exercise sessions}: \emph{Linear Algebra for computer scientists} (in progress) \\
-  (Bachelor level, 30h)\\
-  Grading of finals
-\end{itemize}
-\paragraph{2016 -- 2017 : Teaching assistant in Applied Mathematics, INP Toulouse (France)}
-\begin{itemize}
-  \item \structure{Programming sessions}: \emph{Ordinary Differential Equations} (Python with Scipy, Matlab)\\
-  (Bachelor level, 26h)\\
-  Evaluation of mini-projects (based on a short interview and written report)
-\end{itemize}
-\paragraph{2013 -- 2016 : Teaching assistant in Computer Science, UPMC, Paris (France)}
-\begin{itemize}
-  \item \structure{Exercise and programming sessions}: \emph{Working environment}, \emph{Databases}\\
-  (Bachelor level, 129h)\\
-  Participation in the preparation of the exams, setup of a framework for automated correction of the homework and exams, grading of homework throughout the semester and of finals, preparation and grading of short written tests
-  \item \structure{Programming sessions}: \emph{Introduction to programmation} (Python), \emph{Scientific computing}~(C), \emph{Computer Architecture} (Asm) \\
-  (Bachelor level, 60h)\\
-  Grading of homework throughout the semester
-\end{itemize}
+% \paragraph{2018 -- 2019 : Guest lecturer / teaching assistant in Mathematics, JKU, Linz (Austria)}
+% \begin{itemize}
+%   \item \structure{Co-advisor for a bachelor thesis}, together with Manuel Kauers (in progress)
+%   \item \structure{Special lecture}: \emph{Computer Algebra 2} \\
+%   (Accessible from bachelor level, 15 lectures, 30h)\\
+%   Preparation of lecture notes, final evaluation on programming exercises as homework
+%   \item \structure{Exercise sessions}: \emph{Linear Algebra for computer scientists} (in progress) \\
+%   (Bachelor level, 30h)\\
+%   Grading of finals
+% \end{itemize}
+% \paragraph{2016 -- 2017 : Teaching assistant in Applied Mathematics, INP Toulouse (France)}
+% \begin{itemize}
+%   \item \structure{Programming sessions}: \emph{Ordinary Differential Equations} (Python with Scipy, Matlab)\\
+%   (Bachelor level, 26h)\\
+%   Evaluation of mini-projects (based on a short interview and written report)
+% \end{itemize}
+% \paragraph{2013 -- 2016 : Teaching assistant in Computer Science, UPMC, Paris (France)}
+% \begin{itemize}
+%   \item \structure{Exercise and programming sessions}: \emph{Working environment}, \emph{Databases}\\
+%   (Bachelor level, 129h)\\
+%   Participation in the preparation of the exams, setup of a framework for automated correction of the homework and exams, grading of homework throughout the semester and of finals, preparation and grading of short written tests
+%   \item \structure{Programming sessions}: \emph{Introduction to programmation} (Python), \emph{Scientific computing}~(C), \emph{Computer Architecture} (Asm) \\
+%   (Bachelor level, 60h)\\
+%   Grading of homework throughout the semester
+% \end{itemize}
+
+\begin{tabular}{rl}
+  {\structure{2018 -- 2019}} & \pbox{Guest lecturer / teaching assistant in Mathematics, JKU, Linz (Austria)\\
+    Supervision of a bachelor thesis with M.~Kauers}\\
+{\structure{2016 -- 2017}} & Teaching assistant in Applied Mathematics, INP Toulouse (France) \\ 
+{\structure{2013 -- 2016}} & Teaching assistant in Computer Science, UPMC, Paris (France)
+\end{tabular}
 
 
 
@@ -328,7 +378,7 @@
 \section*{Other information}
 
 \begin{itemize}
-  \item \structure{Languages}: French (native), English (fluent), German (advanced), Russian (basic)
+  \item \structure{Languages}: French (native), English (fluent), German (advanced), Russian (basic), \\Turkish (basic)
   \item \structure{Programming languages}: Python, C, C++, OCaml, Haskell, Bash, Emacs lisp
   %\item \structure{Computer algebra systems}: Sage, Magma, Maple
   %\item \structure{Leasure activities}: Competitive programming (Prologin, Codingame, Google code jam...),
@@ -343,7 +393,21 @@
 %   \item \structure{Russian}: Basic
 % \end{itemize}
 
+\newpage
+\section*{References}
 
+\newcommand{\reference}[3]{%
+  \textbf{#1}, #2\\%
+  E-mail: \url{#3}
+}
+
+\begin{itemize}
+  \item \reference{J.-C.~Faugère}{research director, Inria Paris, France}{jean-charles.faugere@inria.fr}
+  \item \reference{M.~Safey El Din}{professor, Sorbonne Universités, Paris, France}{mohab.safey@lip6.fr}
+  \item \reference{M.~Kauers}{professor, Johannes Kepler University, Linz, Austria}{manuel@kauers.de}
+  \item \reference{B.~Bonnard}{professor, Université de Bourgogne, Dijon, France}{bernard.bonnard@u-bourgogne.fr}
+  \item \reference{X.~Caruso}{research director, CNRS, Université de Bordeaux, Bordeaux, France}{xavier.caruso@normalesup.org}
+\end{itemize}
 
 \end{document}
 
