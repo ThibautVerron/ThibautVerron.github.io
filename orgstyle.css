@@ -1,0 +1,155 @@
+html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}
+
+h1{font-size:36px}
+h2{font-size:12px}
+h3{font-size:12px}
+h4{font-size:30px}
+h5{font-size:24px}
+h6{font-size:20px}
+
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}
+.w3-wide{letter-spacing:4px}
+hr{border:0;border-top:1px solid #eee;margin:20px 0}
+
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+
+body{
+    min-width: 300px;
+    max-width: 1200px;
+    margin: auto;
+    
+    /* w3-light-grey */
+    color:#000!important;background-color:#f1f1f1!important;
+
+    /* w3-content */
+    /* max-width:980px;margin:auto; */
+
+    /* w3-margin-top */
+    margin-top:36px!important;
+}
+
+.w3-row-padding,.w3-row-padding>.w3-half,.w3-row-padding>.w3-third,.w3-row-padding>.w3-twothird,.w3-row-padding>.w3-threequarter,.w3-row-padding>.w3-quarter,.w3-row-padding>.w3-col, #content {padding:0 8px}
+
+/* w3-container, w3-row-padding */
+div.outline-6:before, div.outline-6:after,div.outline-4:before, div.outline-4:after, div.outline-5:before, div.outline-5:after, #content:before, #content:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+
+/* container */
+div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{
+    padding:0.01em 16px;
+}
+
+div.outline-text-7{
+    margin-top: -12px;
+}
+
+div.outline-text-6{
+    margin-top: -16px;
+}
+
+div.outline-7{
+    margin:16px 16px;
+    border-bottom:1px solid #ddd;
+}
+
+
+div.outline-6{
+    margin:0px 16px;
+    border-bottom:1px solid #ddd;
+}
+
+div.outline-4{
+    /* w3-card-2 */
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    /* w3-white */
+    color:#000!important;background-color:#fff!important;
+    /* w3-margin-bottom */
+    margin-bottom:16px!important;
+}
+
+div.outline-5 {
+    
+}
+
+top-grid{
+    /* margin-top:100px; */
+}
+
+h1 {
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    background-color:#fff!important;
+    padding:0.2em 16px;
+    margin-bottom:24px!important;
+}
+
+/* w3-text-grey */
+h1, h3, h4, h5 {
+    color:#757575!important;
+}
+
+/* w3-text-dark-grey */
+h6{
+    color:#3a3a3a!important;
+    font-weight: bold;
+    font-size: inherit;
+}
+
+h4 {
+    /* w3-padding-16 */
+    padding-top:16px!important;padding-bottom:16px!important;
+}
+
+
+h5 {
+    /* padding-top:8px; */
+}
+
+.publist h6, .publist h7{
+    display:none;
+}
+
+ul {
+    /* w3-ul */
+    list-style-type:none;
+    padding:0;
+    margin:0
+}
+
+ul li {
+    padding:8px 16px;
+    border-bottom:1px solid #ddd;
+}
+
+ul li:last-child{
+    border-bottom:none;
+    margin-bottom: 16px;
+}
+
+.icon-size{
+    font-size: 1.1em!important;
+    
+}
+
+.done {
+    display:none;
+}
+
+div.content{
+    margin-top: 100px;
+}
+
+/* #apropos:before { content: ''; display: block; position: relative; width: 0; height: 100em; margin-top: -100em } */
+
+#apropos {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}
