@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-11-06 Wed 15:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Computing elimination polynomials using interpolation</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Thibaut Verron" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Computing elimination polynomials using interpolation</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8f7c678">1. Problem</a></li>
+<li><a href="#org692bfaa">2. Example system</a></li>
+<li><a href="#org27e6267">3. Trying a direct calculation</a>
+<ul>
+<li><a href="#orgeb4991c">3.1. How long will we need to wait?</a></li>
+<li><a href="#org3cfa13f">3.2. But we still don't know the degree in the g2,G2,G1.</a></li>
+</ul>
+</li>
+<li><a href="#org1627229">4. Specialization</a>
+<ul>
+<li><a href="#orgba2a473">4.1. First, we need to make sure that our degree estimate is correct.</a></li>
+<li><a href="#org921566f">4.2. Second, let's see if specializing g2 is enough to complete the computation</a></li>
+<li><a href="#org222888f">4.3. Then, we need to see how many times we will have to do the specialized computation</a></li>
+</ul>
+</li>
+<li><a href="#org80ac838">5. Reconstruction</a>
+<ul>
+<li><a href="#org61d8ee5">5.1. Is this good?</a></li>
+</ul>
+</li>
+<li><a href="#org5548477">6. Conclusion</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8f7c678" class="outline-2">
+<h2 id="org8f7c678"><span class="section-number-2">1</span> Problem</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+When one wants to eliminate one or several variables from a system,
+the result may have very large degree.
+</p>
+
+<p>
+This makes the computations very difficult.
+</p>
+
+<p>
+It is sometimes worthwile to try using evaluation and interpolation
+techniques.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org692bfaa" class="outline-2">
+<h2 id="org692bfaa"><span class="section-number-2">2</span> Example system</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="http://mercurey.gforge.inria.fr/">http://mercurey.gforge.inria.fr/</a>
+</p>
+
+<p>
+Loading relevant libraries:
+</p>
+<div class="org-src-container">
+<pre class="src src-maple">with(LinearAlgebra): 
+with(VectorCalculus): 
+with(combinat):
+</pre>
+</div>
+
+<p>
+System definition:
+</p>
+<div class="org-src-container">
+<pre class="src src-maple">d1 := g1-G1; d2 := g2-G2;
+MatrixD := Matrix([[-G1*y1, -z1-1, d1*z1-G1, 2*d1*y1],
+                   [-g1*z1, y1, d1*y1, -2*d1*z1+G1-d1],
+                   [-G2*y2, -z2-1, d2*z2-G2, 2*d2*y2],
+                   [-g2*z2, y2, d2*y2, -2*d2*z2+G2-d2]]);
+
+vars := [y1, y2, z1, z2];
+g1 := 1; # Dehomogenization
+params := [G1, g2, G2]
+
+k := 4; n := 4; t := 2;
+
+detD := Determinant(MatrixD):
+
+sys := [detD, seq(diff(detD, v), v in vars)]:
+</pre>
+</div>
+
+<p>
+Some measures:
+</p>
+<div class="org-src-container">
+<pre class="src src-maple">nops(sys);
+map(degree, sys, y1);
+map(degree, sys, y2);
+map(degree, sys, z1);
+map(degree, sys, z2);
+map(degree, sys, G1);
+map(degree, sys, g2);
+map(degree, sys, G2);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27e6267" class="outline-2">
+<h2 id="org27e6267"><span class="section-number-2">3</span> Trying a direct calculation</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+We want a polynomial in one of y1, y2, z1 or z2, together with g2, G1
+and G2.
+</p>
+
+<p>
+In other words, we want to compute an <b>elimination polynomial</b>. There
+are many tools for that, I usually use Gröbner bases, which I compute
+using Jean-Charles Faugère's FGb package for Maple.
+</p>
+
+<p>
+<a href="https://www-polsys.lip6.fr/~jcf/FGb/index.html">https://www-polsys.lip6.fr/~jcf/FGb/index.html</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">with(FGb);
+# This is FGb version 1.68
+</pre>
+</div>
+
+<p>
+So, let's try to find a polynomial in y2:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">gb := fgb_gbasis_elim(sys,0,[z1,z2,y1],[y2,g2,G2,G1],{"verb"=3}):
+</pre>
+</div>
+
+<p>
+The degree increases, so does the size of the matrices, and the time
+needed to construct them&#x2026;
+</p>
+</div>
+
+<div id="outline-container-orgeb4991c" class="outline-3">
+<h3 id="orgeb4991c"><span class="section-number-3">3.1</span> How long will we need to wait?</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+We need to know the degree that we will need to reach.
+</p>
+
+<p>
+How to do it? Fix some values for some variables, compute with what
+remains, see the degree of the result.
+</p>
+
+<p>
+Let's start with y2:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">randomize():
+randval := rand(100..10000):
+
+sys_simpler := eval(sys,{G1=randval(),G2=randval(),g2=randval()}):
+gb_simpler := fgb_gbasis(sys_simpler,0,[z1,z2,y1],[y2,g2,G2,G1],{"verb"=3}):
+
+nops(gb_simpler);
+map(indets, gb_simpler);
+map(irreduc,gb_simpler);
+map(degree, gb_simpler);     # Relevant value !!!
+map(degree, gb_simpler, y1);
+map(degree, gb_simpler, y2);
+map(degree, gb_simpler, [y1,y2]);
+</pre>
+</div>
+
+<p>
+As a bonus, we observe that the result seems to be y2*(a degree 4 polynomial in y2)
+Let's simplify the system in consequence:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">sys0 := sys:
+
+sys := [y2*u-1,       # y2 &lt;&gt; 0
+        y2^2 - Y2,    # change of variables, could also be done with repeated calls to algsubs
+        # y2*Y1 - y1, # another possible simplification which I don't justify here
+        op(sys0)
+       ]:
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3cfa13f" class="outline-3">
+<h3 id="org3cfa13f"><span class="section-number-3">3.2</span> But we still don't know the degree in the g2,G2,G1.</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+One way to get a quick estimate is to use the same calculation, and
+look at the size of the coefficients.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">sys_simpler := eval(sys,{G1=10,G2=21,g2=31}): # ~10, linear combinations ~10, and coprime
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -&gt; evalf(log(abs(x))/log(10)),[coeffs(pol)]);
+</pre>
+</div>
+
+<p>
+So, total degree between 23 and 25.
+</p>
+
+<p>
+And if we want the degree in each of the gi:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">sys_simpler := eval(sys,{G1=101,G2=2,g2=3}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -&gt; evalf(log(abs(x))/log(100)),[coeffs(pol)]);
+# In G1: 7 to 9
+
+sys_simpler := eval(sys,{G1=2,G2=101,g2=3}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -&gt; evalf(log(abs(x))/log(100)),[coeffs(pol)]);
+# In G2: 14 to 19
+
+sys_simpler := eval(sys,{G1=2,G2=3,g2=101}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+map(x -&gt; evalf(log(abs(x))/log(100)),[coeffs(pol)]);
+# In g2: 13 to 16
+</pre>
+</div>
+
+<p>
+It's still not very precise.
+</p>
+
+<p>
+The best way is of course to do the same as we did with y2.
+</p>
+
+<p>
+<b>Remark:</b> since we're only interested in the degree, we can do the
+computations modulo p and save a bit of time (sub-linear, since fgb
+uses CRT reconstruction behind the scenes).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">sys_simpler := eval(sys,{Y2=randval(),G2=randval(),g2=randval()}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,65521,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+degree(pol);
+# 9 in G1
+
+sys_simpler := eval(sys,{Y2=randval(),G1=randval(),g2=randval()}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,65521,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+degree(pol);
+# 19 in G2
+
+sys_simpler := eval(sys1,{Y2=randval(),G1=randval(),G2=randval()}):
+gb_simpler := fgb_gbasis_elim(sys_simpler,65521,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+pol := gb_simpler[1];
+degree(pol);
+# 19 in g2
+</pre>
+</div>
+
+<p>
+So the final result has (at best) degree 19+4=23.
+</p>
+
+<p>
+The complexity scales like binomial(n,n+d)<sup>k</sup> where n is the number of
+variables, d the maximal degree and k some number between 1.9 and 3
+(or omega)
+</p>
+
+<p>
+If the polynomial we want to compute is f(x,y) with degree 4 in x
+and degree 20 in y, it's significantly faster to compute 21+epsilon
+bases in degree 4 and reconstruct f, than to compute one basis in
+degree 24.
+</p>
+
+<p>
+But real-life cases are never that not usually that clear-cut.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1627229" class="outline-2">
+<h2 id="org1627229"><span class="section-number-2">4</span> Specialization</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+So let's see if we can make it work with interpolation here.
+And let's use g2 as the interpolation variable.
+</p>
+</div>
+
+<div id="outline-container-orgba2a473" class="outline-3">
+<h3 id="orgba2a473"><span class="section-number-3">4.1</span> First, we need to make sure that our degree estimate is correct.</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-maple" id="orga8d6d1e">for i from 1 to 20 do
+    sys_simpler := eval(sys,{Y2=randval(),G1=randval(),G2=randval()}):
+    gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1]):
+
+    pol := gb_simpler[1]:
+    print(degree(pol));
+od:
+</pre>
+</div>
+
+<p>
+So, 19 seems to be correct.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org921566f" class="outline-3">
+<h3 id="org921566f"><span class="section-number-3">4.2</span> Second, let's see if specializing g2 is enough to complete the computation</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+&#x2026; It would be, but not enough to complete the computation many times in less than 20 minutes, so I will cheat.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">sys1 := sys;
+sys := eval(sys1,{G1=11,G2=5}):
+</pre>
+</div>
+
+<p>
+After cheating, it is enough!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">sys_g2 := eval(sys,{g2=randval()}):
+gb_g2 := fgb_gbasis_elim(sys_g2,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1],{"verb"=3}):
+
+nops(gb_g2);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org222888f" class="outline-3">
+<h3 id="org222888f"><span class="section-number-3">4.3</span> Then, we need to see how many times we will have to do the specialized computation</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+If we want to interpolate coefficients with degree 19 in g2, we need
+to compute the polynomial 20 times.
+</p>
+
+<p>
+We can't just use polynomial interpolation, because the GB
+computations may have simplified some results. For example, if we
+want to recover x*y + 2 by interpolating on x, and we only pick even
+values of x:
+x=2 -&gt; 2*y + 2, simplified into y+1
+x=4 -&gt; 4*y + 2, simplified into y+1/2
+x=6 -&gt; 6*y + 2, simplified into y+1/3
+and polynomial interpolation would conclude that the constant coefficient is 1.
+</p>
+
+<p>
+This is because the Gröbner basis is not computed over Z but over Q!
+</p>
+
+<p>
+So we will have to:
+</p>
+
+<ol class="org-ol">
+<li>Normalize the intermediate results (for example ensuring that the
+leading coefficient is always 1)</li>
+<li>Use rational reconstruction to recover the result (to account for
+those denominators we introduced)</li>
+</ol>
+
+<p>
+In order to determine how many sample values we need:
+</p>
+
+<ol class="org-ol">
+<li>Start with the degree bound you have found: 19</li>
+<li>Add one for the interpolation: 20</li>
+<li>Add some safety net in case we were really lucky (or unlucky) when determining the degree: 25</li>
+<li>Multiply by 2 to account for the denominator: 50</li>
+</ol>
+
+<p>
+Now we can evaluate:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">nvals := 50:
+
+xvals := []:
+yvals := []:
+for i from 1 to nvals do
+    printf("%a/%a\n",i,nvals):
+    g2_val := randval();
+    while g2_val in xvals do
+        g2_val := randval();
+    od:
+    sys_g2 := eval(sys,{g2=g2_val});
+    gb_g2 := fgb_gbasis_elim(sys_g2,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1]):
+    pol_g2 := gb_g2[1];
+    xvals := [g2_val,op(xvals)]:
+    yvals := [pol_g2,op(yvals)]:
+od:
+</pre>
+</div>
+
+<p>
+and normalize:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">yyvals := map(y -&gt; y/lcoeff(y), yvals):
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80ac838" class="outline-2">
+<h2 id="org80ac838"><span class="section-number-2">5</span> Reconstruction</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+And now it is time to reconstruct.
+</p>
+
+<p>
+Rational reconstruction will give us a rational function
+N(g2,Y2)/D(g2) which is congruent to yvals[i] modulo &lt;g2 - xvals[i]&gt;
+for all i.
+And the polynomial that we want is just N(g2,Y2).
+</p>
+
+<p>
+Rational reconstruction in maple is done with the function ratrecon
+</p>
+
+<p>
+<a href="https://www.maplesoft.com/support/help/maple/view.aspx?path=ratrecon">https://www.maplesoft.com/support/help/maple/view.aspx?path=ratrecon</a>
+</p>
+
+<p>
+To call it, we have to construct a polynomial u and a
+polynomial m so that "N/D is congruent to yvals[i]
+modulo &lt;g2 - xvals[i]&gt; for all i" is equivalent to
+"N/D is congruent to u modulo m".
+</p>
+
+<p>
+m is the product of the g2 - xvals[i] for all i
+</p>
+
+<p>
+u has to be constructed using interpolation.
+</p>
+
+<p>
+<a href="https://www.maplesoft.com/support/help/maple/view.aspx?path=CurveFitting/PolynomialInterpolation">https://www.maplesoft.com/support/help/maple/view.aspx?path=CurveFitting/PolynomialInterpolation</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">with(CurveFitting):
+
+pp := PolynomialInterpolation(xvals,yyvals,g2):
+
+degree(pp,Y2);
+degree(pp,g2); # too much
+</pre>
+</div>
+
+<p>
+And then we use ratrecon to obtain a smaller representative:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">m := mul(g2-x,x in xvals):
+rat := ratrecon(pp,m,g2,24,24):
+
+res := numer(rat):
+</pre>
+</div>
+
+<p>
+Let's see if this one is small enough:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">degree(res,Y2);
+degree(res,g2);
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org61d8ee5" class="outline-3">
+<h3 id="org61d8ee5"><span class="section-number-3">5.1</span> Is this good?</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Wait&#x2026; Why 18?
+</p>
+
+<p>
+We found degree 19 before in one of the specializations (all of them
+actually), so the resulting polynomial can NOT have degree less than
+</p>
+<ol class="org-ol">
+<li></li>
+</ol>
+
+<p>
+What happened?
+</p>
+
+<p>
+Imagine that you want to reconstruct x*y + x by interpolating on x.
+x=2 -&gt; 2*y+2 simplifies to y+1
+x=3 -&gt; 3*y+3 simplifies to y+1
+Etc.
+</p>
+
+<p>
+The same happens any time the polynomial you want to reconstruct is
+A(x)*B(x,y): after evaluating, A(x) becomes just a scalar factor in
+the computations and it is impossible to recover it.
+</p>
+
+<p>
+To recover it, there are two possibilities.
+</p>
+
+<p>
+(1) We don't have to interpolate on specific variables. We can
+    interpolate along a random line (e.g. choose a random v = 13*x +
+    23*y + 7, instead of a random x before).
+</p>
+
+<p>
+Then generically on the choice of the line, the problem doesn't
+appear. And if it still happens, it means that the polynomial has a
+factor A(13*x + 23*y + 7).
+</p>
+
+<p>
+If we repeat the computations with another line (say, choosing v =
+x + 3*y + 12), we should find that factor in the result. That is,
+unless A actually only depends on (13*x + 23*y + 7)*(x + 3*y +
+12)&#x2026;
+</p>
+
+<p>
+But realistically, the process terminates fast. However, it
+completely destroys the structure of the system (that's the whole
+point!) which makes the computation of the GB potentially slower.
+</p>
+
+<p>
+But there is a better way!
+</p>
+
+<p>
+(2) If we evaluate A(x)*B(x,y) at random values of y, we obtain
+    A(x)*B(x,v) for a lot of different v. Then A(x) is just the gcd of
+    all those polynomials.
+</p>
+
+<p>
+In reality, for a polynomial in n variables where we
+evaluate/interpolate on 1, we would have
+F(x,y1,&#x2026;,y(n-1)) = A(x)*B(x,y1,&#x2026;,y(n-1))
+and we would find A by evaluating F at random values of y1&#x2026;y(n-1).
+</p>
+
+<p>
+Those are very cheap computations, since they are univariate.
+</p>
+
+<p>
+And even better, those are computations that we are ALREADY doing: <a href="#orga8d6d1e">1</a> .
+</p>
+
+<div class="org-src-container">
+<pre class="src src-maple">common_div := 0;
+for i from 1 to 20 do
+    sys_simpler := eval(sys,{Y2=randval(),G1=randval(),G2=randval()}):
+    # Need to use the same values for G1 and G2, since they may appear
+    # in that factor
+
+    gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1]):
+    # !!! No modulo p here
+
+    pol := gb_simpler[1]:
+    common_div := gcd(common_div,pol):
+    print(degree(pol));
+od:
+print(common_div);
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5548477" class="outline-2">
+<h2 id="org5548477"><span class="section-number-2">6</span> Conclusion</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-maple">final_res := res*common_div;
+print(collect(final_res,Y2,factor));
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Thibaut Verron</p>
+<p class="date">Created: 2019-11-06 Wed 15:35</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
