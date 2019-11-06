@@ -41,10 +41,6 @@ div.outline-6:before, div.outline-6:after,div.outline-4:before, div.outline-4:af
     clear:both;
 }
 
-/* container */
-div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{
-    padding:0.01em 16px;
-}
 
 div.outline-text-7{
     margin-top: -12px;
@@ -85,7 +81,6 @@ top-grid{
 h1 {
     box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     background-color:#fff!important;
-    padding:0.2em 16px;
     margin-bottom:24px!important;
 }
 

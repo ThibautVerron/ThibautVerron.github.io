@@ -31,7 +31,6 @@ body{
     /* w3-margin-top */
     margin-top:36px!important;
 
-    padding:0 16px;
 }
 
 .w3-row-padding,.w3-row-padding>.w3-half,.w3-row-padding>.w3-third,.w3-row-padding>.w3-twothird,.w3-row-padding>.w3-threequarter,.w3-row-padding>.w3-quarter,.w3-row-padding>.w3-col {padding:0 8px}
@@ -44,9 +43,37 @@ div.outline-6:before, div.outline-6:after,div.outline-4:before, div.outline-4:af
 }
 
 /* container */
-div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{
-    padding:0.01em 16px;
+/* @media only screen and (min-width:993px){ */
+/*     /\* div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{ *\/ */
+/*     /\*     padding:0.01em 16px; *\/ */
+/*     /\* } *\/ */
+/*     /\* h1 { *\/ */
+/*     /\*     padding:0.2em 16px; *\/ */
+/*     /\* } *\/ */
+/*     #content{ */
+/*         padding:0.01em 16px; */
+/*     } */
+/*     body{ */
+/*         padding:0 16px; */
+/*     } */
+/*     #nav-left-buttons{margin-left:16px!important;} */
+
+/* } */
+
+/* @media only screen and (max-width:993px){ */
+/*     /\* div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{ *\/ */
+/*     /\*     padding:0.01em 8px; *\/ */
+/*     /\* } *\/ */
+/*     /\* h1 {padding:0.2em 4px;} *\/ */
+#content{
+    padding:0.01em 4px;
 }
+body{
+    padding:0 8px;
+}
+#nav-left-buttons{margin-left:8px!important;}
+
+/* } */
 
 div.outline-text-7{
     margin-top: -12px;
@@ -88,7 +115,6 @@ top-grid{
     box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     color:#000!important;
     background-color:#fff!important;
-    padding:0.01em 16px;
     margin-bottom:16px!important;
 }
 
@@ -123,22 +149,22 @@ h5 {
     display:none;
 }
 
-ul {
-    /* w3-ul */
-    list-style-type:none;
-    padding:0;
-    margin:0
-}
+/* ul { */
+/*     /\* w3-ul *\/ */
+/*     list-style-type:none; */
+/*     padding:0; */
+/*     margin:0 */
+/* } */
 
-ul li {
-    padding:8px 16px;
-    border-bottom:1px solid #ddd;
-}
+/* ul li { */
+/*     padding:8px 16px; */
+/*     border-bottom:1px solid #ddd; */
+/* } */
 
-ul li:last-child{
-    border-bottom:none;
-    margin-bottom: 16px;
-}
+/* ul li:last-child{ */
+/*     border-bottom:none; */
+/*     margin-bottom: 16px; */
+/* } */
 
 .icon-size{
     font-size: 1.1em!important;

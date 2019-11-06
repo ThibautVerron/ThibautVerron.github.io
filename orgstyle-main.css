@@ -42,9 +42,21 @@ div.outline-6:before, div.outline-6:after,div.outline-4:before, div.outline-4:af
 }
 
 /* container */
-div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{
-    padding:0.01em 16px;
+@media only screen and (min-width:993px){
+    /* div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{ */
+    /*     padding:0.01em 16px; */
+    /* } */
+    #nav-left-buttons{margin-left:16px!important;}
+
 }
+
+@media only screen and (max-width:993px){
+    /* div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{ */
+    /*     padding:0.01em 8px; */
+    /* } */
+    #nav-left-buttons{margin-left:8px!important;}
+}
+
 
 div.outline-text-7{
     margin-top: -6px;
@@ -150,22 +162,6 @@ h5 {
     display:none;
 }
 
-ul {
-    /* w3-ul */
-    list-style-type:none;
-    padding:0;
-    margin:0
-}
-
-ul li {
-    padding:8px 16px;
-    border-bottom:1px solid #ddd;
-}
-
-ul li:last-child{
-    border-bottom:none;
-    margin-bottom: 16px;
-}
 
 .icon-size{
     font-size: 1.1em!important;

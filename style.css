@@ -324,10 +324,23 @@ h2 a, h3 a, h4 a, h5 a, h6 a, h7 a
 }
 
 
-section li
-{
-    margin-bottom: 5px;
+ul {
+    /* w3-ul */
+    list-style-type:none;
+    padding:0;
+    margin:0
 }
+
+ul li {
+    padding:8px 16px;
+    border-bottom:1px solid #ddd;
+}
+
+ul li:last-child{
+    border-bottom:none;
+    margin-bottom: 16px;
+}
+
 
 body a:hover
 {
@@ -394,18 +407,56 @@ body a:hover
 }
 
 
-@media  only screen and (max-width:992px){
-    .my-left{float:left;width:26%;min-width:261px}
-    .my-right{}
+/* @media  only screen and (max-width:992px){ */
+/*     .my-left{float:left;width:26%;min-width:261px} */
+/*     .my-right{} */
+/*     .my-nav{position:fixed} */
+/* } */
+
+
+@media only screen and /* (min-width:601px) and  */(max-width:993px){
+    .my-left{float:center;align:center;width:100%;min-width:initial;max-height:100%}
+    .id-card{max-width:550px}
+    .my-right{float:right;width:100%}
     .my-nav{position:fixed}
+    /* nav #menu_right{display:none} */
 }
 
 @media only screen and (max-width:600px){
-    .my-left{float:center;width:100%;min-width:initial}
-    .my-right{float:right;width:100%}
-    .my-nav{position:absolute}
-    /* nav #menu_right{display:none} */
+    .id-card{max-width:281px}
+    .my-left-1{float:center;width:100%;min-width:initial;max-width:281px}
+    .my-right-1{float:right;width:100%}
+
+    ul li {padding:8px 8px;}
+    li .w3-container{padding-left:8px;}
+
+    div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{
+        padding:0.01em 8px;
+    }
+    h1 {padding:0.2em 4px;}
 }
+    /* nav #menu_right{display:none} */
+
+@media only screen and (min-width:600px){
+    div.outline-4, div.outline-5, div.outline-text-4, div.outline-text-5,  div.outline-text-6, div.outline-text-7{
+        padding:0.01em 16px;
+    }
+    h1 {
+        padding:0.2em 16px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width:993px){
+    .my-left-1{float:left;/* width:26%; */width:261px}
+    .my-right-1{
+        padding-left:25px;
+    }
+
+}
+
+.id-card-container{text-align:center; width:100%}
+.id-card{display:inline-block; text-align:left}
+
 @media (min-width:993px){
     .my-left{float:left;/* width:26%; */width:261px}
     .my-right{}

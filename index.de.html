@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<!-- 2019-11-05 Tue 16:15 -->
+<!-- 2019-11-06 Wed 15:35 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thibaut Verron</title>
@@ -64,203 +64,210 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="preamble" class="status">
-<!-- Page Container -->
-<div class="w3-content w3-row-padding w3-margin-top">
+      <div class="w3-content w3-row-padding w3-margin-top">
 
-  <!-- Header -->
-  <nav class="w3-display-container w3-light-grey w3-border-bottom my-nav" style="padding-bottom:37px;margin-bottom:37px;height:37px" >
-    <div id="menu" class="w3-bar">
-      <div class="w3-margin-left w3-margin-right">
-	<div class="lang_en">
-	  <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
-            EN
-          </a>
-	  <a href="index.fr.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
-	    FR
-	  </a>
-          <!-- <a href="index.de.html" class="w3-bar-item w3-button w3-hover-theme w3-left"> -->
-	    <!--   DE -->
-            <!-- </a> -->
-	</div>
-        <div class="lang_fr">
-	  <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
-	    EN
-          </a>
-          <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
-            FR
-          </a>
-          <!-- <a href="index.de.html" class="w3-bar-item w3-button w3-hover-theme w3-left"> -->
-	    <!--   DE -->
-            <!-- </a> -->
-        </div>
-        <div class="lang_de">
-          <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
-	    EN
-          </a>
-	  <a href="index.fr.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
-	    FR
-	  </a>
-          <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
-            DE
-          </a>
-        </div>
+        <!-- Header -->
+        <nav class="w3-display-container w3-light-grey w3-border-bottom my-nav" style="padding-bottom:37px;margin-bottom:37px;height:37px" >
+          <div id="menu" class="w3-bar">
+            <div class="w3-margin-right" id="nav-left-buttons" >
+	      <div class="lang_en">
+	        <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
+                  EN
+                </a>
+	        <a href="index.fr.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+	          FR
+	        </a>
+                <!-- <a href="index.de.html" class="w3-bar-item w3-button w3-hover-theme w3-left"> -->
+	          <!--   DE -->
+                  <!-- </a> -->
+	      </div>
+              <div class="lang_fr">
+	        <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+	          EN
+                </a>
+                <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
+                  FR
+                </a>
+                <!-- <a href="index.de.html" class="w3-bar-item w3-button w3-hover-theme w3-left"> -->
+	          <!--   DE -->
+                  <!-- </a> -->
+              </div>
+              <div class="lang_de">
+                <a href="index.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+	          EN
+                </a>
+	        <a href="index.fr.html" class="w3-bar-item w3-button w3-hover-theme w3-left">
+	          FR
+	        </a>
+                <a class="w3-bar-item w3-button w3-theme-d4 w3-left w3-hover-theme">
+                  DE
+                </a>
+              </div>
 
-        <a href="javascript:document.getElementById('software').scrollIntoView(true)" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right"  style="margin-right:-8px;">
-          <span class="lang_en">Software</span>
-          <span class="lang_fr">Logiciel</span>
-          <span class="lang_de">Software</span>
-        </a><a href="javascript:document.getElementById('enseignement').scrollIntoView(true)" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
-          <span class="lang_en">Teaching</span>
-          <span class="lang_fr">Enseignement</span>
-          <span class="lang_de">Lehre</span>
-        </a><a href="javascript:document.getElementById('talks').scrollIntoView(true)" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
-          <span class="lang_en">Talks</span>
-          <span class="lang_fr">Exposés</span>
-          <span class="lang_de">Vorträge</span>
-        </a>
-        <a href="javascript:document.getElementById('publis').scrollIntoView(true)" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
-          <span class="lang_en">Publications</span>
-          <span class="lang_fr">Publications</span>
-          <span class="lang_de">Publikationen</span>
-        </a>
-        <a href="javascript:document.getElementById('apropos').scrollIntoView(true)" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
-          <span class="lang_en">About</span>
-          <span class="lang_fr">À propos</span>
-          <span class="lang_de">Über mich</span>
-        </a>
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="showMenuByWidth()">&#9776;</a>
+              <a href="#software" id="get-software-horiz" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right"  style="margin-right:-8px;">
+                <span class="lang_en">Software</span>
+                <span class="lang_fr">Logiciel</span>
+                <span class="lang_de">Software</span>
+              </a><a href="#enseignement" id="get-enseignement-horiz" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+                <span class="lang_en">Teaching</span>
+                <span class="lang_fr">Enseignement</span>
+                <span class="lang_de">Lehre</span>
+              </a><a href="#talks" id="get-talks-horiz" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+                <span class="lang_en">Talks</span>
+                <span class="lang_fr">Exposés</span>
+                <span class="lang_de">Vorträge</span>
+              </a>
+              <a href="#publis" id="get-publis-horiz" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+                <span class="lang_en">Publications</span>
+                <span class="lang_fr">Publications</span>
+                <span class="lang_de">Publikationen</span>
+              </a>
+              <a href="#apropos" id="get-apropos-horiz" class="w3-bar-item w3-button w3-hover-theme w3-hide-small w3-right">
+                <span class="lang_en">About</span>
+                <span class="lang_fr">À propos</span>
+                <span class="lang_de">Über mich</span>
+              </a>
+              <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" style="margin-right:-8px!important;" onclick="showMenuByWidth()">&#9776;</a>
+            </div>
+            
+            <!-- Vertical menu for small devices -->
+            <div id="menu_dropdown" class="w3-bar-block w3-right w3-light-grey w3-hide w3-hide-medium w3-hide-large">
+              <a href="#apropos" id="get-apropos-vert" class="w3-bar-item w3-button w3-border w3-hover-theme">
+                <span class="lang_en">About</span>
+                <span class="lang_fr">À propos</span>
+                <span class="lang_de">Über mich</span>
+              </a>
+              
+              <a href="#publis" id="get-publis-vert" class="w3-bar-item w3-button w3-border w3-hover-theme">
+                <span class="lang_en">Publications</span>
+                <span class="lang_fr">Publications</span>
+                <span class="lang_de">Publikationen</span>
+              </a>
+              
+              <a href="#talks" id="get-talks-vert" class="w3-bar-item w3-button w3-border  w3-hover-theme">
+                <span class="lang_en">Talks</span>
+                <span class="lang_fr">Exposés</span>
+                <span class="lang_de">Vorträge</span>
+              </a>
+              
+              <a href="#enseignement" id="get-enseignement-vert" class="w3-bar-item w3-button w3-border w3-hover-theme">
+                <span class="lang_en">Teaching</span>
+                <span class="lang_fr">Enseignement</span>
+                <span class="lang_de">Lehre</span>
+              </a>
+              
+              <a href="#software" id="get-software-vert" class="w3-bar-item w3-button w3-border w3-hover-theme"
+                 style="/*padding-right:1.5em;*/">
+                <span class="lang_en">Software</span>
+                <span class="lang_fr">Logiciel</span>
+                <span class="lang_de">Software</span>
+              </a>
+            </div>
+          </div>
+        </nav>
       </div>
-      
-      <!-- Vertical menu for small devices -->
-      <div id="menu_dropdown" class="w3-bar-block w3-right w3-light-grey w3-hide w3-hide-medium w3-hide-large">
-        <a href="javascript:document.getElementById('apropos').scrollIntoView(true)" class="w3-bar-item w3-button w3-border w3-hover-theme">
-          <span class="lang_en">About</span>
-          <span class="lang_fr">À propos</span>
-          <span class="lang_de">Über mich</span>
-        </a>
-        
-        <a href="javascript:document.getElementById('publis').scrollIntoView(true)" class="w3-bar-item w3-button w3-border w3-hover-theme">
-          <span class="lang_en">Publications</span>
-          <span class="lang_fr">Publications</span>
-          <span class="lang_de">Publikationen</span>
-        </a>
-        
-        <a href="javascript:document.getElementById('talks').scrollIntoView(true)" class="w3-bar-item w3-button w3-border  w3-hover-theme">
-          <span class="lang_en">Talks</span>
-          <span class="lang_fr">Exposés</span>
-          <span class="lang_de">Vorträge</span>
-        </a>
-        
-        <a href="javascript:document.getElementById('enseignement').scrollIntoView(true)" class="w3-bar-item w3-button w3-border w3-hover-theme">
-          <span class="lang_en">Teaching</span>
-          <span class="lang_fr">Enseignement</span>
-          <span class="lang_de">Lehre</span>
-        </a>
-        
-        <a href="javascript:document.getElementById('software').scrollIntoView(true)" class="w3-bar-item w3-button w3-border w3-hover-theme"
-           style="/*padding-right:1.5em;*/">
-          <span class="lang_en">Software</span>
-          <span class="lang_fr">Logiciel</span>
-          <span class="lang_de">Software</span>
-        </a>
-      </div>
+
     </div>
-  </nav>
-</div>
-
-</div>
 </div>
 <div id="content">
-<div id="outline-container-orgfef8ce2" class="outline-2 w3-row-padding top-grid">
-<h2 id="orgfef8ce2"></h2>
-<div class="outline-text-2" id="text-orgfef8ce2">
+<div id="outline-container-org67a09da" class="outline-2 w3-row-padding top-grid">
+<h2 id="org67a09da"></h2>
+<div class="outline-text-2" id="text-org67a09da">
 </div>
 
-<div id="outline-container-org60d76b7" class="outline-3 w3-col my-left">
-<h3 id="org60d76b7"></h3>
-<div class="outline-text-3" id="text-org60d76b7">
-<div class="w3-white w3-text-grey w3-card-4" style="max-width:281px;/*min-width:240px;*//*position:fixed*/">
-          <div class="w3-display-container" style="">
-        <img src="img/IMG_9133_reduced.png" style="max-width:100%" alt="Avatar">
-        <div class="w3-container w3-display-bottomleft w3-text-light-grey" id="name-on-pic" style="width:100%;max-width:281px;font-size:30px;padding-top:16px!important;padding-bottom:16px!important;">
+<div id="outline-container-org50b1a17" class="outline-3 w3-col my-left">
+<h3 id="org50b1a17"></h3>
+<div class="outline-text-3" id="text-org50b1a17">
+<div class="id-card-container">
+<div class="w3-white w3-text-grey w3-card-4 id-card" style="<!-- max-width:281px; -->/*min-width:240px;*//*position:fixed*/">
+  <div class="w3-row">
+    <div class="w3-display-container w3-col my-left-1" style="">
+      <img src="img/IMG_9133_reduced.png" style="max-width:100%" alt="Avatar">
+      <div class="w3-container w3-display-bottomleft w3-text-light-grey" id="name-on-pic" style="width:100%;max-width:281px;font-size:30px;padding-top:16px!important;padding-bottom:16px!important;">
         Thibaut Verron
-        </div>
       </div>
-      <div class="w3-container inherit-link">
-        <p><i class="fa fa-briefcase fa-fw w3-text-theme" style="margin-left:-0.4em;margin-right:0.2em"></i>
-          <span class="lang_en">Post-doc </span>
-          <span class="lang_fr">Post-doc </span>
-          <span class="lang_de">Postdoc</span>
-          <br>
-        </p>
-        <p><i class="fa fa-home fa-fw w3-large w3-text-theme" style="margin-left:-0.5em;margin-right:0.1em" ></i>
-          <span class="lang_en">Institute for Algebra</span>
-          <span class="lang_fr">Institute for Algebra</span>
-          <span class="lang_de">Institut für Algebra</span>
-          <br>
-          <i style="margin-right:1.3em"></i>
-          <span class="lang_en">Johannes Kepler University</span>
-          <span class="lang_fr">Johannes Kepler University</span>
-          <span class="lang_de">Johannes Kepler Universität</span>
-          <br>
-          <!-- <i style="margin-right:1.3em"></i><br> -->
-          <!-- <i style="margin-right:1.3em"></i>Office ???<br> -->
-          <i style="margin-right:1.3em"></i>
-          Linz,
-          <span class="lang_en">Austria</span>
-          <span class="lang_fr">Autriche</span>
-          <span class="lang_de">Österreich</span>
-        </p>
-        <p><i class="fa fa-envelope fa-fw w3-text-theme"  style="margin-left:-0.5em;margin-right:0.3em"></i> <a href="mailto:thibaut.verron@jku.at">thibaut.verron@jku.at</a><br>
-          <i style="margin-right:1.3em"></i> <a href="mailto:thibaut.verron@gmail.com">thibaut.verron@gmail.com</a></p>
-        <!-- <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-theme"></i>1224435534</p> -->
-        <!-- <hr> -->
-        
-        <p><!-- <i class="fa fa-user fa-fw w3-text-theme"  style="margin-left:-0.5em;margin-right:0.3em"></i> -->
-          <i class="fa fa-file w3-medium fa-fw w3-text-theme"
-             style="margin-left:-0.5em;margin-right:0.25em"></i>
-          <a href="doc/CV.pdf">
-            <span class="lang_en">CV</span>
-            <span class="lang_fr">CV (en anglais)</span>
-            <span class="lang_de">Lebenslauf (auf Englisch)</span>
-        </a></p>
-        <p><!-- <i class="fa fa-user fa-fw w3-text-theme"  style="margin-left:-0.5em;margin-right:0.3em"></i> -->
-          <i class="fa fa-stack-exchange w3-large fa-fw w3-text-theme"
-             style="margin-left:-0.5em;margin-right:0.1em"></i>
-          <a href="https://stackexchange.com/users/1058582/t-verron">
-            <span class="lang_en">Stackexchange profile</span>
-            <span class="lang_fr">Profil sur Stackexchange</span>
-            <span class="lang_de">Profil auf Stackexchange</span>
-        </a></p>
-        <!-- <i style="margin-right:1.3em"></i> -->
-        <p>
-          <i class="fa fa-github fa-fw w3-large w3-text-theme"
-             style="margin-left:-0.5em;margin-right:0.1em"></i>
-          <!-- <i style="margin-right:0.04em"></i> -->
-          <a href="https://github.com/ThibautVerron">
-            <span class="lang_en">Github profile</span>
-            <span class="lang_fr">Profil sur Github</span>
-            <span class="lang_de">Profil auf Github</span>
-          </a><br>
-        </p>
+    </div>
+    <div class="w3-container inherit-link w3-rest my-right-1">
+      <!-- <div class="w3-display-container"> -->
+        <!-- <div class="w3-display-right"> -->
+          <p><i class="fa fa-briefcase fa-fw w3-text-theme" style="margin-left:-0.4em;margin-right:0.2em"></i>
+            <span class="lang_en">Post-doc </span>
+            <span class="lang_fr">Post-doc </span>
+            <span class="lang_de">Postdoc</span>
+            <br>
+          </p>
+          <p><i class="fa fa-home fa-fw w3-large w3-text-theme" style="margin-left:-0.5em;margin-right:0.1em" ></i>
+            <span class="lang_en">Institute for Algebra</span>
+            <span class="lang_fr">Institute for Algebra</span>
+            <span class="lang_de">Institut für Algebra</span>
+            <br>
+            <i style="margin-right:1.3em"></i>
+            <span class="lang_en">Johannes Kepler University</span>
+            <span class="lang_fr">Johannes Kepler University</span>
+            <span class="lang_de">Johannes Kepler Universität</span>
+            <br>
+            <!-- <i style="margin-right:1.3em"></i><br> -->
+            <!-- <i style="margin-right:1.3em"></i>Office ???<br> -->
+            <i style="margin-right:1.3em"></i>
+            Linz,
+            <span class="lang_en">Austria</span>
+            <span class="lang_fr">Autriche</span>
+            <span class="lang_de">Österreich</span>
+          </p>
+          <p><i class="fa fa-envelope fa-fw w3-text-theme"  style="margin-left:-0.5em;margin-right:0.3em"></i> <a href="mailto:thibaut.verron@jku.at">thibaut.verron@jku.at</a><br>
+            <i style="margin-right:1.3em"></i> <a href="mailto:thibaut.verron@gmail.com">thibaut.verron@gmail.com</a></p>
+          <!-- <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-theme"></i>1224435534</p> -->
+          <!-- <hr> -->
+
+          <p><!-- <i class="fa fa-user fa-fw w3-text-theme"  style="margin-left:-0.5em;margin-right:0.3em"></i> -->
+            <i class="fa fa-file w3-medium fa-fw w3-text-theme"
+               style="margin-left:-0.5em;margin-right:0.25em"></i>
+            <a href="doc/CV.pdf">
+              <span class="lang_en">CV</span>
+              <span class="lang_fr">CV (en anglais)</span>
+              <span class="lang_de">Lebenslauf (auf Englisch)</span>
+          </a></p>
+          <p><!-- <i class="fa fa-user fa-fw w3-text-theme"  style="margin-left:-0.5em;margin-right:0.3em"></i> -->
+            <i class="fa fa-stack-exchange w3-large fa-fw w3-text-theme"
+               style="margin-left:-0.5em;margin-right:0.1em"></i>
+            <a href="https://stackexchange.com/users/1058582/t-verron">
+              <span class="lang_en">Stackexchange profile</span>
+              <span class="lang_fr">Profil sur Stackexchange</span>
+              <span class="lang_de">Profil auf Stackexchange</span>
+          </a></p>
+          <!-- <i style="margin-right:1.3em"></i> -->
+          <p>
+            <i class="fa fa-github fa-fw w3-large w3-text-theme"
+               style="margin-left:-0.5em;margin-right:0.1em"></i>
+            <!-- <i style="margin-right:0.04em"></i> -->
+            <a href="https://github.com/ThibautVerron">
+              <span class="lang_en">Github profile</span>
+              <span class="lang_fr">Profil sur Github</span>
+              <span class="lang_de">Profil auf Github</span>
+            </a><br>
+          </p>
+          <!-- <br> -->
+        <!-- </div> -->
       </div>
-</div><br>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgc6a8536" class="outline-3 w3-rest my-right">
-<h3 id="orgc6a8536"></h3>
-<div class="outline-text-3" id="text-orgc6a8536">
+<div id="outline-container-org1082b05" class="outline-3 w3-rest my-right">
+<h3 id="org1082b05"></h3>
+<div class="outline-text-3" id="text-org1082b05">
 </div>
 
 <div id="outline-container-org46cd1ae" class="outline-4">
-<h4 id="apropos"><a id="org46cd1ae"></a><span class="todo TODO">TODO</span>  <i class="fa fa-user fa-fw w3-margin-right w3-text-theme icon-size" ></i> Über mich</h4>
+<h4 id="apropos"><a id="org46cd1ae"></a><span class="todo TODO">TODO</span>  <i class="fa fa-user fa-fw w3-margin-right w3-text-theme icon-size" ></i> Über mich&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-apropos">
 </div>
 </div>
 
 <div id="outline-container-org98c095b" class="outline-4 publist">
-<h4 id="publis"><a id="org98c095b"></a><span class="done DONE">DONE</span>  <i class="fa fa-book fa-fw w3-margin-right w3-text-theme icon-size" ></i> Publikationen</h4>
+<h4 id="publis"><a id="org98c095b"></a><span class="done DONE">DONE</span>  <i class="fa fa-book fa-fw w3-margin-right w3-text-theme icon-size" ></i> Publikationen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-publis">
 </div>
 
@@ -322,11 +329,11 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgf0bf057" class="outline-4">
-<h4 id="talks"><a id="orgf0bf057"></a><span class="done DONE">DONE</span>  <i class="fa fa-commenting fa-fw w3-margin-right w3-text-theme icon-size" ></i> Einige Vorträge (komplette Liste <a href="all_talks.html">hier</a>)</h4>
+<h4 id="talks"><a id="orgf0bf057"></a><span class="done DONE">DONE</span>  <i class="fa fa-commenting fa-fw w3-margin-right w3-text-theme icon-size" ></i> Einige Vorträge (komplette Liste <a href="all_talks.html">hier</a>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-talks">
 <ul class="org-ul">
 <li><b class="w3-text-dark-grey">Signature-based Möller's algorithm for strong Gröbner bases over PIDs</b> <br><div class="w3-container"><a href="https://mathsites.unibe.ch/siamag19/index.php?location=home">SIAM Conference on Applied Algebraic Geometry</a>, session <i>Algebraic methods for polynomial system solving</i><br>University of Bern, Bern, Switzerland, 2019/07/13<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2019-07-13-SIAM-AG-slides.pdf">slides</a></div></li>
-<li><b class="w3-text-dark-grey">Software tutorial: Computing elimination polynomials using interpolation</b> <br><div class="w3-container">SFB Statusseminar<br>Strobl, Austria, 2018/12/04<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2018-12-04-interpolation.html">code</a> (org-mode file, can be opened as a plain-text file)</div></li>
+<li><b class="w3-text-dark-grey">Software tutorial: Computing elimination polynomials using interpolation</b> <br><div class="w3-container">SFB Statusseminar<br>Strobl, Austria, 2018/12/04<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="./doc/2018-12-04-interpolation.html">org worksheet</a> (can be opened as a plain-text file), <a href="doc/2018-12-04-interpolation.html">html</a></div></li>
 <li><b class="w3-text-dark-grey">Algebraic classification methods for an optimal control problem in medical imagery</b> <br><div class="w3-container"><a href="http://mathematik.jku.at/mathe_linkTalks.shtml">Seminar <i>Algebra and Discrete Mathematics</i></a><br>Johannes Kepler University, Linz, Austria, 2017/12/07<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2017-12-07-JKU-seminar.pdf">slides</a></div></li>
 <li><b class="w3-text-dark-grey">Régularité du calcul de bases de Gröbner pour les systèmes homogènes avec poids</b> <br><div class="w3-container"><a href="http://irmar.univ-rennes1.fr/Equipes/geometrie/geomeff/Activites/Seminaire/">Séminaire <i>Géométrie et algèbre effectives</i></a><br>IRMAR, Université Rennes 1, Rennes, France, 2017/06/02<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2017-06-02-Rennes-abstract.pdf">abstract</a> (in French), <a href="doc/2017-06-02-Rennes-slides.pdf">slides</a></div></li>
 </ul>
@@ -334,13 +341,13 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orga242984" class="outline-4">
-<h4 id="enseignement"><a id="orga242984"></a><span class="todo TODO">TODO</span>  <i class="fa fa-group fa-fw w3-margin-right w3-text-theme icon-size" ></i> Lehre</h4>
+<h4 id="enseignement"><a id="orga242984"></a><span class="todo TODO">TODO</span>  <i class="fa fa-group fa-fw w3-margin-right w3-text-theme icon-size" ></i> Lehre&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-enseignement">
 </div>
 </div>
 
 <div id="outline-container-org66120d0" class="outline-4">
-<h4 id="software"><a id="org66120d0"></a><span class="todo TODO">TODO</span>  <i class="fa fa-code fa-fw w3-margin-right w3-text-theme icon-size" ></i> Software</h4>
+<h4 id="software"><a id="org66120d0"></a><span class="todo TODO">TODO</span>  <i class="fa fa-code fa-fw w3-margin-right w3-text-theme icon-size" ></i> Software&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-software">
 </div>
 
@@ -372,7 +379,7 @@ Emacs Modus für Magma Quellcode.  Es basiert auf dem Magma-mode von
 <div id="postamble" class="status">
 <footer class="w3-container w3-center w3-margin-top">
   <p><span class="lang_en">
-(Last updated: 2019/11/05, 16:15)</span><span class="lang_fr">(Dernière mise à jour le 05/11/2019 à 16:15)</span><span class="lang_de">(Last updated: 2019/11/05, 16:15)</span></p>
+(Last updated: 2019/11/06, 15:35)</span><span class="lang_fr">(Dernière mise à jour le 06/11/2019 à 15:35)</span><span class="lang_de">(Last updated: 2019/11/06, 15:35)</span></p>
 </footer>
 </div>
 </body>
