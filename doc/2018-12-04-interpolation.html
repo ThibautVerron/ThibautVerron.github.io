@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-20 Thu 17:42 -->
+<!-- 2020-07-16 Thu 14:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computing elimination polynomials using interpolation</title>
@@ -225,33 +225,33 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org436d1b7">1. Problem</a></li>
-<li><a href="#org91081bd">2. Example system</a></li>
-<li><a href="#org812a9e6">3. Trying a direct calculation</a>
+<li><a href="#orgea7ce9c">1. Problem</a></li>
+<li><a href="#org0666afc">2. Example system</a></li>
+<li><a href="#org76e5290">3. Trying a direct calculation</a>
 <ul>
-<li><a href="#org544ae44">3.1. How long will we need to wait?</a></li>
-<li><a href="#org043e0ea">3.2. But we still don't know the degree in the g2,G2,G1.</a></li>
+<li><a href="#orgc4874c4">3.1. How long will we need to wait?</a></li>
+<li><a href="#orga044468">3.2. But we still don't know the degree in the g2,G2,G1.</a></li>
 </ul>
 </li>
-<li><a href="#org4680cd2">4. Specialization</a>
+<li><a href="#org46268b8">4. Specialization</a>
 <ul>
-<li><a href="#orga927dce">4.1. First, we need to make sure that our degree estimate is correct.</a></li>
-<li><a href="#orgc8baf81">4.2. Second, let's see if specializing g2 is enough to complete the computation</a></li>
-<li><a href="#org608026d">4.3. Then, we need to see how many times we will have to do the specialized computation</a></li>
+<li><a href="#org522ec9c">4.1. First, we need to make sure that our degree estimate is correct.</a></li>
+<li><a href="#orgbafaaa9">4.2. Second, let's see if specializing g2 is enough to complete the computation</a></li>
+<li><a href="#org39176fb">4.3. Then, we need to see how many times we will have to do the specialized computation</a></li>
 </ul>
 </li>
-<li><a href="#org5eead41">5. Reconstruction</a>
+<li><a href="#orga1328d8">5. Reconstruction</a>
 <ul>
-<li><a href="#org8e3f6c8">5.1. Is this good?</a></li>
+<li><a href="#orga87b10a">5.1. Is this good?</a></li>
 </ul>
 </li>
-<li><a href="#org829bb07">6. Conclusion</a></li>
+<li><a href="#orgecfa890">6. Conclusion</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org436d1b7" class="outline-2">
-<h2 id="org436d1b7"><span class="section-number-2">1</span> Problem</h2>
+<div id="outline-container-orgea7ce9c" class="outline-2">
+<h2 id="orgea7ce9c"><span class="section-number-2">1</span> Problem</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 When one wants to eliminate one or several variables from a system,
@@ -269,8 +269,8 @@ techniques.
 </div>
 </div>
 
-<div id="outline-container-org91081bd" class="outline-2">
-<h2 id="org91081bd"><span class="section-number-2">2</span> Example system</h2>
+<div id="outline-container-org0666afc" class="outline-2">
+<h2 id="org0666afc"><span class="section-number-2">2</span> Example system</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <a href="http://mercurey.gforge.inria.fr/">http://mercurey.gforge.inria.fr/</a>
@@ -325,8 +325,8 @@ map(degree, sys, G2);
 </div>
 </div>
 
-<div id="outline-container-org812a9e6" class="outline-2">
-<h2 id="org812a9e6"><span class="section-number-2">3</span> Trying a direct calculation</h2>
+<div id="outline-container-org76e5290" class="outline-2">
+<h2 id="org76e5290"><span class="section-number-2">3</span> Trying a direct calculation</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 We want a polynomial in one of y1, y2, z1 or z2, together with g2, G1
@@ -364,8 +364,8 @@ needed to construct them&#x2026;
 </p>
 </div>
 
-<div id="outline-container-org544ae44" class="outline-3">
-<h3 id="org544ae44"><span class="section-number-3">3.1</span> How long will we need to wait?</h3>
+<div id="outline-container-orgc4874c4" class="outline-3">
+<h3 id="orgc4874c4"><span class="section-number-3">3.1</span> How long will we need to wait?</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We need to know the degree that we will need to reach.
@@ -415,8 +415,8 @@ sys := [y2*u-1,       # y2 &lt;&gt; 0
 </div>
 </div>
 
-<div id="outline-container-org043e0ea" class="outline-3">
-<h3 id="org043e0ea"><span class="section-number-3">3.2</span> But we still don't know the degree in the g2,G2,G1.</h3>
+<div id="outline-container-orga044468" class="outline-3">
+<h3 id="orga044468"><span class="section-number-3">3.2</span> But we still don't know the degree in the g2,G2,G1.</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 One way to get a quick estimate is to use the same calculation, and
@@ -526,8 +526,8 @@ But real-life cases are never that not usually that clear-cut.
 </div>
 </div>
 
-<div id="outline-container-org4680cd2" class="outline-2">
-<h2 id="org4680cd2"><span class="section-number-2">4</span> Specialization</h2>
+<div id="outline-container-org46268b8" class="outline-2">
+<h2 id="org46268b8"><span class="section-number-2">4</span> Specialization</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 So let's see if we can make it work with interpolation here.
@@ -535,11 +535,11 @@ And let's use g2 as the interpolation variable.
 </p>
 </div>
 
-<div id="outline-container-orga927dce" class="outline-3">
-<h3 id="orga927dce"><span class="section-number-3">4.1</span> First, we need to make sure that our degree estimate is correct.</h3>
+<div id="outline-container-org522ec9c" class="outline-3">
+<h3 id="org522ec9c"><span class="section-number-3">4.1</span> First, we need to make sure that our degree estimate is correct.</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
-<pre class="src src-maple" id="org986950d">for i from 1 to 20 do
+<pre class="src src-maple" id="orga60e2fa">for i from 1 to 20 do
     sys_simpler := eval(sys,{Y2=randval(),G1=randval(),G2=randval()}):
     gb_simpler := fgb_gbasis_elim(sys_simpler,0,[y2,u,z1,z2,y1,Y1],[Y2,g2,G2,G1]):
 
@@ -555,8 +555,8 @@ So, 19 seems to be correct.
 </div>
 </div>
 
-<div id="outline-container-orgc8baf81" class="outline-3">
-<h3 id="orgc8baf81"><span class="section-number-3">4.2</span> Second, let's see if specializing g2 is enough to complete the computation</h3>
+<div id="outline-container-orgbafaaa9" class="outline-3">
+<h3 id="orgbafaaa9"><span class="section-number-3">4.2</span> Second, let's see if specializing g2 is enough to complete the computation</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 &#x2026; It would be, but not enough to complete the computation many times in less than 20 minutes, so I will cheat.
@@ -582,8 +582,8 @@ nops(gb_g2);
 </div>
 </div>
 
-<div id="outline-container-org608026d" class="outline-3">
-<h3 id="org608026d"><span class="section-number-3">4.3</span> Then, we need to see how many times we will have to do the specialized computation</h3>
+<div id="outline-container-org39176fb" class="outline-3">
+<h3 id="org39176fb"><span class="section-number-3">4.3</span> Then, we need to see how many times we will have to do the specialized computation</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 If we want to interpolate coefficients with degree 19 in g2, we need
@@ -663,8 +663,8 @@ and normalize:
 </div>
 </div>
 
-<div id="outline-container-org5eead41" class="outline-2">
-<h2 id="org5eead41"><span class="section-number-2">5</span> Reconstruction</h2>
+<div id="outline-container-orga1328d8" class="outline-2">
+<h2 id="orga1328d8"><span class="section-number-2">5</span> Reconstruction</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 And now it is time to reconstruct.
@@ -737,8 +737,8 @@ degree(res,g2);
 </div>
 </div>
 
-<div id="outline-container-org8e3f6c8" class="outline-3">
-<h3 id="org8e3f6c8"><span class="section-number-3">5.1</span> Is this good?</h3>
+<div id="outline-container-orga87b10a" class="outline-3">
+<h3 id="orga87b10a"><span class="section-number-3">5.1</span> Is this good?</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Wait&#x2026; Why 18?
@@ -820,7 +820,7 @@ Those are very cheap computations, since they are univariate.
 </p>
 
 <p>
-And even better, those are computations that we are ALREADY doing: <a href="#org986950d">1</a> .
+And even better, those are computations that we are ALREADY doing: <a href="#orga60e2fa">1</a> .
 </p>
 
 <div class="org-src-container">
@@ -844,8 +844,8 @@ print(common_div);
 </div>
 </div>
 
-<div id="outline-container-org829bb07" class="outline-2">
-<h2 id="org829bb07"><span class="section-number-2">6</span> Conclusion</h2>
+<div id="outline-container-orgecfa890" class="outline-2">
+<h2 id="orgecfa890"><span class="section-number-2">6</span> Conclusion</h2>
 <div class="outline-text-2" id="text-6">
 <div class="org-src-container">
 <pre class="src src-maple">final_res := res*common_div;
@@ -857,7 +857,7 @@ print(collect(final_res,Y2,factor));
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Thibaut Verron</p>
-<p class="date">Created: 2020-02-20 Thu 17:42</p>
+<p class="date">Created: 2020-07-16 Thu 14:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
