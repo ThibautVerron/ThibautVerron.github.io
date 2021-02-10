@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<!-- 2020-12-15 mar. 13:55 -->
+<!-- 2021-02-10 mer. 10:18 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thibaut Verron</title>
@@ -16,25 +16,23 @@
 <link rel="stylesheet" href="font/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" />
 <script src="menu.js"></script>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
        if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
        }
      }
      function CodeHighlightOff(elem, id)
      {
        var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
      }
     /*]]>*///-->
 // @license-end
@@ -170,14 +168,14 @@
     </div>
 </div>
 <div id="content">
-<div id="outline-container-org86c314a" class="outline-2 w3-row-padding top-grid">
-<h2 id="org86c314a"></h2>
-<div class="outline-text-2" id="text-org86c314a">
+<div id="outline-container-org8da24eb" class="outline-2 w3-row-padding top-grid">
+<h2 id="org8da24eb"></h2>
+<div class="outline-text-2" id="text-org8da24eb">
 </div>
 
-<div id="outline-container-org98f2f27" class="outline-3 w3-col my-left">
-<h3 id="org98f2f27"></h3>
-<div class="outline-text-3" id="text-org98f2f27">
+<div id="outline-container-org83eebea" class="outline-3 w3-col my-left">
+<h3 id="org83eebea"></h3>
+<div class="outline-text-3" id="text-org83eebea">
 <div class="id-card-container">
 <div class="w3-white w3-text-grey w3-card-4 id-card" style="<!-- max-width:281px; -->/*min-width:240px;*//*position:fixed*/">
   <div class="w3-row">
@@ -255,13 +253,13 @@
 </div>
 </div>
 
-<div id="outline-container-org3c81437" class="outline-3 w3-rest my-right">
-<h3 id="org3c81437"></h3>
-<div class="outline-text-3" id="text-org3c81437">
+<div id="outline-container-org47625eb" class="outline-3 w3-rest my-right">
+<h3 id="org47625eb"></h3>
+<div class="outline-text-3" id="text-org47625eb">
 </div>
 
 <div id="outline-container-apropos" class="outline-4">
-<h4 id="apropos"><span class="done DONE">DONE</span>  <i class="fa fa-user fa-fw w3-margin-right w3-text-theme icon-size" ></i> Über mich&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
+<h4 id="apropos"> <i class="fa fa-user fa-fw w3-margin-right w3-text-theme icon-size" ></i> Über mich&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-apropos">
 <p>
 Ich bin derzeit als Postdoc am Institut für Algebra an der Johannes Kepler Universität (Linz, Österreich) angestellt, und arbeite mit Manuel Kauers im Bereich algorithmische Kombinatorik und Computeralgebra, und besonders algorithmische Fragen in Zusammenhang mit D-finite Funktionen und Gleichungen.
@@ -287,7 +285,7 @@ France) verbracht, wo ich mit <a href="http://gergaud.perso.enseeiht.fr">Joseph 
 </div>
 
 <div id="outline-container-publis" class="outline-4 publist">
-<h4 id="publis"><span class="done DONE">DONE</span>  <i class="fa fa-book fa-fw w3-margin-right w3-text-theme icon-size" ></i> Publikationen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
+<h4 id="publis"> <i class="fa fa-book fa-fw w3-margin-right w3-text-theme icon-size" ></i> Publikationen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-publis">
 </div>
 
@@ -295,8 +293,10 @@ France) verbracht, wo ich mit <a href="http://gergaud.perso.enseeiht.fr">Joseph 
 <h5 id="org9401b0a"> <i class="fa fa-spinner fa-fw w3-margin-right w3-text-theme icon-size" ></i> Preprints</h5>
 <div class="outline-text-5" id="text-org9401b0a">
 <ul class="org-ul">
+<li><b class="w3-text-dark-grey">On Two Signature Variants Of Buchberger’s Algorithm Over Principal Ideal Domains</b> (2021) <br><div class="w3-container">M. Francis, T. Verron<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2021-pid-buchberger.pdf">.pdf</a>, <a href="https://arxiv.org/abs/2102.03339">arXiv</a>, <a href="https://gitlab.com/thibaut.verron/signature-groebner-rings"><span class="lang_en">source code</span><span class="lang_fr">code source</span><span class="lang_de">Quellcode</span></a></div></li>
+<li><b class="w3-text-dark-grey">On FGLM Algorithms With Tate Algebras</b> (2021) <br><div class="w3-container">X. Caruso, T. Vaccon, T. Verron<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2021-tate-fglm.pdf">.pdf</a>, <a href="https://hal.archives-ouvertes.fr/hal-03133590">hal</a></div></li>
 <li><b class="w3-text-dark-grey">The generating function of Kreweras walks with interacting boundaries is not algebraic</b> (2020) <br><div class="w3-container">A. Bostan, M. Kauers, T. Verron<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2020-sticky_kreweras.pdf">.pdf</a>, <a href="https://arxiv.org/abs/2012.00816">arXiv</a>, <a href="doc/2020-sticky_kreweras.bib">.bib</a>, <a href="http://www.algebra.uni-linz.ac.at/research/kreweras-interacting"><span class="lang_en">source code</span><span class="lang_fr">code source</span><span class="lang_de">Quellcode</span></a></div></li>
-<li><b class="w3-text-dark-grey">Signature-based Möller's Algorithm for strong Gröbner bases over PIDs</b> (2019) <br><div class="w3-container">M. Francis, T. Verron<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2019-signature_moller.pdf">.pdf</a>, <a href="https://arxiv.org/abs/1901.09586">arXiv</a>, <a href="doc/2019-signature_moller.bib">.bib</a>, <a href="https://github.com/ThibautVerron/SignatureMoller"><span class="lang_en">source code</span><span class="lang_fr">code source</span><span class="lang_de">Quellcode</span></a></div></li>
+<li><b class="w3-text-dark-grey">Signature-based Möller's Algorithm for strong Gröbner bases over PIDs</b> (2019) <br><div class="w3-container">M. Francis, T. Verron<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2019-signature_moller.pdf">.pdf</a>, <a href="https://arxiv.org/abs/1901.09586">arXiv</a>, <a href="doc/2019-signature_moller.bib">.bib</a>, <a href="https://gitlab.com/thibaut.verron/signature-groebner-rings"><span class="lang_en">source code</span><span class="lang_fr">code source</span><span class="lang_de">Quellcode</span></a></div></li>
 <li><b class="w3-text-dark-grey">Algebraic-geometric techniques for the feedback classification and robustness of the optimal control of a pair of Bloch equations with application to Magnetic Resonance Imaging</b> (2017) <br><div class="w3-container">B. Bonnard, O. Cots, J.-C. Faugère, A. Jacquemard, J. Rouot, M. Safey El Din, T. Verron<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2017-bloch.pdf">.pdf</a>, <a href="https://hal.archives-ouvertes.fr/hal-01556806">hal</a>, <a href="doc/2017-bloch.bib">.bib</a></div></li>
 </ul>
 </div>
@@ -308,7 +308,7 @@ France) verbracht, wo ich mit <a href="http://gergaud.perso.enseeiht.fr">Joseph 
 <div class="outline-text-5" id="text-org645e884">
 <ul class="org-ul">
 <li><b class="w3-text-dark-grey">On Affine Tropical F5 Algorithms</b> (Extended version) <br><div class="w3-container">T. Vaccon, T. Verron, K. Yokoyama<br>To appear in <i>Journal of Symbolic Computations: special issue on the ISSAC 2018 conference</i><br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2018-F5trop_affine_extended.pdf">.pdf</a>, <a href="https://doi.org/10.1016/j.jsc.2019.10.012">doi:10.1016/j.jsc.2019.10.012</a>, <a href="doc/2019-F5trop_affine.bib">.bib</a></div></li>
-<li><b class="w3-text-dark-grey">A Signature-based Algorithm for Computing Gröbner Bases over Principal Ideal Domains</b> <br><div class="w3-container">M. Francis, T. Verron<br>To appear in <i>Mathematics in Computer Science: special issue on the ACA 2018 conference</i><br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2018-signature_moller.pdf">.pdf</a>, <a href="https://arxiv.org/abs/1802.01388">arXiv</a>, <a href="https://doi.org/10.1007/s11786-019-00432-5">doi:10.1007/s11786-019-00432-5</a>, <a href="doc/2018-signature_moller.bib">.bib</a>,  <a href="https://github.com/ThibautVerron/SignatureMoller"><span class="lang_en">source code</span><span class="lang_fr">code source</span><span class="lang_de">Quellcode</span></a></div></li>
+<li><b class="w3-text-dark-grey">A Signature-based Algorithm for Computing Gröbner Bases over Principal Ideal Domains</b> <br><div class="w3-container">M. Francis, T. Verron<br>To appear in <i>Mathematics in Computer Science: special issue on the ACA 2018 conference</i><br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2018-signature_moller.pdf">.pdf</a>, <a href="https://arxiv.org/abs/1802.01388">arXiv</a>, <a href="https://doi.org/10.1007/s11786-019-00432-5">doi:10.1007/s11786-019-00432-5</a>, <a href="doc/2018-signature_moller.bib">.bib</a>,  <a href="https://gitlab.com/thibaut.verron/signature-groebner-rings"><span class="lang_en">source code</span><span class="lang_fr">code source</span><span class="lang_de">Quellcode</span></a></div></li>
 <li><b class="w3-text-dark-grey">Time minimal saturation of a pair of spins and application in Magnetic Resonance Imaging</b> <br><div class="w3-container">B. Bonnard, O. Cots, J. Rouot, T. Verron<br><i>Mathematical Control and Related Fields, Volume 10, Issue 1, 2020</i><br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="https://www.archives-ouvertes.fr/hal-01764022">hal</a>, <a href="https://doi.org/10.3934/mcrf.2019029">doi:10.3934/mcrf.2019029</a>, <a href="doc/2019-MCRF.bib">bib</a></div></li>
 <li><b class="w3-text-dark-grey">On the complexity of computing Gröbner bases for weighted homogeneous systems</b> <br><div class="w3-container">J.-C. Faugère, M. Safey El Din, T. Verron<br><i>Journal of Symbolic Computations, Volume 76, 2016</i><br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2015-JSC.pdf">.pdf</a>, <a href="http://arxiv.org/abs/1412.7547">arXiv</a>, <a href="https://doi.org/10.1016/j.jsc.2015.12.001">doi:10.1016/j.jsc.2015.12.001</a>, <a href="doc/2015-JSC.bib">.bib</a></div></li>
 </ul>
@@ -353,7 +353,7 @@ France) verbracht, wo ich mit <a href="http://gergaud.perso.enseeiht.fr">Joseph 
 </div>
 
 <div id="outline-container-talks" class="outline-4">
-<h4 id="talks"><span class="done DONE">DONE</span>  <i class="fa fa-commenting fa-fw w3-margin-right w3-text-theme icon-size" ></i> Einige Vorträge (komplette Liste <a href="all_talks.html">hier</a>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
+<h4 id="talks"> <i class="fa fa-commenting fa-fw w3-margin-right w3-text-theme icon-size" ></i> Einige Vorträge (komplette Liste <a href="all_talks.html">hier</a>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-talks">
 <ul class="org-ul">
 <li><b class="w3-text-dark-grey">Working with valuations</b> <br><div class="w3-container"><a href="https://indico.math.cnrs.fr/category/40/">"Calcul formel" team seminar</a><br>XLIM, Université de Limoges, France, 2020/02/27<br><span class="lang_en">Links</span><span class="lang_de">Links</span><span class="lang_fr">Liens</span>: <a href="doc/2020-02-27-seminar-Limoges-slides.pdf">slides</a></div></li>
@@ -366,7 +366,7 @@ France) verbracht, wo ich mit <a href="http://gergaud.perso.enseeiht.fr">Joseph 
 </div>
 
 <div id="outline-container-enseignement" class="outline-4">
-<h4 id="enseignement"><span class="done DONE">DONE</span>  <i class="fa fa-group fa-fw w3-margin-right w3-text-theme icon-size" ></i> Lehre&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
+<h4 id="enseignement"> <i class="fa fa-group fa-fw w3-margin-right w3-text-theme icon-size" ></i> Lehre&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-enseignement">
 </div>
 
@@ -416,9 +416,8 @@ France) verbracht, wo ich mit <a href="http://gergaud.perso.enseeiht.fr">Joseph 
 </div>
 </div>
 
-
 <div id="outline-container-software" class="outline-4">
-<h4 id="software"><span class="done DONE">DONE</span>  <i class="fa fa-code fa-fw w3-margin-right w3-text-theme icon-size" ></i> Software&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
+<h4 id="software"> <i class="fa fa-code fa-fw w3-margin-right w3-text-theme icon-size" ></i> Software&#xa0;&#xa0;&#xa0;<span class="tag"><span class="german">german</span></span></h4>
 <div class="outline-text-4" id="text-software">
 </div>
 
@@ -445,9 +444,9 @@ Gemeinsame Entwicklung mit <a href="http://xavier.toonywood.org/">Xavier Caruso<
 </div>
 </div>
 
-<div id="outline-container-orgf3f5b4f" class="outline-6">
-<h6 id="orgf3f5b4f"><a href="https://github.com/ThibautVerron/SignatureMoller">Signature Gröbner Basen mit Koeffizienten in Hauptidealringen</a></h6>
-<div class="outline-text-6" id="text-orgf3f5b4f">
+<div id="outline-container-org4ff5bfa" class="outline-6">
+<h6 id="org4ff5bfa"><a href="https://gitlab.com/thibaut.verron/signature-groebner-rings">Signature Gröbner Basen mit Koeffizienten in Hauptidealringen</a></h6>
+<div class="outline-text-6" id="text-org4ff5bfa">
 <p>
 Implementierung in Magma von signature-based Versionen von Möllers Algorithmen zur Berechnung von Gröbner Basen mit Koeffizienten in Hauptidealringen.
 Möllers schwach GB Algorithmus wurde bei der ACA 2018 präsentiert (<a href="doc/2018-06-20-ACA-slides.pdf">Folien</a>) und Möllers stark GB Algorithmus wurde bei der SIAM AG 2019 präsentiert (<a href="doc/2019-07-13-SIAM-AG-slides.pdf">Folien</a>).
@@ -481,7 +480,7 @@ Emacs Modus für Magma Quellcode.  Es basiert auf dem Magma-mode von
 <div id="postamble" class="status">
 <footer class="w3-container w3-center w3-margin-top">
   <p><span class="lang_en">
-(Last updated: 2020/12/15, 13:55)</span><span class="lang_fr">(Dernière mise à jour le 15/12/2020 à 13:55)</span><span class="lang_de">(Last updated: 2020/12/15, 13:55)</span></p>
+(Last updated: 2021/02/10, 10:18)</span><span class="lang_fr">(Dernière mise à jour le 10/02/2021 à 10:18)</span><span class="lang_de">(Last updated: 2021/02/10, 10:18)</span></p>
 </footer>
 </div>
 </body>
