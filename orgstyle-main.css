@@ -162,6 +162,15 @@ h5 {
     display:none;
 }
 
+.item-number {
+    transform: translateX(-100%);
+}
+
+.biblio-block {
+    display: inline-block;
+    vertical-align: top;
+}
+
 
 .icon-size{
     font-size: 1.1em!important;

@@ -83,6 +83,11 @@ div.outline-text-6{
     margin-top: -16px;
 }
 
+div.outline-text-4{
+    margin-top: -16px;
+    /* margin-left: 15pt; */
+}
+
 div.outline-7{
     margin:16px 16px;
     border-bottom:1px solid #ddd;
