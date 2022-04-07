@@ -1,0 +1,11 @@
+Signature Gröbner bases and cofactor computation in the free algebra
+
+Gröbner bases are a fundamental tool for solving systems of polynomial equations, and performing arithmetic operations on ideals.
+The most recent generation of algorithms computing Gröbner bases are computing bases with so-called signatures.
+Those signatures have proved to be useful far beyond their initial purpose of eliminating reductions to zero: they also allow to certify the results of a Gröbner basis computation, by reconstructing coordinates of the basis elements, as well as computing syzygies.
+
+In the non-commutative case, Gröbner bases are used for evaluating formulas in abstract algebra.
+A signature Gröbner basis of the ideal, in addition to answering the question, would also give sufficient data to reconstruct a proof of the computed implications.
+
+In this talk, we present signature Gröbner basis algorithms for pure non-commutative polynomials, in the free algebra, and we show that those algorithms can be used to reconstruct cofactors and syzygies like in the commutative case.
+A common difficulty with non-commutative Gröbner bases is that the algorithms do not in general terminate. We show how signatures allow to work around an obstruction to termination, and we conjecture a characterization of ideals with a finite signature Gröbner basis.
