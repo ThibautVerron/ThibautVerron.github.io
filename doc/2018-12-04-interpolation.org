@@ -1,6 +1,10 @@
 #+TITLE: Computing elimination polynomials using interpolation
 
 * Problem
+:PROPERTIES:
+:CUSTOM_ID: problem
+:END:
+
 
 When one wants to eliminate one or several variables from a system,
 the result may have very large degree.
@@ -11,6 +15,9 @@ It is sometimes worthwile to try using evaluation and interpolation
 techniques.
 
 * Example system
+:PROPERTIES:
+:CUSTOM_ID: example
+:END:
 
 http://mercurey.gforge.inria.fr/
 
@@ -53,6 +60,9 @@ map(degree, sys, G2);
 #+END_SRC
 
 * Trying a direct calculation
+:PROPERTIES:
+:CUSTOM_ID: direct-calc
+:END:
 
 We want a polynomial in one of y1, y2, z1 or z2, together with g2, G1
 and G2.
@@ -78,6 +88,9 @@ The degree increases, so does the size of the matrices, and the time
 needed to construct them...
 
 ** How long will we need to wait?
+:PROPERTIES:
+:CUSTOM_ID: how-big
+:END:
 
 We need to know the degree that we will need to reach.
 
@@ -116,6 +129,9 @@ sys := [y2*u-1,       # y2 <> 0
 #+END_SRC
 
 ** But we still don't know the degree in the g2,G2,G1.
+:PROPERTIES:
+:CUSTOM_ID: degree-estimate
+:END:
 
 One way to get a quick estimate is to use the same calculation, and
 look at the size of the coefficients.
@@ -200,11 +216,17 @@ degree 24.
 But real-life cases are never that not usually that clear-cut.
 
 * Specialization
+:PROPERTIES:
+:CUSTOM_ID: evaluation
+:END:
 
 So let's see if we can make it work with interpolation here.
 And let's use g2 as the interpolation variable.
 
 ** First, we need to make sure that our degree estimate is correct.
+:PROPERTIES:
+:CUSTOM_ID: checking-deg-estimate
+:END:
 
 #+NAME: degree_estimate
 #+BEGIN_SRC maple
@@ -220,6 +242,9 @@ od:
 So, 19 seems to be correct.
 
 ** Second, let's see if specializing g2 is enough to complete the computation
+:PROPERTIES:
+:CUSTOM_ID: specializing-g2
+:END:
 
 ... It would be, but not enough to complete the computation many times in less than 20 minutes, so I will cheat.
 
@@ -238,6 +263,9 @@ nops(gb_g2);
 #+END_SRC
 
 ** Then, we need to see how many times we will have to do the specialized computation
+:PROPERTIES:
+:CUSTOM_ID: how-many-times
+:END:
 
 If we want to interpolate coefficients with degree 19 in g2, we need
 to compute the polynomial 20 times.
@@ -295,6 +323,9 @@ yyvals := map(y -> y/lcoeff(y), yvals):
 #+END_SRC
 
 * Reconstruction
+:PROPERTIES:
+:CUSTOM_ID: reconstruction
+:END:
 
 And now it is time to reconstruct.
 
@@ -344,6 +375,9 @@ degree(res,g2);
 #+END_SRC
 
 ** Is this good?
+:PROPERTIES:
+:CUSTOM_ID: is-this-good
+:END:
 
 Wait... Why 18?
 
@@ -414,10 +448,26 @@ print(common_div);
 #+END_SRC
 
 * Conclusion
+:PROPERTIES:
+:CUSTOM_ID: conclusion
+:END:
 
 #+BEGIN_SRC maple
 final_res := res*common_div;
 print(collect(final_res,Y2,factor));
 #+END_SRC
 
+* Org settings                                                     :noexport:
+
+#+OPTIONS: html-style:nil
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../w3.css" />
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../w3-theme-myblue.css" />
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../style.css" />
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../orgstyle-main.css" />
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Roboto' />
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../font/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+#+HTML_DOCTYPE: html5
+
+#+OPTIONS: title:nil toc:nil num:nil H:6 tags:t broken-links:t todo:t
 
